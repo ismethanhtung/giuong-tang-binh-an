@@ -6,6 +6,8 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 import { useCart } from "./CartProvider";
 import { CartIcon, PhoneIcon, SearchIcon } from "./icons";
+import Logo from "./Logo";
+import VietnamFlag from "./VietnamFlag";
 
 export default function Header() {
   const { count } = useCart();
@@ -21,12 +23,11 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-stone-200/70 bg-white/85 backdrop-blur-md">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:h-16">
         <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-600 text-lg text-white shadow-sm">
-            🛏️
-          </span>
+          <Logo />
           <span className="leading-tight">
-            <span className="block text-[15px] font-bold tracking-tight text-stone-900">
+            <span className="flex items-center gap-1.5 text-[15px] font-bold tracking-tight text-stone-900">
               {site.name}
+              <VietnamFlag className="h-4 w-4" />
             </span>
             <span className="hidden text-[11px] text-stone-500 sm:block">
               {site.tagline}

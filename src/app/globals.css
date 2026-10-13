@@ -4,16 +4,16 @@
   --font-sans: var(--font-be-vietnam), system-ui, -apple-system, "Segoe UI",
     Roboto, sans-serif;
 
-  --color-brand-50: #fdf7f0;
-  --color-brand-100: #f9ead6;
-  --color-brand-200: #f1d0a8;
-  --color-brand-300: #e7b078;
-  --color-brand-400: #dd8f4c;
-  --color-brand-500: #d0762c;
-  --color-brand-600: #b85c21;
-  --color-brand-700: #96451e;
-  --color-brand-800: #7a391f;
-  --color-brand-900: #65301c;
+  --color-brand-50: #f0fdf9;
+  --color-brand-100: #d6f8ef;
+  --color-brand-200: #aff0df;
+  --color-brand-300: #7be4ce;
+  --color-brand-400: #42ceb4;
+  --color-brand-500: #1eb397;
+  --color-brand-600: #13907b;
+  --color-brand-700: #137364;
+  --color-brand-800: #135c51;
+  --color-brand-900: #134c44;
 }
 
 html {
@@ -22,8 +22,8 @@ html {
 }
 
 body {
-  background: #faf7f5;
-  color: #1c1917;
+  background: #f8fafc;
+  color: #1e293b;
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }

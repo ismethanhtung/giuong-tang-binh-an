@@ -21,13 +21,23 @@ export const metadata: Metadata = {
   },
   description: site.description,
   keywords: [
+    "giường tầng Bình An",
     "giường sắt",
     "giường tầng",
     "giường gỗ",
     "tủ gỗ",
     "bàn ghế ăn",
-    "nội thất",
+    "nội thất Gia Lai",
+    "nội thất Pleiku",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/icon-192.png",
+  },
   openGraph: {
     title: `${site.name} – ${site.tagline}`,
     description: site.description,
@@ -36,12 +46,16 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#b85c21",
+  themeColor: "#13907b",
   width: "device-width",
   initialScale: 1,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="vi" className={`${beVietnam.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">

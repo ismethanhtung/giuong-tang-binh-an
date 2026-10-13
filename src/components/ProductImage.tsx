@@ -1,8 +1,10 @@
+import Image from "next/image";
 import type { ProductType } from "@/lib/products";
 
 type Props = {
   type: ProductType;
   color: string;
+  src?: string;
   className?: string;
   alt?: string;
   showHint?: boolean;
@@ -95,13 +97,33 @@ function Illustration({ type, color }: { type: ProductType; color: string }) {
 export default function ProductImage({
   type,
   color,
+  src,
   className = "",
   alt = "",
   showHint = true,
 }: Props) {
+  if (src) {
+    return (
+      <div className={`relative overflow-hidden bg-white ${className}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+          className="object-cover transition duration-500 group-hover:scale-105"
+        />
+        {showHint && (
+          <span className="absolute right-2 top-2 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
+            hàng như ảnh
+          </span>
+        )}
+      </div>
+    );
+  }
+
   const id = `bg-${type}`;
   return (
-    <div className={`relative overflow-hidden bg-brand-50 ${className}`}>
+    <div className={`relative overflow-hidden bg-brand-50/70 ${className}`}>
       <svg
         viewBox="0 0 480 380"
         preserveAspectRatio="xMidYMid slice"
@@ -112,7 +134,7 @@ export default function ProductImage({
         <defs>
           <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#f2e7dc" />
+            <stop offset="100%" stopColor="#eef8f5" />
           </linearGradient>
         </defs>
         <rect width="480" height="380" fill={`url(#${id})`} />
@@ -120,8 +142,8 @@ export default function ProductImage({
         <Illustration type={type} color={color} />
       </svg>
       {showHint && (
-        <span className="absolute right-2 top-2 rounded-full bg-white/80 px-2 py-0.5 text-[10px] font-medium text-stone-500 backdrop-blur">
-          ảnh minh hoạ
+        <span className="absolute right-2 top-2 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
+          hàng như ảnh
         </span>
       )}
     </div>

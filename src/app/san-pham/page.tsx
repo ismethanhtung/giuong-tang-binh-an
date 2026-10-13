@@ -86,13 +86,18 @@ export default async function ProductsPage({
           <Link
             key={c.id}
             href={buildHref(c.id)}
-            className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
+            className={`shrink-0 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
               active?.id === c.id
                 ? "bg-brand-600 text-white shadow"
                 : "border border-stone-200 bg-white text-stone-600 hover:border-brand-300"
             }`}
           >
-            <span className="mr-1">{c.emoji}</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={c.icon}
+              alt={c.name}
+              className="h-4.5 w-4.5 shrink-0 object-contain"
+            />
             {c.short}
           </Link>
         ))}

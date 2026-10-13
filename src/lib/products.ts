@@ -12,6 +12,7 @@ export type Category = {
   name: string;
   short: string;
   emoji: string;
+  icon: string;
 };
 
 export type Product = {
@@ -31,11 +32,41 @@ export type Product = {
 };
 
 export const categories: Category[] = [
-  { id: "giuong-sat", name: "Giường sắt & giường tầng", short: "Giường sắt", emoji: "🛏️" },
-  { id: "giuong-go", name: "Giường gỗ", short: "Giường gỗ", emoji: "🪵" },
-  { id: "tu-go", name: "Tủ gỗ", short: "Tủ gỗ", emoji: "🚪" },
-  { id: "ban-ghe", name: "Bàn ghế ăn", short: "Bàn ghế", emoji: "🍽️" },
-  { id: "khac", name: "Nội thất khác", short: "Khác", emoji: "🪑" },
+  {
+    id: "giuong-sat",
+    name: "Giường sắt & giường tầng",
+    short: "Giường sắt",
+    emoji: "🛏️",
+    icon: "/icons/giuong-sat.png",
+  },
+  {
+    id: "giuong-go",
+    name: "Giường gỗ",
+    short: "Giường gỗ",
+    emoji: "🪵",
+    icon: "/icons/giuong-go.gif",
+  },
+  {
+    id: "tu-go",
+    name: "Tủ gỗ",
+    short: "Tủ gỗ",
+    emoji: "🚪",
+    icon: "/icons/tu-go.gif",
+  },
+  {
+    id: "ban-ghe",
+    name: "Bàn ghế ăn",
+    short: "Bàn ghế",
+    emoji: "🍽️",
+    icon: "/icons/ban-ghe.gif",
+  },
+  {
+    id: "khac",
+    name: "Nội thất khác",
+    short: "Khác",
+    emoji: "🛋️",
+    icon: "/icons/khac.gif",
+  },
 ];
 
 export function getCategory(id: CategoryId) {
@@ -55,7 +86,7 @@ export const products: Product[] = [
     badge: "Bán chạy",
     featured: true,
     shortDesc: "Khung sắt hộp 5x5 sơn tĩnh điện, hai tầng rộng rãi, chịu lực tốt.",
-    color: "#c2703a",
+    color: "#3bb39a",
     specs: [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m (tầng dưới 1,8m)" },
       { label: "Chất liệu", value: "Sắt hộp 5x5, sơn tĩnh điện" },
@@ -74,7 +105,7 @@ export const products: Product[] = [
     badge: "Có cầu thang",
     featured: true,
     shortDesc: "Cầu thang vững chắc, có tay vịn an toàn, phù hợp phòng trẻ.",
-    color: "#3f7d8c",
+    color: "#38a3a5",
     specs: [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m" },
       { label: "Chất liệu", value: "Sắt hộp + cầu thang an toàn" },
@@ -91,7 +122,7 @@ export const products: Product[] = [
     rating: 4.7,
     reviews: 56,
     shortDesc: "Gọn nhẹ, tiết kiệm diện tích, phù hợp phòng trọ.",
-    color: "#b9574f",
+    color: "#57cc99",
     specs: [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m" },
       { label: "Chất liệu", value: "Sắt hộp sơn tĩnh điện" },
@@ -109,7 +140,7 @@ export const products: Product[] = [
     rating: 4.9,
     reviews: 41,
     shortDesc: "Bản rộng cho người lớn, khung dày chắc chắn, không rung lắc.",
-    color: "#6b5844",
+    color: "#2a9d8f",
     featured: true,
     specs: [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,8m" },
@@ -258,12 +289,9 @@ export function getProduct(slug: string) {
   return products.find((p) => p.slug === slug);
 }
 
-export function productsByCategory(id: CategoryId) {
-  return products.filter((p) => p.category === id);
-}
-
-const vnd = new Intl.NumberFormat("vi-VN");
-
-export function formatPrice(value: number) {
-  return `${vnd.format(value)}đ`;
+export function formatPrice(vnd: number) {
+  return new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  }).format(vnd);
 }

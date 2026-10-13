@@ -1,143 +1,104 @@
-import type { SVGProps } from "react";
+import type { ComponentProps } from "react";
+import {
+  Home,
+  LayoutGrid,
+  ShoppingCart,
+  Search,
+  Phone,
+  MessageCircle,
+  MapPin,
+  Clock,
+  Star,
+  Plus,
+  Minus,
+  Trash2,
+  ChevronRight,
+  Check,
+  Truck,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
 
-type IconProps = SVGProps<SVGSVGElement>;
+export type IconProps = ComponentProps<typeof Home>;
 
-const base = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  viewBox: "0 0 24 24",
-};
+// Re-export Lucide icons with project-compatible names
+export const HomeIcon = Home;
+export const GridIcon = LayoutGrid;
+export const CartIcon = ShoppingCart;
+export const SearchIcon = Search;
+export const PhoneIcon = Phone;
+export const ChatIcon = MessageCircle;
+export const MapPinIcon = MapPin;
+export const ClockIcon = Clock;
+export const PlusIcon = Plus;
+export const MinusIcon = Minus;
+export const TrashIcon = Trash2;
+export const ChevronRightIcon = ChevronRight;
+export const CheckIcon = Check;
+export const TruckIcon = Truck;
+export const ShieldIcon = ShieldCheck;
+export const WrenchIcon = Wrench;
 
-export function HomeIcon(p: IconProps) {
+// Star icon with customizable fill/stroke for rating display
+export function StarIcon({
+  className = "",
+  ...props
+}: IconProps) {
   return (
-    <svg {...base} {...p}>
-      <path d="M3 10.5 12 3l9 7.5" />
-      <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5" />
-      <path d="M9.5 21v-6h5v6" />
+    <Star
+      className={className}
+      fill="currentColor"
+      strokeWidth={0}
+      {...props}
+    />
+  );
+}
+
+// Brand icons: Facebook, Messenger, Zalo
+export function FacebookIcon({
+  className = "h-4 w-4",
+  ...props
+}: ComponentProps<"svg">) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      {...props}
+    >
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
     </svg>
   );
 }
 
-export function GridIcon(p: IconProps) {
+export function MessengerIcon({
+  className = "h-4 w-4",
+  ...props
+}: ComponentProps<"svg">) {
   return (
-    <svg {...base} {...p}>
-      <rect x="3.5" y="3.5" width="7" height="7" rx="2" />
-      <rect x="13.5" y="3.5" width="7" height="7" rx="2" />
-      <rect x="3.5" y="13.5" width="7" height="7" rx="2" />
-      <rect x="13.5" y="13.5" width="7" height="7" rx="2" />
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      {...props}
+    >
+      <path d="M12 0C5.239 0 0 4.978 0 11.5c0 3.715 1.71 7.026 4.394 9.173V24l3.193-1.753c1.36.377 2.806.58 4.413.58 6.761 0 12-4.978 12-11.5S18.761 0 12 0zm1.26 15.526-3.08-3.284-6.012 3.284 6.613-7.026 3.155 3.284 5.938-3.284-6.614 7.026z" />
     </svg>
   );
 }
 
-export function CartIcon(p: IconProps) {
+export function ZaloIcon({
+  className = "h-4 w-4",
+  alt = "Zalo",
+  ...props
+}: ComponentProps<"img">) {
   return (
-    <svg {...base} {...p}>
-      <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20.5 7H6" />
-      <circle cx="9.5" cy="20" r="1.4" />
-      <circle cx="17.5" cy="20" r="1.4" />
-    </svg>
-  );
-}
-
-export function SearchIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-3.5-3.5" />
-    </svg>
-  );
-}
-
-export function PhoneIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M4 5c0-.6.4-1 1-1h2.5c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.4 1L7 10c1 2 2.9 3.9 5 5l1.2-1.9c.2-.4.6-.5 1-.4l3 .8c.5.1.8.5.8 1V17c0 .6-.4 1-1 1h-1C9.7 18 4 12.3 4 6V5Z" />
-    </svg>
-  );
-}
-
-export function ChatIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M20 12a7 7 0 0 1-10.3 6.2L5 20l1.8-4.2A7 7 0 1 1 20 12Z" />
-    </svg>
-  );
-}
-
-export function StarIcon(p: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...p}>
-      <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5Z" />
-    </svg>
-  );
-}
-
-export function PlusIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M12 5v14M5 12h14" />
-    </svg>
-  );
-}
-
-export function MinusIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M5 12h14" />
-    </svg>
-  );
-}
-
-export function TrashIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M4 7h16M9 7V5h6v2M6 7l1 13h10l1-13" />
-    </svg>
-  );
-}
-
-export function ChevronRightIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="m9 6 6 6-6 6" />
-    </svg>
-  );
-}
-
-export function CheckIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="m5 12.5 4.5 4.5L19 7" />
-    </svg>
-  );
-}
-
-export function TruckIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" />
-      <circle cx="7" cy="18" r="1.6" />
-      <circle cx="17" cy="18" r="1.6" />
-    </svg>
-  );
-}
-
-export function ShieldIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
-  );
-}
-
-export function WrenchIcon(p: IconProps) {
-  return (
-    <svg {...base} {...p}>
-      <path d="M15 3a5 5 0 0 0-4.5 7.2L4 16.7 7.3 20l6.5-6.5A5 5 0 0 0 21 9l-3 1-2-2 1-3a5 5 0 0 0-2-2Z" />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/images/zalo.png"
+      alt={alt}
+      className={`shrink-0 object-contain rounded-xs ${className}`}
+      {...props}
+    />
   );
 }

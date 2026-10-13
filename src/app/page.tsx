@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
-import { ChevronRightIcon, PhoneIcon, StarIcon } from "@/components/icons";
+import { ChevronRightIcon, PhoneIcon, StarIcon, ZaloIcon } from "@/components/icons";
 import { categories, products } from "@/lib/products";
 import { site } from "@/lib/site";
 
@@ -12,45 +12,45 @@ export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-4">
       {/* Hero */}
-      <section className="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 via-brand-600 to-brand-800 text-white shadow-xl shadow-brand-900/10">
+      <section className="mt-4 overflow-hidden rounded-3xl border border-brand-200 bg-gradient-to-br from-brand-50 via-brand-100 to-brand-200/80 shadow-xl shadow-brand-900/5">
         <div className="grid items-center gap-6 p-6 sm:p-10 md:grid-cols-2">
           <div className="animate-float-up">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur">
-              <StarIcon className="h-3.5 w-3.5 text-amber-300" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-brand-700 shadow-sm backdrop-blur">
+              <StarIcon className="h-3.5 w-3.5 text-brand-500" />
               Xưởng sản xuất trực tiếp – giá gốc
             </span>
-            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-              Giường sắt & nội thất gỗ
+            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-stone-900 sm:text-4xl">
+              Giường tầng, giường sắt
               <br />
-              <span className="text-amber-200">bền đẹp, giá xưởng</span>
+              <span className="text-brand-600">bền đẹp, giá tận xưởng</span>
             </h1>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-white/85 sm:text-base">
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-stone-600 sm:text-base">
               Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế ăn. Bảo hành dài,
               lắp đặt tận nhà, giao hàng toàn quốc.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="/san-pham"
-                className="inline-flex h-11 items-center gap-1.5 rounded-full bg-white px-5 text-sm font-bold text-brand-700 shadow-lg transition active:scale-95 hover:bg-amber-50"
+                className="inline-flex h-11 items-center gap-1.5 rounded-full bg-brand-600 px-5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
               >
                 Xem sản phẩm
                 <ChevronRightIcon className="h-4 w-4" />
               </Link>
               <a
                 href={site.phoneHref}
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-white/40 px-5 text-sm font-bold text-white transition active:scale-95 hover:bg-white/10"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-300 bg-white/70 px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-white"
               >
-                <PhoneIcon className="h-4 w-4" />
+                <PhoneIcon className="h-4.5 w-4.5" />
                 {site.phone}
               </a>
             </div>
           </div>
 
           <div className="relative hidden md:block">
-            <div className="rounded-2xl bg-white/10 p-3 backdrop-blur">
+            <div className="rounded-2xl bg-white/80 p-3 shadow-sm backdrop-blur">
               <ProductImage
                 type="bunk"
-                color="#e7b078"
+                color="#42ceb4"
                 showHint={false}
                 alt="Giường tầng sắt"
                 className="aspect-[4/3] rounded-xl"
@@ -78,10 +78,15 @@ export default function HomePage() {
             <Link
               key={c.id}
               href={`/san-pham?danh-muc=${c.id}`}
-              className="flex w-32 shrink-0 flex-col items-center gap-2 rounded-2xl border border-stone-200 bg-white p-4 text-center shadow-sm transition hover:border-brand-300 hover:shadow-md sm:w-auto"
+              className="flex w-32 shrink-0 flex-col items-center gap-2 rounded-2xl border border-stone-200 bg-white p-3.5 text-center shadow-sm transition hover:border-brand-300 hover:shadow-md sm:w-auto"
             >
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-2xl">
-                {c.emoji}
+              <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-50/70 p-2 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.icon}
+                  alt={c.name}
+                  className="h-full w-full object-contain"
+                />
               </span>
               <span className="text-xs font-semibold leading-snug text-stone-700">
                 {c.short}
@@ -117,7 +122,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA band */}
-      <section className="mt-12 overflow-hidden rounded-3xl border border-brand-100 bg-brand-50/60 p-6 text-center sm:p-8">
+      <section className="mt-12 overflow-hidden rounded-3xl border border-brand-100 bg-brand-50/70 p-6 text-center sm:p-8">
         <h2 className="text-xl font-bold tracking-tight text-stone-900 sm:text-2xl">
           Cần tư vấn chọn giường phù hợp?
         </h2>
@@ -130,13 +135,16 @@ export default function HomePage() {
             href={site.phoneHref}
             className="inline-flex h-11 items-center gap-2 rounded-full bg-brand-600 px-5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
           >
-            <PhoneIcon className="h-4 w-4" />
+            <PhoneIcon className="h-4.5 w-4.5" />
             Gọi {site.phone}
           </a>
           <a
             href={site.zalo}
-            className="inline-flex h-11 items-center rounded-full border border-brand-200 bg-white px-5 text-sm font-bold text-brand-700 transition active:scale-95 hover:bg-brand-50"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 items-center gap-2.5 rounded-full border border-brand-200 bg-white px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-brand-50"
           >
+            <ZaloIcon className="h-5.5 w-5.5" />
             Chat Zalo
           </a>
         </div>
