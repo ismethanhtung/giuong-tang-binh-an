@@ -17,7 +17,7 @@ import {
 
 const perks = [
   { icon: TruckIcon, title: "Miễn phí giao nội thành", desc: "Hỗ trợ toàn quốc" },
-  { icon: ShieldIcon, title: "Bảo hành tới 36 tháng", desc: "Đổi mới nếu lỗi" },
+  { icon: ShieldIcon, title: "Sắt thép Hoà Phát", desc: "Chính hãng, bền đẹp" },
   { icon: WrenchIcon, title: "Lắp đặt tận nhà", desc: "Nhanh, gọn, miễn phí" },
 ];
 
@@ -40,7 +40,7 @@ export default function Footer() {
 
       <div className="border-t border-stone-100">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
-          {/* Cột 1: Thông tin thương hiệu + 3 nút kết nối Zalo, Messenger, Facebook */}
+          {/* Cột 1: Thông tin thương hiệu + 3 nút kết nối Zalo, Messenger, Facebook trên 1 hàng */}
           <div>
             <p className="flex items-center gap-2 text-base font-bold text-stone-900">
               <Logo className="h-9 w-9" />
@@ -50,33 +50,33 @@ export default function Footer() {
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-stone-500">
               {site.description}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-2.5">
+            <div className="mt-4 grid max-w-xs grid-cols-3 gap-1.5 sm:gap-2">
               <a
                 href={site.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
+                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-sky-200/80 bg-sky-50/70 px-1.5 text-[11.5px] font-semibold text-sky-900 shadow-2xs transition hover:bg-sky-100 hover:border-sky-300 active:scale-95"
               >
-                <ZaloIcon className="h-5.5 w-5.5" />
-                Zalo
+                <ZaloIcon className="h-3.5 w-3.5 shrink-0" />
+                <span>Zalo</span>
               </a>
               <a
                 href={site.messenger}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
+                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-blue-200/80 bg-blue-50/70 px-1.5 text-[11.5px] font-semibold text-blue-900 shadow-2xs transition hover:bg-blue-100 hover:border-blue-300 active:scale-95"
               >
-                <MessengerIcon className="h-5.5 w-5.5 text-[#0084FF]" />
-                Messenger
+                <MessengerIcon className="h-3.5 w-3.5 shrink-0 text-[#0084FF]" />
+                <span>Messenger</span>
               </a>
               <a
                 href={site.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm transition hover:bg-brand-50"
+                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-indigo-200/80 bg-indigo-50/70 px-1.5 text-[11.5px] font-semibold text-indigo-900 shadow-2xs transition hover:bg-indigo-100 hover:border-indigo-300 active:scale-95"
               >
-                <FacebookIcon className="h-5.5 w-5.5 text-[#1877F2]" />
-                Facebook
+                <FacebookIcon className="h-3.5 w-3.5 shrink-0 text-[#1877F2]" />
+                <span>Facebook</span>
               </a>
             </div>
           </div>
@@ -103,21 +103,21 @@ export default function Footer() {
             <p className="text-sm font-semibold text-stone-800">Liên hệ & Địa chỉ</p>
             <ul className="mt-3 space-y-2.5 text-sm text-stone-600">
               <li className="flex items-center gap-2.5">
-                <PhoneIcon className="h-5 w-5 shrink-0 text-brand-600" />
+                <PhoneIcon className="h-4.5 w-4.5 shrink-0 text-brand-600" />
                 <a href={site.phoneHref} className="font-semibold text-stone-900 hover:text-brand-600">
                   {site.phone}
                 </a>
                 <span className="text-xs text-stone-400">(Hotline / Zalo)</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+                <MapPinIcon className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brand-600" />
                 <div>
                   <span className="font-semibold text-stone-800">Địa chỉ mới:</span>{" "}
                   <span>{site.address}</span>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-stone-400" />
+                <MapPinIcon className="mt-0.5 h-4.5 w-4.5 shrink-0 text-stone-400" />
                 <div className="text-stone-500">
                   <span className="font-medium text-stone-700">Địa chỉ cũ:</span>{" "}
                   <span>{site.oldAddress}</span>
@@ -138,7 +138,7 @@ export default function Footer() {
               </li>
 
               <li className="flex items-center gap-2.5 pt-1">
-                <ClockIcon className="h-5 w-5 shrink-0 text-brand-600" />
+                <ClockIcon className="h-4.5 w-4.5 shrink-0 text-brand-600" />
                 <span>
                   <span className="font-medium text-stone-700">Thời gian phục vụ:</span>{" "}
                   <span className="inline-block rounded-md bg-brand-50 px-2 py-0.5 font-bold text-brand-700">

@@ -34,7 +34,7 @@ export async function generateMetadata({
 
 const trust = [
   { icon: TruckIcon, text: "Giao & lắp đặt tận nhà" },
-  { icon: ShieldIcon, text: "Bảo hành chính hãng" },
+  { icon: ShieldIcon, text: "Sắt thép Hoà Phát" },
   { icon: WrenchIcon, text: "Hỗ trợ sửa chữa trọn đời" },
 ];
 

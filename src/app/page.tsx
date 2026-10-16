@@ -25,7 +25,7 @@ export default function HomePage() {
               <span className="text-brand-600">bền đẹp, giá tận xưởng</span>
             </h1>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-stone-600 sm:text-base">
-              Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế ăn. Bảo hành dài,
+              Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế ăn. Sắt thép Hoà Phát,
               lắp đặt tận nhà, giao hàng toàn quốc.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">

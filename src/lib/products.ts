@@ -91,7 +91,7 @@ export const products: Product[] = [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m (tầng dưới 1,8m)" },
       { label: "Chất liệu", value: "Sắt hộp 5x5, sơn tĩnh điện" },
       { label: "Tải trọng", value: "~200kg/tầng" },
-      { label: "Bảo hành", value: "24 tháng" },
+      { label: "Sắt thép", value: "Sắt thép Hoà Phát" },
     ],
   },
   {
@@ -110,7 +110,7 @@ export const products: Product[] = [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m" },
       { label: "Chất liệu", value: "Sắt hộp + cầu thang an toàn" },
       { label: "Tải trọng", value: "~200kg/tầng" },
-      { label: "Bảo hành", value: "24 tháng" },
+      { label: "Sắt thép", value: "Sắt thép Hoà Phát" },
     ],
   },
   {
@@ -127,7 +127,7 @@ export const products: Product[] = [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,2m" },
       { label: "Chất liệu", value: "Sắt hộp sơn tĩnh điện" },
       { label: "Tải trọng", value: "~150kg" },
-      { label: "Bảo hành", value: "12 tháng" },
+      { label: "Sắt thép", value: "Sắt thép Hoà Phát" },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const products: Product[] = [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,8m" },
       { label: "Chất liệu", value: "Sắt hộp 6x6 cao cấp" },
       { label: "Tải trọng", value: "~250kg/tầng" },
-      { label: "Bảo hành", value: "24 tháng" },
+      { label: "Sắt thép", value: "Sắt thép Hoà Phát" },
     ],
   },
   {
@@ -165,7 +165,7 @@ export const products: Product[] = [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,6m" },
       { label: "Chất liệu", value: "Gỗ MDF phủ melamine" },
       { label: "Màu sắc", value: "Vân gỗ / trắng" },
-      { label: "Bảo hành", value: "12 tháng" },
+      { label: "Tiêu chuẩn", value: "Gỗ xuất khẩu chống ẩm" },
     ],
   },
   {
@@ -182,7 +182,7 @@ export const products: Product[] = [
     specs: [
       { label: "Kích thước", value: "Dài 2m x Rộng 1,8m" },
       { label: "Chất liệu", value: "Gỗ căm xe tự nhiên" },
-      { label: "Bảo hành", value: "36 tháng" },
+      { label: "Tiêu chuẩn", value: "Gỗ căm xe 100% tuyển chọn" },
     ],
   },
   {
@@ -216,7 +216,7 @@ export const products: Product[] = [
     specs: [
       { label: "Kích thước", value: "Cao 2m x Ngang 1,6m x Sâu 0,5m" },
       { label: "Chất liệu", value: "Gỗ MDF phủ melamine" },
-      { label: "Bảo hành", value: "12 tháng" },
+      { label: "Tiêu chuẩn", value: "Ván MDF chống ẩm" },
     ],
   },
   {

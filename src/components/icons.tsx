@@ -63,6 +63,7 @@ export function FacebookIcon({
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
+      aria-hidden="true"
       className={className}
       {...props}
     >
@@ -79,6 +80,7 @@ export function MessengerIcon({
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
+      aria-hidden="true"
       className={className}
       {...props}
     >
@@ -89,7 +91,7 @@ export function MessengerIcon({
 
 export function ZaloIcon({
   className = "h-4 w-4",
-  alt = "Zalo",
+  alt = "",
   ...props
 }: ComponentProps<"img">) {
   return (
@@ -97,6 +99,7 @@ export function ZaloIcon({
     <img
       src="/images/zalo.png"
       alt={alt}
+      aria-hidden="true"
       className={`shrink-0 object-contain rounded-xs ${className}`}
       {...props}
     />
