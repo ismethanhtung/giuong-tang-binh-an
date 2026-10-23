@@ -1,0 +1,377 @@
+[
+  {
+    "slug": "giuong-tang-sat-1m-1m2-khong-hoc",
+    "name": "Giường tầng sắt 1m – 1m2 (không hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3100000,
+    "oldPrice": 3800000,
+    "rating": 4.9,
+    "reviews": 142,
+    "badge": "Hàng bán chạy",
+    "featured": true,
+    "imageFolder": "giuong/giuongtangkhonghoc1mm2",
+    "shortDesc": "Giường tầng sắt Hòa Phát sơn tĩnh điện cao cấp, tầng trên 1m tầng dưới 1m2, khung hộp vững chắc.",
+    "description": "Giường tầng sắt hộp cao cấp Hòa Phát, kích thước tiêu chuẩn trên 1m dưới 1m2 phù hợp phòng gia đình, nhà trọ, ký túc xá. Sơn tĩnh điện chống trầy xước, không rỉ sét, chịu lực tối đa tới 250kg mỗi tầng. Hàng thực tế 100% như ảnh chụp tại xưởng.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hòa Phát, sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~250kg/tầng"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-tang-sat-1m2-1m4-khong-hoc",
+    "name": "Giường tầng sắt 1m2 – 1m4 (không hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3650000,
+    "oldPrice": 4300000,
+    "rating": 4.9,
+    "reviews": 118,
+    "badge": "Mẫu mới",
+    "featured": true,
+    "imageFolder": "giuong/giuongtangkhonghocm2m4",
+    "shortDesc": "Khung sắt hộp dày dặn, tầng trên 1m2 tầng dưới 1m4 rộng rãi, không rung lắc.",
+    "description": "Mẫu giường tầng sắt rộng rãi dành cho cả người lớn và trẻ em. Tầng dưới 1m4 thoải mái cho 2 người nằm, tầng trên 1m2 có lan can an toàn cao. Gia công bằng sắt thép Hòa Phát loại 1, mối hàn ngấu ngấu đẹp và sơn tĩnh điện bền màu.",
+    "color": "#38a3a5",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hòa Phát, sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~250kg/tầng"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-sat-don-1m4",
+    "name": "Giường sắt đơn 1m4",
+    "category": "giuong-sat",
+    "type": "bed",
+    "price": 1800000,
+    "oldPrice": 2200000,
+    "rating": 4.8,
+    "reviews": 79,
+    "badge": "Giá xưởng",
+    "featured": true,
+    "imageFolder": "giuong/giuongdonm4",
+    "shortDesc": "Giường sắt đơn 1m4 bền đẹp, thanh nan dày chịu lực, thiết kế hiện đại sang trọng.",
+    "description": "Giường sắt đơn 1m4 x 2m sắt hộp Hoà Phát cao cấp sơn tĩnh điện bền đẹp.",
+    "color": "#57cc99",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1,4m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~180kg"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-tang-sat-1m2-1m8",
+    "name": "Giường tầng sắt 1m2 – 1m8",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3450000,
+    "oldPrice": 4200000,
+    "rating": 4.9,
+    "reviews": 128,
+    "badge": "Bán chạy",
+    "featured": true,
+    "shortDesc": "Khung sắt hộp 5x5 sơn tĩnh điện, hai tầng rộng rãi, chịu lực tốt.",
+    "description": "Giường tầng gia đình tầng dưới 1m8 cực kỳ rộng rãi cho phụ huynh, tầng trên 1m2 cho con. Khung thép dày chắc chắn.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1,2m (tầng dưới 1,8m)"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp 5x5, sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~200kg/tầng"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-tang-sat-cau-thang",
+    "name": "Giường tầng sắt có cầu thang",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 4150000,
+    "rating": 4.8,
+    "reviews": 74,
+    "badge": "Có cầu thang",
+    "featured": true,
+    "shortDesc": "Cầu thang vững chắc, có tay vịn an toàn, phù hợp phòng trẻ.",
+    "description": "Cầu thang bước bản rộng có tay vịn tạo sự an tâm khi leo trèo cho trẻ nhỏ.",
+    "color": "#38a3a5",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1,2m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp + cầu thang an toàn"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~200kg/tầng"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-go-cong-nghiep-1m6",
+    "name": "Giường gỗ công nghiệp 1m6",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 4900000,
+    "oldPrice": 5600000,
+    "rating": 4.8,
+    "reviews": 63,
+    "badge": "Giảm giá",
+    "shortDesc": "Gỗ MDF phủ melamine, màu vân gỗ tự nhiên, bo góc an toàn.",
+    "description": "Giường ngủ hiện đại với cốt gỗ MDF lõi xanh chống ẩm phủ Melamine cao cấp.",
+    "color": "#9a6a3c",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1,6m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ MDF phủ melamine"
+      },
+      {
+        "label": "Màu sắc",
+        "value": "Vân gỗ / trắng"
+      },
+      {
+        "label": "Tiêu chuẩn",
+        "value": "Gỗ xuất khẩu chống ẩm"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-go-tu-nhien-cam-lai",
+    "name": "Giường gỗ tự nhiên (căm xe)",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 12500000,
+    "rating": 5,
+    "reviews": 22,
+    "badge": "Cao cấp",
+    "shortDesc": "Gỗ tự nhiên 100%, chắc bền theo thời gian, đường nét tinh xảo.",
+    "description": "Sản phẩm gỗ căm xe tự nhiên được gia công tỉ mỉ, vân gỗ tuyển chọn sang trọng.",
+    "color": "#7a4a24",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1,8m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ căm xe tự nhiên"
+      },
+      {
+        "label": "Tiêu chuẩn",
+        "value": "Gỗ căm xe 100% tuyển chọn"
+      }
+    ]
+  },
+  {
+    "slug": "giuong-tang-go-cho-be",
+    "name": "Giường tầng gỗ cho bé",
+    "category": "giuong-go",
+    "type": "bunk",
+    "price": 6200000,
+    "rating": 4.8,
+    "reviews": 35,
+    "shortDesc": "Thiết kế dễ thương, an toàn cho bé, kèm lan can chắc chắn.",
+    "description": "Giường tầng gỗ cao su tự nhiên, an toàn cho da và hệ hô hấp của trẻ.",
+    "color": "#c98a52",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 1,9m x Rộng 1,2m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ cao su / MDF"
+      },
+      {
+        "label": "Phù hợp",
+        "value": "Bé 4 – 12 tuổi"
+      }
+    ]
+  },
+  {
+    "slug": "tu-quan-ao-3-canh",
+    "name": "Tủ quần áo 3 cánh gỗ",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 5900000,
+    "oldPrice": 6800000,
+    "rating": 4.7,
+    "reviews": 48,
+    "featured": true,
+    "shortDesc": "3 cánh mở, nhiều ngăn treo và kệ, phù hợp phòng ngủ.",
+    "description": "Tủ quần áo 3 cánh rộng rãi với khoang treo áo dài, ngăn gấp đồ và khóa an toàn.",
+    "color": "#8b6f52",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Cao 2m x Ngang 1,6m x Sâu 0,5m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ MDF phủ melamine"
+      },
+      {
+        "label": "Tiêu chuẩn",
+        "value": "Ván MDF chống ẩm"
+      }
+    ]
+  },
+  {
+    "slug": "tu-dau-giuong-go",
+    "name": "Tủ đầu giường gỗ",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 1250000,
+    "rating": 4.6,
+    "reviews": 31,
+    "shortDesc": "Nhỏ gọn, 2 ngăn kéo, phối cùng giường gỗ rất hài hoà.",
+    "description": "Tab đầu giường gỗ tự nhiên 2 ngăn kéo để đồ dùng cá nhân, đèn ngủ, sách báo.",
+    "color": "#a9855c",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Cao 0,5m x Ngang 0,45m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ cao su"
+      }
+    ]
+  },
+  {
+    "slug": "ban-an-go-6-ghe",
+    "name": "Bộ bàn ăn gỗ 6 ghế",
+    "category": "ban-ghe",
+    "type": "table",
+    "price": 8900000,
+    "oldPrice": 10200000,
+    "rating": 4.9,
+    "reviews": 57,
+    "badge": "Combo",
+    "featured": true,
+    "shortDesc": "Bàn ăn mặt gỗ kèm 6 ghế, khung chắc chắn, phù hợp gia đình.",
+    "description": "Bộ bàn ăn 6 ghế gỗ cao su cao cấp cho phòng bếp gia đình đầm ấm.",
+    "color": "#96652f",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Bàn 1,6m x 0,8m"
+      },
+      {
+        "label": "Bộ gồm",
+        "value": "1 bàn + 6 ghế"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ cao su"
+      }
+    ]
+  },
+  {
+    "slug": "ban-tra-go-4-ghe",
+    "name": "Bàn trà gỗ 4 ghế",
+    "category": "ban-ghe",
+    "type": "table",
+    "price": 4200000,
+    "rating": 4.6,
+    "reviews": 26,
+    "shortDesc": "Set bàn trà ấm cúng cho phòng khách nhỏ.",
+    "description": "Set bàn trà nhỏ gọn phong cách Nhật Bản tinh tế, tiết kiệm không gian.",
+    "color": "#b08442",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Bàn 1,2m x 0,6m"
+      },
+      {
+        "label": "Bộ gồm",
+        "value": "1 bàn + 4 ghế"
+      }
+    ]
+  },
+  {
+    "slug": "ghe-go-don",
+    "name": "Ghế gỗ đơn",
+    "category": "khac",
+    "type": "chair",
+    "price": 650000,
+    "rating": 4.5,
+    "reviews": 19,
+    "shortDesc": "Ghế gỗ chắc chắn, dùng cho bàn ăn hoặc bàn làm việc.",
+    "description": "Ghế gỗ tự nhiên gia công tinh xảo, mộng khóa chắc chắn.",
+    "color": "#8f7a5c",
+    "specs": [
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ cao su"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~120kg"
+      }
+    ]
+  }
+]
