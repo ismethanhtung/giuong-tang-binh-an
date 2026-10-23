@@ -52,16 +52,17 @@ export default function ProductCard({ product }: { product: Product }) {
                         className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-102"
                     />
 
+                    {/* Badge bên trái: kích thước, padding và font đồng bộ hoàn toàn với badge 'hàng như ảnh' bên phải */}
                     {product.badge && (
-                        <span className="absolute left-2.5 top-2.5 rounded-full bg-brand-600/90 px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm backdrop-blur-xs z-10">
+                        <span className="absolute left-2 top-2 rounded-full bg-brand-600/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm backdrop-blur z-10">
                             {product.badge}
                         </span>
                     )}
 
-                    {/* Dải ảnh nhỏ xuất hiện sát mép dưới cùng (bottom-0) khi hover */}
+                    {/* Dải ảnh nhỏ xuất hiện sát đáy (bottom-0) khi hover, kích thước vừa vặn không vỡ layout */}
                     {showThumbs && (
-                        <div className="absolute bottom-0 inset-x-0 z-20 flex items-center justify-center p-2 bg-gradient-to-t from-black/80 via-black/45 to-transparent opacity-0 transition-all duration-200 group-hover:opacity-100 pointer-events-auto">
-                            <div className="flex items-center gap-1.5 justify-center max-w-full overflow-x-auto no-scrollbar">
+                        <div className="absolute bottom-0 inset-x-0 z-20 flex items-center justify-center px-1.5 pb-1.5 pt-4 bg-gradient-to-t from-black/75 via-black/35 to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 pointer-events-auto">
+                            <div className="flex items-center gap-1 sm:gap-1.5 justify-center">
                                 {visibleThumbs.map((imgSrc, idx) => {
                                     const isFourthSlotWithMore =
                                         hasMore && idx === 3;
@@ -80,10 +81,10 @@ export default function ProductCard({ product }: { product: Product }) {
                                                     ? `Xem thêm ${remainingCount} ảnh nữa`
                                                     : `Xem ảnh ${idx + 1}`
                                             }
-                                            className={`relative h-10 w-10 sm:h-11 sm:w-11 shrink-0 cursor-pointer overflow-hidden rounded-lg transition-all ${
+                                            className={`relative h-8 w-8 sm:h-9 sm:w-9 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
                                                 isActive
-                                                    ? "ring-2 ring-brand-400 scale-105 z-10 shadow-lg border-2 border-white"
-                                                    : "opacity-85 hover:opacity-100 border border-white/70"
+                                                    ? "border-brand-400 shadow-md opacity-100"
+                                                    : "border-white/70 opacity-80 hover:opacity-100 hover:border-white"
                                             }`}
                                         >
                                             <Image
@@ -91,10 +92,10 @@ export default function ProductCard({ product }: { product: Product }) {
                                                 alt=""
                                                 fill
                                                 className="object-cover"
-                                                sizes="44px"
+                                                sizes="36px"
                                             />
                                             {isFourthSlotWithMore && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-black/65 font-black text-white text-[11px] backdrop-blur-2xs">
+                                                <div className="absolute inset-0 flex items-center justify-center bg-black/65 font-bold text-white text-[10px] sm:text-[11px]">
                                                     +{remainingCount}
                                                 </div>
                                             )}
