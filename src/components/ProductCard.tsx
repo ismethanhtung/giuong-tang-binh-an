@@ -42,14 +42,14 @@ export default function ProductCard({ product }: { product: Product }) {
                 href={`/san-pham/${product.slug}`}
                 className="flex flex-1 flex-col"
             >
-                {/* Ảnh sản phẩm - tăng diện tích hiển thị với tỉ lệ vuông 1:1 */}
+                {/* Ảnh sản phẩm - tỉ lệ 5:4 cân đối, vừa đủ nổi bật */}
                 <div className="relative overflow-hidden bg-stone-100">
                     <ProductImage
                         type={product.type}
                         color={product.color}
                         src={currentImage}
                         alt={product.name}
-                        className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-102"
+                        className="aspect-[5/4] w-full object-cover transition-transform duration-300 group-hover:scale-102"
                     />
 
                     {product.badge && (
@@ -106,38 +106,38 @@ export default function ProductCard({ product }: { product: Product }) {
                     )}
                 </div>
 
-                {/* Thông tin sản phẩm - tinh gọn tối ưu để nhường không gian cho ảnh */}
-                <div className="flex flex-1 flex-col p-2.5 sm:p-3">
+                {/* Thông tin sản phẩm - diện tích thoải mái, dễ đọc */}
+                <div className="flex flex-1 flex-col p-3 sm:p-3.5">
                     {/* Tên sản phẩm */}
                     <h3
-                        className="line-clamp-1 text-xs sm:text-[13.5px] font-bold leading-snug text-stone-900 group-hover:text-brand-600 transition"
+                        className="line-clamp-2 min-h-[2.5rem] text-[13.5px] sm:text-sm font-bold leading-snug text-stone-900 group-hover:text-brand-600 transition"
                         title={product.name}
                     >
                         {product.name}
                     </h3>
 
-                    {/* Mô tả sản phẩm (tinh gọn 1 dòng) */}
+                    {/* Mô tả sản phẩm */}
                     {desc && (
-                        <p className="mt-0.5 line-clamp-1 text-[11px] leading-tight text-stone-500">
+                        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-stone-500">
                             {desc}
                         </p>
                     )}
 
                     {/* Khu vực giá bán & nút thêm vào giỏ */}
-                    <div className="mt-auto pt-2 border-t border-stone-100 flex items-center justify-between gap-1.5">
+                    <div className="mt-auto pt-2.5 border-t border-stone-100 flex items-end justify-between gap-2">
                         <div className="flex flex-col min-w-0">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                                <span className="text-sm font-extrabold text-brand-600 sm:text-[15px] whitespace-nowrap">
+                                <span className="text-base font-extrabold text-brand-600 sm:text-lg whitespace-nowrap">
                                     {formatPrice(product.price)}
                                 </span>
                                 {discount > 0 && (
-                                    <span className="inline-flex items-center rounded bg-rose-50 px-1 py-0.5 text-[10px] font-bold text-rose-600 border border-rose-200/70 leading-none whitespace-nowrap">
+                                    <span className="inline-flex items-center rounded-md bg-rose-50 px-1.5 py-0.5 text-[10.5px] font-bold text-rose-600 border border-rose-200/70 leading-none whitespace-nowrap">
                                         -{discount}%
                                     </span>
                                 )}
                             </div>
                             {product.oldPrice && (
-                                <span className="text-[11px] text-stone-400 line-through leading-none mt-0.5">
+                                <span className="text-xs text-stone-400 line-through mt-0.5">
                                     {formatPrice(product.oldPrice)}
                                 </span>
                             )}
