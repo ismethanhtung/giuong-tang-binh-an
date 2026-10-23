@@ -2,7 +2,6 @@ import Link from "next/link";
 import { formatPrice, type Product } from "@/lib/products";
 import { AddToCartIconButton } from "./AddToCart";
 import ProductImage from "./ProductImage";
-import Stars from "./Stars";
 
 export default function ProductCard({ product }: { product: Product }) {
     const discount = product.oldPrice
@@ -15,62 +14,82 @@ export default function ProductCard({ product }: { product: Product }) {
             : undefined;
     const imageCount = product.images?.length ?? 0;
 
+    const desc = product.shortDesc || product.description;
+
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-            <Link href={`/san-pham/${product.slug}`} className="block">
-                <div className="relative">
+        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-2xs transition hover:-translate-y-0.5 hover:shadow-md hover:border-brand-300">
+            <Link
+                href={`/san-pham/${product.slug}`}
+                className="flex flex-1 flex-col"
+            >
+                {/* Ảnh sản phẩm */}
+                <div className="relative overflow-hidden bg-stone-100">
                     <ProductImage
                         type={product.type}
                         color={product.color}
                         src={mainImage}
                         alt={product.name}
-                        className="aspect-[4/3]"
+                        className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-102"
                     />
                     {product.badge && (
-                        <span className="absolute left-2 top-2 rounded-full bg-brand-600 px-2.5 py-0.5 text-[11px] font-semibold text-white shadow">
+                        <span className="absolute left-2.5 top-2.5 rounded-full bg-brand-600/90 px-2.5 py-0.5 text-[11px] font-bold text-white shadow-sm backdrop-blur-xs">
                             {product.badge}
                         </span>
                     )}
-                    {discount > 0 && (
-                        <span className="absolute left-2 top-8 rounded-full bg-red-500 px-2.5 py-0.5 text-[11px] font-semibold text-white shadow">
-                            -{discount}%
-                        </span>
-                    )}
                     {imageCount > 1 && (
-                        <span className="absolute right-2 bottom-2 inline-flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[11px] font-medium text-white shadow-sm backdrop-blur">
+                        <span className="absolute right-2 bottom-2 inline-flex items-center gap-1 rounded-full bg-black/65 px-2 py-0.5 text-[11px] font-medium text-white shadow-sm backdrop-blur">
                             <span>📷</span>
                             <span>{imageCount} ảnh</span>
                         </span>
                     )}
                 </div>
 
-                <div className="flex flex-1 flex-col gap-1.5 p-3 pb-4">
-                    <h3 className="line-clamp-2 min-h-[2.6rem] text-sm font-semibold leading-snug text-stone-800">
+                {/* Thông tin sản phẩm */}
+                <div className="flex flex-1 flex-col p-3 sm:p-3.5">
+                    {/* Tên sản phẩm */}
+                    <h3 className="line-clamp-2 text-sm font-bold leading-snug text-stone-900 group-hover:text-brand-600 transition">
                         {product.name}
                     </h3>
-                    <Stars rating={product.rating} reviews={product.reviews} />
-                    <div className="mt-auto flex items-baseline gap-2 pt-1">
-                        <span className="text-base font-bold text-brand-600">
-                            {formatPrice(product.price)}
-                        </span>
-                        {product.oldPrice && (
-                            <span className="text-xs text-stone-400 line-through">
-                                {formatPrice(product.oldPrice)}
-                            </span>
-                        )}
+
+                    {/* Mô tả sản phẩm */}
+                    {desc && (
+                        <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-stone-500">
+                            {desc}
+                        </p>
+                    )}
+
+                    {/* Khu vực giá bán, giảm giá & nút thêm vào giỏ */}
+                    <div className="mt-auto pt-3 border-t border-stone-100 flex items-end justify-between gap-2">
+                        <div className="flex flex-col min-w-0">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="text-base font-extrabold text-brand-600 sm:text-lg whitespace-nowrap">
+                                    {formatPrice(product.price)}
+                                </span>
+                                {discount > 0 && (
+                                    <span className="inline-flex items-center rounded-md bg-rose-50 px-1.5 py-0.5 text-[10.5px] font-bold text-rose-600 border border-rose-200/70 leading-none whitespace-nowrap">
+                                        -{discount}%
+                                    </span>
+                                )}
+                            </div>
+                            {product.oldPrice && (
+                                <span className="text-xs text-stone-400 line-through mt-0.5">
+                                    {formatPrice(product.oldPrice)}
+                                </span>
+                            )}
+                        </div>
+
+                        <div className="shrink-0">
+                            <AddToCartIconButton
+                                item={{
+                                    slug: product.slug,
+                                    name: product.name,
+                                    price: product.price,
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </Link>
-
-            <div className="absolute bottom-[4.6rem] right-3">
-                <AddToCartIconButton
-                    item={{
-                        slug: product.slug,
-                        name: product.name,
-                        price: product.price,
-                    }}
-                />
-            </div>
         </div>
     );
 }
