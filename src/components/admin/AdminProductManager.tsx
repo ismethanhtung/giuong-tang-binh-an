@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
@@ -20,6 +20,12 @@ import {
     Sparkles,
     Layers,
     Save,
+    Lock,
+    KeyRound,
+    Eye,
+    EyeOff,
+    LogOut,
+    ShieldCheck,
 } from "lucide-react";
 
 type FolderInfo = {
@@ -38,6 +44,13 @@ export default function AdminProductManager({
     initialProducts,
     initialFolders,
 }: Props) {
+    // Quản lý trạng thái xác thực bảo vệ
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+    const [isCheckingAuth, setIsCheckingAuth] = useState<boolean>(true);
+    const [inputPassword, setInputPassword] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [authError, setAuthError] = useState<string>("");
+
     const [products, setProducts] = useState<Product[]>(initialProducts);
     const [folders, setFolders] = useState<FolderInfo[]>(initialFolders);
     const [searchTerm, setSearchTerm] = useState("");
@@ -66,6 +79,40 @@ export default function AdminProductManager({
     const [formImageFolder, setFormImageFolder] = useState("");
     const [formCategory, setFormCategory] = useState("giuong-sat");
     const [formFeatured, setFormFeatured] = useState(false);
+
+    // Kiểm tra đăng nhập đã lưu trong sessionStorage
+    useEffect(() => {
+        try {
+            const saved = sessionStorage.getItem("admin_auth");
+            if (saved === "admin123") {
+                setIsAuthenticated(true);
+            }
+        } catch {}
+        setIsCheckingAuth(false);
+    }, []);
+
+    const handleLogin = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (inputPassword === "admin123") {
+            try {
+                sessionStorage.setItem("admin_auth", "admin123");
+            } catch {}
+            setIsAuthenticated(true);
+            setAuthError("");
+            showToast("Đăng nhập quản trị thành công!");
+        } else {
+            setAuthError("Mật khẩu không chính xác. Vui lòng thử lại!");
+        }
+    };
+
+    const handleLogout = () => {
+        try {
+            sessionStorage.removeItem("admin_auth");
+        } catch {}
+        setIsAuthenticated(false);
+        setInputPassword("");
+        showToast("Đã đăng xuất khỏi trang quản lý!");
+    };
 
     const showToast = (text: string, type: "success" | "error" = "success") => {
         setToastMessage({ text, type });
@@ -149,6 +196,7 @@ export default function AdminProductManager({
                       imageFolder: formImageFolder || undefined,
                       category: formCategory,
                       featured: formFeatured,
+                      adminPassword: "admin123",
                   }
                 : {
                       slug: editingProduct?.slug,
@@ -161,11 +209,15 @@ export default function AdminProductManager({
                       imageFolder: formImageFolder || undefined,
                       category: formCategory,
                       featured: formFeatured,
+                      adminPassword: "admin123",
                   };
 
             const res = await fetch("/api/products", {
                 method,
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-admin-password": "admin123",
+                },
                 body: JSON.stringify(payload),
             });
 
@@ -188,6 +240,97 @@ export default function AdminProductManager({
             setIsSaving(false);
         }
     };
+
+    // Khi đang nạp kiểm tra xác thực
+    if (isCheckingAuth) {
+        return (
+            <div className="flex min-h-[60vh] items-center justify-center">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-600 border-t-transparent"></div>
+            </div>
+        );
+    }
+
+    // MÀN HÌNH NHẬP MẬT KHẨU BẢO VỆ ĐƯỜNG DẪN /quan-ly
+    if (!isAuthenticated) {
+        return (
+            <div className="flex min-h-[80vh] items-center justify-center px-4">
+                <div className="w-full max-w-md rounded-3xl border border-stone-200 bg-white p-6 shadow-xl sm:p-8">
+                    <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-50 text-brand-600">
+                        <Lock className="h-7 w-7" />
+                    </div>
+
+                    <h1 className="mt-4 text-center text-xl font-black text-stone-900 sm:text-2xl">
+                        Khu vực Quản trị Hệ thống
+                    </h1>
+                    <p className="mt-1 text-center text-xs text-stone-500">
+                        Trang quản lý nội bộ. Vui lòng nhập mật khẩu quản trị để
+                        tiếp tục.
+                    </p>
+
+                    <form onSubmit={handleLogin} className="mt-6 space-y-4">
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700">
+                                Mật khẩu quản trị
+                            </label>
+                            <div className="relative mt-1.5">
+                                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-stone-400">
+                                    <KeyRound className="h-4 w-4" />
+                                </div>
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    required
+                                    autoFocus
+                                    value={inputPassword}
+                                    onChange={(e) => {
+                                        setInputPassword(e.target.value);
+                                        if (authError) setAuthError("");
+                                    }}
+                                    placeholder="Nhập mật khẩu..."
+                                    className="w-full rounded-xl border border-stone-300 bg-stone-50/50 py-2.5 pl-10 pr-10 text-sm font-medium text-stone-900 placeholder-stone-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setShowPassword(!showPassword)
+                                    }
+                                    className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-stone-400 hover:text-stone-600"
+                                >
+                                    {showPassword ? (
+                                        <EyeOff className="h-4 w-4" />
+                                    ) : (
+                                        <Eye className="h-4 w-4" />
+                                    )}
+                                </button>
+                            </div>
+                            {authError && (
+                                <p className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-rose-600 animate-shake">
+                                    <AlertCircle className="h-4 w-4 shrink-0" />
+                                    {authError}
+                                </p>
+                            )}
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-98 hover:bg-brand-700"
+                        >
+                            <ShieldCheck className="h-4 w-4" />
+                            Đăng nhập quản lý
+                        </button>
+
+                        <div className="pt-2 text-center">
+                            <Link
+                                href="/"
+                                className="text-xs font-medium text-stone-400 hover:text-brand-600 transition"
+                            >
+                                ← Quay lại Trang chủ website
+                            </Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        );
+    }
 
     // Preview images for selected folder in form
     const selectedFolderData = folders.find(
@@ -240,19 +383,19 @@ export default function AdminProductManager({
             )}
 
             {/* Header */}
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-stone-200 pb-6">
+            <div className="flex flex-col gap-4 border-b border-stone-200 pb-6 md:flex-row md:items-center md:justify-between">
                 <div>
                     <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold text-brand-700">
                         <Sparkles className="h-3.5 w-3.5 text-brand-600" />
-                        Hệ thống Quản lý Dữ liệu Thực tế
+                        Hệ thống Quản trị Nội bộ
                     </div>
                     <h1 className="mt-2 text-2xl font-black text-stone-900 sm:text-3xl">
                         Quản lý Sản phẩm, Giá bán & Hình ảnh
                     </h1>
-                    <p className="mt-1 text-sm text-stone-600 max-w-2xl">
+                    <p className="mt-1 max-w-2xl text-sm text-stone-600">
                         Cập nhật tên thật, giá thật, mô tả sản phẩm và tự động
                         đồng bộ hóa hình ảnh từ các thư mục trong{" "}
-                        <code className="rounded bg-stone-100 px-1.5 py-0.5 text-xs font-mono text-brand-700">
+                        <code className="rounded bg-stone-100 px-1.5 py-0.5 font-mono text-xs text-brand-700">
                             public/images/
                         </code>
                         .
@@ -263,7 +406,7 @@ export default function AdminProductManager({
                     <button
                         onClick={handleRefreshFolders}
                         disabled={isRefreshing}
-                        className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3.5 py-2 text-xs font-bold text-stone-700 shadow-2xs transition hover:bg-stone-50 active:scale-95 disabled:opacity-50"
+                        className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3.5 py-2 text-xs font-bold text-stone-700 shadow-2xs transition active:scale-95 hover:bg-stone-50 disabled:opacity-50"
                     >
                         <RefreshCw
                             className={`h-4 w-4 ${isRefreshing ? "animate-spin text-brand-600" : ""}`}
@@ -272,10 +415,18 @@ export default function AdminProductManager({
                     </button>
                     <button
                         onClick={() => openCreateModal()}
-                        className="inline-flex items-center gap-1.5 rounded-xl bg-brand-600 px-4 py-2 text-xs font-bold text-white shadow-md shadow-brand-600/20 transition hover:bg-brand-700 active:scale-95"
+                        className="inline-flex items-center gap-1.5 rounded-xl bg-brand-600 px-4 py-2 text-xs font-bold text-white shadow-md shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
                     >
                         <Plus className="h-4 w-4" />
                         Thêm sản phẩm mới
+                    </button>
+                    <button
+                        onClick={handleLogout}
+                        title="Đăng xuất khỏi trang quản lý"
+                        className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold text-stone-600 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600"
+                    >
+                        <LogOut className="h-4 w-4" />
+                        Đăng xuất
                     </button>
                 </div>
             </div>
@@ -338,7 +489,7 @@ export default function AdminProductManager({
                         <Folder className="h-4.5 w-4.5 text-brand-600" />
                         <h2 className="text-sm font-bold text-stone-900">
                             Các thư mục ảnh thực tế tìm thấy trong{" "}
-                            <code className="text-xs font-mono text-brand-700">
+                            <code className="font-mono text-xs text-brand-700">
                                 public/images/
                             </code>
                         </h2>
@@ -356,11 +507,11 @@ export default function AdminProductManager({
                         return (
                             <div
                                 key={f.folder}
-                                className="flex flex-col justify-between rounded-xl border border-stone-200 bg-white p-3 shadow-2xs hover:border-brand-300 transition"
+                                className="flex flex-col justify-between rounded-xl border border-stone-200 bg-white p-3 shadow-2xs transition hover:border-brand-300"
                             >
                                 <div>
                                     <div className="flex items-center justify-between">
-                                        <span className="inline-flex items-center gap-1 rounded-md bg-stone-100 px-2 py-0.5 text-xs font-mono font-medium text-stone-700">
+                                        <span className="inline-flex items-center gap-1 rounded-md bg-stone-100 px-2 py-0.5 font-mono text-xs font-medium text-stone-700">
                                             📂 {f.folder}
                                         </span>
                                         <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
@@ -430,7 +581,7 @@ export default function AdminProductManager({
             </div>
 
             {/* Search and Filters */}
-            <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between shadow-2xs">
+            <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-2xs sm:flex-row sm:items-center sm:justify-between">
                 <div className="relative flex-1">
                     <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
                     <input
@@ -438,7 +589,7 @@ export default function AdminProductManager({
                         placeholder="Tìm theo tên sản phẩm..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full rounded-xl border border-stone-200 bg-stone-50/50 py-2.5 pl-10 pr-4 text-sm text-stone-900 placeholder-stone-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                        className="w-full rounded-xl border border-stone-200 bg-stone-50/50 py-2.5 pr-4 pl-10 text-sm text-stone-900 placeholder-stone-400 focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                     />
                 </div>
 
@@ -511,7 +662,7 @@ export default function AdminProductManager({
                                     return (
                                         <tr
                                             key={p.slug}
-                                            className="transition hover:bg-stone-50/80 group"
+                                            className="group transition hover:bg-stone-50/80"
                                         >
                                             {/* Image Thumbnail */}
                                             <td className="px-4 py-3 align-middle">
@@ -534,7 +685,7 @@ export default function AdminProductManager({
                                                         />
                                                     )}
                                                     {hasReal && (
-                                                        <span className="absolute bottom-1 right-1 rounded-md bg-black/75 px-1 py-0.5 text-[10px] font-bold text-white backdrop-blur">
+                                                        <span className="absolute right-1 bottom-1 rounded-md bg-black/75 px-1 py-0.5 text-[10px] font-bold text-white backdrop-blur">
                                                             📷 {imgCount}
                                                         </span>
                                                     )}
@@ -544,7 +695,7 @@ export default function AdminProductManager({
                                             {/* Name & details */}
                                             <td className="px-4 py-3 align-middle">
                                                 <div className="flex items-center gap-2">
-                                                    <p className="font-bold text-stone-900 group-hover:text-brand-600 transition">
+                                                    <p className="font-bold text-stone-900 transition group-hover:text-brand-600">
                                                         {p.name}
                                                     </p>
                                                     {p.featured && (
@@ -553,16 +704,16 @@ export default function AdminProductManager({
                                                         </span>
                                                     )}
                                                 </div>
-                                                <p className="mt-0.5 text-xs text-stone-500 line-clamp-1">
+                                                <p className="mt-0.5 line-clamp-1 text-xs text-stone-500">
                                                     {p.shortDesc}
                                                 </p>
-                                                <p className="mt-0.5 text-[11px] font-mono text-stone-400">
+                                                <p className="mt-0.5 font-mono text-[11px] text-stone-400">
                                                     slug: {p.slug}
                                                 </p>
                                             </td>
 
                                             {/* Price */}
-                                            <td className="px-4 py-3 align-middle whitespace-nowrap">
+                                            <td className="whitespace-nowrap px-4 py-3 align-middle">
                                                 <span className="font-black text-brand-700">
                                                     {formatPrice(p.price)}
                                                 </span>
@@ -576,7 +727,7 @@ export default function AdminProductManager({
                                             </td>
 
                                             {/* Image Folder */}
-                                            <td className="px-4 py-3 align-middle whitespace-nowrap">
+                                            <td className="whitespace-nowrap px-4 py-3 align-middle">
                                                 {p.imageFolder ? (
                                                     <div className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1 text-xs">
                                                         <Folder className="h-3.5 w-3.5 text-brand-600" />
@@ -595,13 +746,13 @@ export default function AdminProductManager({
                                             </td>
 
                                             {/* Actions */}
-                                            <td className="px-4 py-3 align-middle text-right whitespace-nowrap">
+                                            <td className="whitespace-nowrap px-4 py-3 text-right align-middle">
                                                 <div className="flex items-center justify-end gap-2">
                                                     <Link
                                                         href={`/san-pham/${p.slug}`}
                                                         target="_blank"
                                                         title="Xem trang sản phẩm"
-                                                        className="grid h-8 w-8 place-items-center rounded-lg border border-stone-200 text-stone-500 hover:border-stone-300 hover:text-stone-800 transition"
+                                                        className="grid h-8 w-8 place-items-center rounded-lg border border-stone-200 text-stone-500 transition hover:border-stone-300 hover:text-stone-800"
                                                     >
                                                         <ExternalLink className="h-4 w-4" />
                                                     </Link>
@@ -609,7 +760,7 @@ export default function AdminProductManager({
                                                         onClick={() =>
                                                             openEditModal(p)
                                                         }
-                                                        className="inline-flex items-center gap-1.5 rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-brand-600 transition"
+                                                        className="inline-flex items-center gap-1.5 rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-brand-600"
                                                     >
                                                         <Edit3 className="h-3.5 w-3.5" />
                                                         Sửa
@@ -631,7 +782,7 @@ export default function AdminProductManager({
                     <div className="relative max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
                         <button
                             onClick={closeModal}
-                            className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full bg-stone-100 text-stone-500 hover:bg-stone-200 transition"
+                            className="absolute top-5 right-5 grid h-9 w-9 place-items-center rounded-full bg-stone-100 text-stone-500 transition hover:bg-stone-200"
                         >
                             <X className="h-5 w-5" />
                         </button>
@@ -666,7 +817,7 @@ export default function AdminProductManager({
                                         setFormName(e.target.value)
                                     }
                                     placeholder="Ví dụ: Giường sắt tầng không hộc 1m2 x 1m4"
-                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 font-medium"
+                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm font-medium text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 />
                             </div>
 
@@ -686,7 +837,7 @@ export default function AdminProductManager({
                                         onChange={(e) =>
                                             setFormPrice(Number(e.target.value))
                                         }
-                                        className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 font-semibold"
+                                        className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm font-semibold text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                     />
                                     <p className="mt-1 text-xs font-bold text-brand-700">
                                         Hiển thị: {formatPrice(formPrice)}
@@ -710,7 +861,7 @@ export default function AdminProductManager({
                                             )
                                         }
                                         placeholder="Để trống nếu không giảm giá"
-                                        className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                        className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                     />
                                     {formOldPrice ? (
                                         <p className="mt-1 text-xs text-stone-500 line-through">
@@ -731,7 +882,7 @@ export default function AdminProductManager({
                                     onChange={(e) =>
                                         setFormCategory(e.target.value)
                                     }
-                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 >
                                     {categories.map((c) => (
                                         <option key={c.id} value={c.id}>
@@ -768,7 +919,7 @@ export default function AdminProductManager({
                                     onChange={(e) =>
                                         setFormImageFolder(e.target.value)
                                     }
-                                    className="mt-2 w-full rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-sm font-mono text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                    className="mt-2 w-full rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 font-mono text-sm text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 >
                                     <option value="">
                                         -- Chưa chọn thư mục ảnh --
@@ -834,7 +985,7 @@ export default function AdminProductManager({
                                         setFormShortDesc(e.target.value)
                                     }
                                     placeholder="Ví dụ: Giường sắt tĩnh điện cao cấp, chắc chắn, chịu lực tốt"
-                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 />
                             </div>
 
@@ -850,7 +1001,7 @@ export default function AdminProductManager({
                                         setFormDescription(e.target.value)
                                     }
                                     placeholder="Nhập thông tin chi tiết: kích thước thực tế, vật liệu sắt hộp Hoà Phát, độ dày thành ống, sơn tĩnh điện, phụ kiện kèm theo..."
-                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm text-stone-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 leading-relaxed"
+                                    className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm leading-relaxed text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 />
                             </div>
 
@@ -867,7 +1018,7 @@ export default function AdminProductManager({
                                 />
                                 <label
                                     htmlFor="featured-check"
-                                    className="text-sm font-semibold text-stone-800 cursor-pointer"
+                                    className="cursor-pointer text-sm font-semibold text-stone-800"
                                 >
                                     Đánh dấu là Sản phẩm nổi bật (hiển thị ở đầu
                                     trang chủ)
@@ -879,14 +1030,14 @@ export default function AdminProductManager({
                                 <button
                                     type="button"
                                     onClick={closeModal}
-                                    className="rounded-xl border border-stone-200 px-5 py-2.5 text-sm font-bold text-stone-600 hover:bg-stone-50 transition"
+                                    className="rounded-xl border border-stone-200 px-5 py-2.5 text-sm font-bold text-stone-600 transition hover:bg-stone-50"
                                 >
                                     Huỷ bỏ
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={isSaving}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-700 active:scale-95 transition disabled:opacity-50"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700 disabled:opacity-50"
                                 >
                                     <Save className="h-4 w-4" />
                                     {isSaving ? "Đang lưu..." : "Lưu thay đổi"}

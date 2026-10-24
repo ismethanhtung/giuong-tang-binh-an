@@ -44,7 +44,7 @@ export default function Footer() {
                                 href={site.zalo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-sky-200/80 bg-sky-50/70 px-1.5 text-[11.5px] font-semibold text-sky-900 shadow-2xs transition hover:bg-sky-100 hover:border-sky-300 active:scale-95"
+                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-sky-200/80 bg-sky-50/70 px-1.5 text-[11.5px] font-semibold text-sky-900 shadow-2xs transition active:scale-95 hover:border-sky-300 hover:bg-sky-100"
                             >
                                 <ZaloIcon className="h-3.5 w-3.5 shrink-0" />
                                 <span>Zalo</span>
@@ -53,7 +53,7 @@ export default function Footer() {
                                 href={site.messenger}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-blue-200/80 bg-blue-50/70 px-1.5 text-[11.5px] font-semibold text-blue-900 shadow-2xs transition hover:bg-blue-100 hover:border-blue-300 active:scale-95"
+                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-blue-200/80 bg-blue-50/70 px-1.5 text-[11.5px] font-semibold text-blue-900 shadow-2xs transition active:scale-95 hover:border-blue-300 hover:bg-blue-100"
                             >
                                 <MessengerIcon className="h-3.5 w-3.5 shrink-0 text-[#0084FF]" />
                                 <span>Messenger</span>
@@ -62,7 +62,7 @@ export default function Footer() {
                                 href={site.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-indigo-200/80 bg-indigo-50/70 px-1.5 text-[11.5px] font-semibold text-indigo-900 shadow-2xs transition hover:bg-indigo-100 hover:border-indigo-300 active:scale-95"
+                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-indigo-200/80 bg-indigo-50/70 px-1.5 text-[11.5px] font-semibold text-indigo-900 shadow-2xs transition active:scale-95 hover:border-indigo-300 hover:bg-indigo-100"
                             >
                                 <FacebookIcon className="h-3.5 w-3.5 shrink-0 text-[#1877F2]" />
                                 <span>Facebook</span>
@@ -86,14 +86,6 @@ export default function Footer() {
                                     </Link>
                                 </li>
                             ))}
-                            <li className="pt-2 border-t border-stone-100">
-                                <Link
-                                    href="/quan-ly"
-                                    className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-800"
-                                >
-                                    ⚙️ Quản lý sản phẩm
-                                </Link>
-                            </li>
                         </ul>
                     </div>
 
@@ -140,7 +132,7 @@ export default function Footer() {
                                     href={site.mapUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 shadow-2xs transition hover:bg-brand-100 hover:border-brand-300"
+                                    className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 shadow-2xs transition hover:border-brand-300 hover:bg-brand-100"
                                 >
                                     <MapPinIcon className="h-4 w-4 text-brand-600" />
                                     Mở Google Maps (Chỉ đường) →
@@ -173,13 +165,6 @@ export default function Footer() {
                     <span>
                         Cam kết hàng như ảnh, đúng chất lượng, bảo hành uy tín.
                     </span>
-                    <span className="text-stone-300">•</span>
-                    <Link
-                        href="/quan-ly"
-                        className="text-stone-400 hover:text-brand-600 transition"
-                    >
-                        Quản trị
-                    </Link>
                 </div>
             </div>
         </footer>

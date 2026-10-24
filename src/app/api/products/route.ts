@@ -10,6 +10,14 @@ import {
 import type { Product, CategoryId } from "@/lib/products";
 
 const DATA_FILE = path.join(process.cwd(), "src/data/products.json");
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
+
+function checkAuth(req: Request, body?: Record<string, unknown>): boolean {
+    const headerPass = req.headers.get("x-admin-password");
+    if (headerPass === ADMIN_PASSWORD) return true;
+    if (body && body.adminPassword === ADMIN_PASSWORD) return true;
+    return false;
+}
 
 export async function GET() {
     try {
@@ -31,6 +39,18 @@ export async function GET() {
 export async function PUT(req: Request) {
     try {
         const body = await req.json();
+
+        // Kiểm tra quyền quản trị bằng mật khẩu
+        if (!checkAuth(req, body)) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: "Mật khẩu quản trị không đúng hoặc đã hết hạn",
+                },
+                { status: 401 },
+            );
+        }
+
         const {
             id,
             slug,
@@ -125,6 +145,18 @@ export async function PUT(req: Request) {
 export async function POST(req: Request) {
     try {
         const body = await req.json();
+
+        // Kiểm tra quyền quản trị bằng mật khẩu
+        if (!checkAuth(req, body)) {
+            return NextResponse.json(
+                {
+                    success: false,
+                    error: "Mật khẩu quản trị không đúng hoặc đã hết hạn",
+                },
+                { status: 401 },
+            );
+        }
+
         const {
             name,
             price,
@@ -173,8 +205,6 @@ export async function POST(req: Request) {
             category: (category as CategoryId) || "giuong-sat",
             type: "bunk",
             color: "#2a7065",
-            rating: 5,
-            reviews: 1,
             specs: [
                 {
                     label: "Chất liệu",
