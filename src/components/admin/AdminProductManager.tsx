@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
@@ -26,6 +26,10 @@ import {
     EyeOff,
     LogOut,
     ShieldCheck,
+    UploadCloud,
+    Camera,
+    ChevronDown,
+    ChevronUp,
 } from "lucide-react";
 
 type FolderInfo = {
@@ -62,6 +66,10 @@ export default function AdminProductManager({
     const [editingProduct, setEditingProduct] = useState<Product | null>(null);
     const [isCreatingNew, setIsCreatingNew] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
+    const [showManualFolderSelect, setShowManualFolderSelect] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
     const [toastMessage, setToastMessage] = useState<{
         text: string;
         type: "success" | "error";
@@ -151,6 +159,7 @@ export default function AdminProductManager({
         setFormImageFolder(p.imageFolder || "");
         setFormCategory(p.category);
         setFormFeatured(Boolean(p.featured));
+        setShowManualFolderSelect(false);
     };
 
     const openCreateModal = (defaultFolder?: string) => {
@@ -165,11 +174,66 @@ export default function AdminProductManager({
         setFormImageFolder(defaultFolder || "");
         setFormCategory(cat === "giuong" ? "giuong-sat" : cat);
         setFormFeatured(false);
+        setShowManualFolderSelect(false);
     };
 
     const closeModal = () => {
         setEditingProduct(null);
         setIsCreatingNew(false);
+    };
+
+    // Hàm tải ảnh trực tiếp, tự động tạo folder theo slug sản phẩm
+    const handleUploadFiles = async (files: FileList | File[]) => {
+        if (!files || files.length === 0) return;
+
+        // Xác định slug để tạo folder
+        const targetSlug =
+            editingProduct?.slug ||
+            formName
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
+
+        if (!targetSlug) {
+            showToast("Vui lòng nhập tên sản phẩm trước khi tải ảnh", "error");
+            return;
+        }
+
+        setIsUploading(true);
+        try {
+            const formData = new FormData();
+            formData.append("slug", targetSlug);
+            formData.append("category", formCategory);
+            formData.append("adminPassword", "admin123");
+            Array.from(files).forEach((file) => formData.append("files", file));
+
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                headers: {
+                    "x-admin-password": "admin123",
+                },
+                body: formData,
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                setFormImageFolder(data.imageFolder);
+                if (data.folders) setFolders(data.folders);
+                showToast(data.message || "Tải ảnh và tạo thư mục thành công!");
+                // Tự động làm mới danh sách
+                handleRefreshFolders();
+            } else {
+                showToast("Lỗi tải ảnh: " + data.error, "error");
+            }
+        } catch {
+            showToast("Không thể tải ảnh lên máy chủ", "error");
+        } finally {
+            setIsUploading(false);
+            if (fileInputRef.current) fileInputRef.current.value = "";
+        }
     };
 
     const handleSave = async (e: React.FormEvent) => {
@@ -286,7 +350,7 @@ export default function AdminProductManager({
                                         if (authError) setAuthError("");
                                     }}
                                     placeholder="Nhập mật khẩu..."
-                                    className="w-full rounded-xl border border-stone-300 bg-stone-50/50 py-2.5 pl-10 pr-10 text-sm font-medium text-stone-900 placeholder-stone-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20"
+                                    className="w-full rounded-xl border border-stone-300 bg-stone-50/50 py-2.5 pr-10 pl-10 text-sm font-medium text-stone-900 placeholder-stone-400 focus:border-brand-500 focus:bg-white focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                 />
                                 <button
                                     type="button"
@@ -321,7 +385,7 @@ export default function AdminProductManager({
                         <div className="pt-2 text-center">
                             <Link
                                 href="/"
-                                className="text-xs font-medium text-stone-400 hover:text-brand-600 transition"
+                                className="text-xs font-medium text-stone-400 transition hover:text-brand-600"
                             >
                                 ← Quay lại Trang chủ website
                             </Link>
@@ -367,7 +431,7 @@ export default function AdminProductManager({
             {/* Toast Notification */}
             {toastMessage && (
                 <div
-                    className={`fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-2xl px-5 py-3.5 text-sm font-semibold text-white shadow-xl backdrop-blur transition-all animate-bounce ${
+                    className={`fixed right-6 bottom-6 z-50 flex items-center gap-2.5 rounded-2xl px-5 py-3.5 text-sm font-semibold text-white shadow-xl backdrop-blur transition-all animate-bounce ${
                         toastMessage.type === "success"
                             ? "bg-emerald-600 shadow-emerald-600/30"
                             : "bg-rose-600 shadow-rose-600/30"
@@ -583,7 +647,7 @@ export default function AdminProductManager({
             {/* Search and Filters */}
             <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-2xs sm:flex-row sm:items-center sm:justify-between">
                 <div className="relative flex-1">
-                    <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
+                    <Search className="absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-stone-400" />
                     <input
                         type="text"
                         placeholder="Tìm theo tên sản phẩm..."
@@ -889,18 +953,30 @@ export default function AdminProductManager({
                                             {c.name}
                                         </option>
                                     ))}
+                                    \n{" "}
                                 </select>
                             </div>
 
-                            {/* Thư mục ảnh (imageFolder) */}
-                            <div className="rounded-2xl border border-brand-100 bg-brand-50/40 p-4">
+                            {/* TỰ ĐỘNG TẢI ẢNH LÊN & TỰ TẠO THƯ MỤC CHO SẢN PHẨM */}
+                            <div className="rounded-2xl border border-brand-200 bg-brand-50/50 p-4 sm:p-5">
                                 <div className="flex items-center justify-between">
-                                    <label className="block text-xs font-bold uppercase tracking-wider text-stone-900">
-                                        📁 Chọn Thư mục Ảnh thực tế trong{" "}
-                                        <span className="font-mono text-brand-700">
-                                            public/images/
-                                        </span>
-                                    </label>
+                                    <div className="flex items-center gap-2">
+                                        <div className="grid h-7 w-7 place-items-center rounded-lg bg-brand-600 text-white">
+                                            <Camera className="h-4 w-4" />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-bold uppercase tracking-wider text-stone-900">
+                                                Hình ảnh thực tế của sản phẩm
+                                            </label>
+                                            <p className="text-[11px] text-stone-500">
+                                                Tải ảnh trực tiếp từ máy
+                                                tính/điện thoại — hệ thống sẽ tự
+                                                tạo thư mục và gán ngay cho sản
+                                                phẩm!
+                                            </p>
+                                        </div>
+                                    </div>
+
                                     {formImageFolder && (
                                         <button
                                             type="button"
@@ -909,68 +985,152 @@ export default function AdminProductManager({
                                             }
                                             className="text-xs text-stone-500 hover:text-rose-600"
                                         >
-                                            Xoá chọn
+                                            Xoá liên kết ảnh
                                         </button>
                                     )}
                                 </div>
 
-                                <select
-                                    value={formImageFolder}
-                                    onChange={(e) =>
-                                        setFormImageFolder(e.target.value)
-                                    }
-                                    className="mt-2 w-full rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 font-mono text-sm text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
-                                >
-                                    <option value="">
-                                        -- Chưa chọn thư mục ảnh --
-                                    </option>
-                                    {folders.map((f) => (
-                                        <option key={f.folder} value={f.folder}>
-                                            {f.folder} ({f.imageCount} ảnh)
-                                        </option>
-                                    ))}
-                                </select>
+                                {/* Nút tải ảnh & khung kéo thả */}
+                                <div className="mt-3.5">
+                                    <input
+                                        ref={fileInputRef}
+                                        type="file"
+                                        multiple
+                                        accept="image/png,image/jpeg,image/jpg,image/webp"
+                                        onChange={(e) => {
+                                            if (e.target.files) {
+                                                handleUploadFiles(
+                                                    e.target.files,
+                                                );
+                                            }
+                                        }}
+                                        className="hidden"
+                                        id="product-image-upload"
+                                    />
 
-                                <p className="mt-1.5 text-xs text-stone-500">
-                                    Hoặc bạn có thể tự nhập relative path (ví
-                                    dụ:{" "}
-                                    <code className="rounded bg-white px-1">
-                                        giuong/giuongdonm4
-                                    </code>
-                                    ). Tất cả ảnh trong thư mục này sẽ tự động
-                                    hiện lên slider ảnh của sản phẩm!
-                                </p>
+                                    <label
+                                        htmlFor="product-image-upload"
+                                        className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed p-5 text-center transition ${
+                                            isUploading
+                                                ? "border-brand-400 bg-brand-100/50 opacity-70"
+                                                : "border-brand-300 bg-white hover:border-brand-500 hover:bg-brand-50/70"
+                                        }`}
+                                    >
+                                        <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600 shadow-2xs">
+                                            {isUploading ? (
+                                                <RefreshCw className="h-6 w-6 animate-spin text-brand-600" />
+                                            ) : (
+                                                <UploadCloud className="h-6 w-6" />
+                                            )}
+                                        </div>
+                                        <p className="mt-2 text-xs font-bold text-stone-800">
+                                            {isUploading
+                                                ? "Đang lưu ảnh và tạo thư mục..."
+                                                : "Bấm để chọn nhiều ảnh hoặc kéo thả vào đây"}
+                                        </p>
+                                        <p className="mt-0.5 text-[11px] text-stone-500">
+                                            Hỗ trợ định dạng JPG, PNG, WEBP
+                                            (chọn được nhiều ảnh cùng lúc)
+                                        </p>
+                                    </label>
+                                </div>
 
-                                {/* Live Preview of photos in selected folder */}
-                                {selectedFolderData &&
-                                    selectedFolderData.sampleImages.length >
-                                        0 && (
-                                        <div className="mt-3">
-                                            <p className="text-xs font-semibold text-stone-700">
-                                                Xem trước{" "}
-                                                {selectedFolderData.imageCount}{" "}
-                                                ảnh trong folder này:
-                                            </p>
-                                            <div className="mt-2 flex flex-wrap gap-2">
-                                                {selectedFolderData.sampleImages.map(
-                                                    (src, i) => (
-                                                        <div
-                                                            key={i}
-                                                            className="relative h-16 w-16 overflow-hidden rounded-xl border border-stone-200 bg-white shadow-2xs"
-                                                        >
-                                                            <Image
-                                                                src={src}
-                                                                alt=""
-                                                                fill
-                                                                className="object-cover"
-                                                                sizes="64px"
-                                                            />
-                                                        </div>
-                                                    ),
-                                                )}
+                                {/* Hiển thị thư mục và các ảnh đã tải lên */}
+                                {formImageFolder ? (
+                                    <div className="mt-3.5 rounded-xl border border-brand-200 bg-white p-3">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-stone-800">
+                                                <span>📁 Thư mục:</span>
+                                                <span className="rounded bg-brand-50 px-2 py-0.5 text-brand-700">
+                                                    {formImageFolder}
+                                                </span>
                                             </div>
+                                            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
+                                                {selectedFolderData?.imageCount ||
+                                                    0}{" "}
+                                                ảnh
+                                            </span>
+                                        </div>
+
+                                        {/* Ảnh xem trước */}
+                                        {selectedFolderData &&
+                                            selectedFolderData.sampleImages
+                                                .length > 0 && (
+                                                <div className="mt-2.5 flex flex-wrap gap-2">
+                                                    {selectedFolderData.sampleImages.map(
+                                                        (src, i) => (
+                                                            <div
+                                                                key={i}
+                                                                className="relative h-14 w-14 overflow-hidden rounded-xl border border-stone-200 bg-stone-50 shadow-2xs"
+                                                            >
+                                                                <Image
+                                                                    src={src}
+                                                                    alt=""
+                                                                    fill
+                                                                    className="object-cover"
+                                                                    sizes="56px"
+                                                                />
+                                                            </div>
+                                                        ),
+                                                    )}
+                                                </div>
+                                            )}
+                                    </div>
+                                ) : (
+                                    <div className="mt-2 text-center text-xs text-stone-400">
+                                        Sản phẩm này chưa có ảnh thực tế
+                                    </div>
+                                )}
+
+                                {/* Nút mở rộng chọn thư mục thủ công nếu cần */}
+                                <div className="mt-3 border-t border-brand-200/60 pt-2 text-right">
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setShowManualFolderSelect(
+                                                !showManualFolderSelect,
+                                            )
+                                        }
+                                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-700 hover:text-brand-900"
+                                    >
+                                        <span>
+                                            Hoặc chọn từ thư mục có sẵn / tự
+                                            nhập path
+                                        </span>
+                                        {showManualFolderSelect ? (
+                                            <ChevronUp className="h-3.5 w-3.5" />
+                                        ) : (
+                                            <ChevronDown className="h-3.5 w-3.5" />
+                                        )}
+                                    </button>
+
+                                    {showManualFolderSelect && (
+                                        <div className="mt-2 text-left">
+                                            <select
+                                                value={formImageFolder}
+                                                onChange={(e) =>
+                                                    setFormImageFolder(
+                                                        e.target.value,
+                                                    )
+                                                }
+                                                className="w-full rounded-xl border border-stone-300 bg-white px-3.5 py-2 font-mono text-xs text-stone-900 focus:border-brand-500 focus:outline-none"
+                                            >
+                                                <option value="">
+                                                    -- Chưa chọn thư mục ảnh --
+                                                </option>
+                                                {folders.map((f) => (
+                                                    <option
+                                                        key={f.folder}
+                                                        value={f.folder}
+                                                    >
+                                                        {f.folder} (
+                                                        {f.imageCount} ảnh)
+                                                    </option>
+                                                ))}
+                                            </select>
                                         </div>
                                     )}
+                                </div>
                             </div>
 
                             {/* Mô tả ngắn */}
@@ -1036,7 +1196,7 @@ export default function AdminProductManager({
                                 </button>
                                 <button
                                     type="submit"
-                                    disabled={isSaving}
+                                    disabled={isSaving || isUploading}
                                     className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700 disabled:opacity-50"
                                 >
                                     <Save className="h-4 w-4" />
