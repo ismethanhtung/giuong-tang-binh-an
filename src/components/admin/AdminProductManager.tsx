@@ -30,6 +30,7 @@ import {
     Camera,
     ChevronDown,
     ChevronUp,
+    Trash2,
 } from "lucide-react";
 
 type FolderInfo = {
@@ -37,6 +38,7 @@ type FolderInfo = {
     folder: string;
     imageCount: number;
     sampleImages: string[];
+    images?: string[];
 };
 
 type Props = {
@@ -67,6 +69,8 @@ export default function AdminProductManager({
     const [isCreatingNew, setIsCreatingNew] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
+    const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(null);
+    const [isDeletingAll, setIsDeletingAll] = useState<boolean>(false);
     const [showManualFolderSelect, setShowManualFolderSelect] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -233,6 +237,78 @@ export default function AdminProductManager({
         } finally {
             setIsUploading(false);
             if (fileInputRef.current) fileInputRef.current.value = "";
+        }
+    };
+
+    const handleDeleteImage = async (src: string) => {
+        if (!window.confirm("Bạn có chắc chắn muốn xoá ảnh này vĩnh viễn?")) {
+            return;
+        }
+
+        setDeletingImageSrc(src);
+        try {
+            const res = await fetch("/api/upload", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-admin-password": "admin123",
+                },
+                body: JSON.stringify({
+                    imagePath: src,
+                    adminPassword: "admin123",
+                }),
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                showToast("Đã xoá ảnh thành công!");
+                if (data.folders) setFolders(data.folders);
+                if (data.products) setProducts(data.products);
+            } else {
+                showToast("Lỗi xoá ảnh: " + data.error, "error");
+            }
+        } catch {
+            showToast("Không thể kết nối máy chủ để xoá ảnh", "error");
+        } finally {
+            setDeletingImageSrc(null);
+        }
+    };
+
+    const handleDeleteAllInFolder = async (folder: string) => {
+        if (
+            !window.confirm(
+                `Bạn có chắc chắn muốn xoá TOÀN BỘ ảnh trong thư mục "${folder}"? Hành động này sẽ xoá file thật và không thể hoàn tác!`,
+            )
+        ) {
+            return;
+        }
+
+        setIsDeletingAll(true);
+        try {
+            const res = await fetch("/api/upload", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-admin-password": "admin123",
+                },
+                body: JSON.stringify({
+                    folderPath: folder,
+                    adminPassword: "admin123",
+                }),
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                showToast("Đã xoá toàn bộ ảnh trong thư mục!");
+                if (data.folders) setFolders(data.folders);
+                if (data.products) setProducts(data.products);
+            } else {
+                showToast("Lỗi xoá ảnh: " + data.error, "error");
+            }
+        } catch {
+            showToast("Không thể kết nối máy chủ để xoá ảnh", "error");
+        } finally {
+            setIsDeletingAll(false);
         }
     };
 

@@ -29,7 +29,8 @@
         "value": "Sắt thép Hoà Phát loại 1"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m-khong-hoc"
   },
   {
     "slug": "giuong-tang-sat-1m-1m-co-hoc",
@@ -61,7 +62,8 @@
         "value": "Sắt thép Hoà Phát loại 1"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m-co-hoc"
   },
   {
     "slug": "giuong-tang-sat-1m-1m2-khong-hoc",
@@ -72,7 +74,7 @@
     "oldPrice": 3900000,
     "badge": "Hàng bán chạy",
     "featured": true,
-    "imageFolder": "giuong/giuongtangkhonghoc1mm2",
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
     "shortDesc": "Dưới 1m2 trên 1m, sắt hộp Hoà Phát sơn tĩnh điện cao cấp, khung hộp vững chắc.",
     "description": "Giường tầng sắt hộp cao cấp Hòa Phát, kích thước tiêu chuẩn tầng trên 1m tầng dưới 1m2 phù hợp phòng gia đình, nhà trọ, ký túc xá. Sơn tĩnh điện chống trầy xước, không rỉ sét, chịu lực tối đa tới 250kg mỗi tầng. Hàng thực tế 100% như ảnh chụp tại xưởng.",
     "color": "#3bb39a",
@@ -126,7 +128,8 @@
         "value": "Sắt thép Hoà Phát"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc"
   },
   {
     "slug": "giuong-tang-sat-1m2-1m4-khong-hoc",
@@ -137,7 +140,7 @@
     "oldPrice": 4300000,
     "badge": "Mẫu mới",
     "featured": true,
-    "imageFolder": "giuong/giuongtangkhonghocm2m4",
+    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-khong-hoc",
     "shortDesc": "Dưới 1m4 trên 1m2 rộng rãi, khung sắt hộp dày dặn, không rung lắc.",
     "description": "Mẫu giường tầng sắt rộng rãi dành cho cả người lớn và trẻ em. Tầng dưới 1m4 thoải mái cho 2 người nằm, tầng trên 1m2 có lan can an toàn cao. Gia công bằng sắt thép Hòa Phát loại 1, mối hàn ngấu đẹp và sơn tĩnh điện bền màu.",
     "color": "#38a3a5",
@@ -187,7 +190,8 @@
         "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-co-hoc"
   },
   {
     "slug": "giuong-tang-sat-1m4-1m6-khong-hoc",
@@ -215,7 +219,8 @@
         "value": "~350kg/tầng"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-khong-hoc"
   },
   {
     "slug": "giuong-tang-sat-1m4-1m6-co-hoc",
@@ -243,7 +248,8 @@
         "value": "Sắt thép Hoà Phát loại 1"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-co-hoc"
   },
   {
     "slug": "giuong-don-go-soi",
@@ -271,7 +277,8 @@
         "value": "Sơn PU bóng mờ giữ vân gỗ"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-don-go-soi"
   },
   {
     "slug": "giuong-don-go-xoan-dao-xin",
@@ -299,7 +306,8 @@
         "value": "Gỗ đanh chắc, chịu lực cao"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-don-go-xoan-dao-xin"
   },
   {
     "slug": "giuong-don-go-xoan-thuong",
@@ -327,7 +335,8 @@
         "value": "Giá tận xưởng, tiết kiệm"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-don-go-xoan-thuong"
   },
   {
     "slug": "giuong-don-go-huong-xam",
@@ -355,7 +364,8 @@
         "value": "Vân gỗ cuộn tự nhiên, gỗ đanh nặng"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-don-go-huong-xam"
   },
   {
     "slug": "giuong-sat-don-boc-nem",
@@ -383,7 +393,8 @@
         "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
       }
     ],
-    "images": []
+    "images": [],
+    "imageFolder": "giuong/giuong-sat-don-boc-nem"
   },
   {
     "slug": "giuong-sat-don-khong-boc",
@@ -394,7 +405,7 @@
     "oldPrice": 2800000,
     "badge": "Giá xưởng",
     "featured": true,
-    "imageFolder": "giuong/giuongdonm4",
+    "imageFolder": "giuong/giuong-sat-don-khong-boc",
     "shortDesc": "Sắt hộp Hoà Phát sơn tĩnh điện cao cấp, siêu bền, lau chùi dễ dàng.",
     "description": "Giường sắt đơn không bọc thiết kế tối giản, sạch sẽ và siêu bền. Sử dụng hoàn toàn sắt hộp Hoà Phát chịu lực cao, sơn tĩnh điện chống rỉ sét tuyệt đối. Hàng thực tế chụp trực tiếp tại xưởng.",
     "color": "#264653",
