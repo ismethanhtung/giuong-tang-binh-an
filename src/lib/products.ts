@@ -56,7 +56,7 @@ export const categories: Category[] = [
         name: "Tủ gỗ",
         short: "Tủ gỗ",
         emoji: "🚪",
-        icon: "/icons/tu-go.png",
+        icon: "/icons/tu-go.gif",
     },
     {
         id: "ban-ghe",
