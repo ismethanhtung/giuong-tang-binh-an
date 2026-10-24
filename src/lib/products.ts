@@ -21,8 +21,8 @@ export type Product = {
     type: ProductType;
     price: number;
     oldPrice?: number;
-    rating: number;
-    reviews: number;
+    rating?: number;
+    reviews?: number;
     badge?: string;
     featured?: boolean;
     shortDesc: string;
@@ -56,7 +56,7 @@ export const categories: Category[] = [
         name: "Tủ gỗ",
         short: "Tủ gỗ",
         emoji: "🚪",
-        icon: "/icons/tu-go.gif",
+        icon: "/icons/tu-go.png",
     },
     {
         id: "ban-ghe",
@@ -82,7 +82,7 @@ export function formatPrice(vnd: number): string {
     return new Intl.NumberFormat("vi-VN").format(vnd) + "₫";
 }
 
-export const products: Product[] = rawProducts as Product[];
+export const products: Product[] = rawProducts as unknown as Product[];
 
 export function getProduct(slug: string): Product | undefined {
     return products.find((p) => p.slug === slug);
