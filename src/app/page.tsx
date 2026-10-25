@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-import ProductImage from "@/components/ProductImage";
 import {
     ChevronRightIcon,
     PhoneIcon,
@@ -21,53 +21,75 @@ export default function HomePage() {
     return (
         <div className="mx-auto max-w-6xl px-4">
             {/* Hero */}
-            <section className="mt-4 overflow-hidden rounded-3xl border border-brand-200 bg-gradient-to-br from-brand-50 via-brand-100 to-brand-200/80 shadow-xl shadow-brand-900/5">
-                <div className="grid items-center gap-6 p-6 sm:p-10 md:grid-cols-2">
-                    <div className="animate-float-up">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-brand-700 shadow-sm backdrop-blur">
-                            <StarIcon className="h-3.5 w-3.5 text-brand-500" />
+            <section className="relative mt-4 overflow-hidden rounded-[2rem] border border-stone-900/40 shadow-2xl shadow-stone-900/20">
+                <Image
+                    src="/images/anh-nen.jpg"
+                    alt="Phòng ngủ ấm áp với giường tầng sắt bên cửa sổ nhìn ra đồi núi"
+                    fill
+                    priority
+                    sizes="(max-width: 1152px) 100vw, 1152px"
+                    className="object-cover object-[72%_center] sm:object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/60 to-stone-950/25 md:to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent" />
+
+                <div className="relative flex min-h-[26rem] items-center px-6 py-10 sm:min-h-[30rem] sm:px-10 lg:px-14">
+                    <div className="animate-float-up max-w-xl">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md">
+                            <StarIcon className="h-3.5 w-3.5 text-brand-300" />
                             Kho giường tầng giá gốc
                         </span>
-                        <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-stone-900 sm:text-4xl">
+                        <h1 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-sm sm:text-4xl lg:text-[2.75rem]">
                             Giường tầng, giường sắt
                             <br />
-                            <span className="text-brand-600">
+                            <span className="bg-gradient-to-r from-brand-200 to-brand-400 bg-clip-text text-transparent">
                                 bền đẹp, giá tận xưởng
                             </span>
                         </h1>
-                        <p className="mt-3 max-w-md text-sm leading-relaxed text-stone-600 sm:text-base">
+                        <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-200 sm:text-base">
                             Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế
                             ăn. Sắt thép Hoà Phát, lắp đặt tận nhà, giao hàng
                             toàn quốc.
                         </p>
-                        <div className="mt-6 flex flex-wrap gap-3">
+                        <div className="mt-7 flex flex-wrap gap-3">
                             <Link
                                 href="/san-pham"
-                                className="inline-flex h-11 items-center gap-1.5 rounded-full bg-brand-600 px-5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
+                                className="inline-flex h-11 items-center gap-1.5 rounded-full bg-brand-500 px-5 text-sm font-bold text-white shadow-lg shadow-brand-900/40 ring-1 ring-brand-300/40 transition active:scale-95 hover:bg-brand-400"
                             >
                                 Xem sản phẩm
                                 <ChevronRightIcon className="h-4 w-4" />
                             </Link>
                             <a
                                 href={site.phoneHref}
-                                className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-300 bg-white/70 px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-white"
+                                className="inline-flex h-11 items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 text-sm font-bold text-white shadow-sm backdrop-blur-md transition active:scale-95 hover:bg-white/20"
                             >
                                 <PhoneIcon className="h-4.5 w-4.5" />
                                 {site.phone}
                             </a>
                         </div>
-                    </div>
-
-                    <div className="relative hidden md:block">
-                        <div className="rounded-2xl bg-white/80 p-3 shadow-sm backdrop-blur">
-                            <ProductImage
-                                type="bunk"
-                                color="#42ceb4"
-                                showHint={false}
-                                alt="Giường tầng sắt"
-                                className="aspect-[4/3] rounded-xl"
-                            />
-                        </div>
+                        <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-xs font-medium text-stone-200 sm:text-sm">
+                            {[
+                                "Sắt thép Hoà Phát",
+                                "Lắp đặt tận nhà",
+                                "Giao hàng toàn quốc",
+                            ].map((item) => (
+                                <li key={item} className="flex items-center gap-1.5">
+                                    <svg
+                                        viewBox="0 0 20 20"
+                                        aria-hidden="true"
+                                        className="h-4 w-4 text-brand-300"
+                                        fill="currentColor"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.86-9.36a.75.75 0 1 0-1.05-1.07l-3.7 3.64-1.9-1.86a.75.75 0 1 0-1.05 1.07l2.43 2.38a.75.75 0 0 0 1.05 0l4.22-4.16Z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>
