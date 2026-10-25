@@ -330,10 +330,10 @@ export default function AdminProductManager({
                 ? {
                       name: formName,
                       price: formPrice,
-                      oldPrice: formOldPrice || undefined,
+                      oldPrice: formOldPrice && formOldPrice > 0 ? Number(formOldPrice) : null,
                       description: formDescription,
                       shortDesc: formShortDesc,
-                      imageFolder: formImageFolder || undefined,
+                      imageFolder: formImageFolder && formImageFolder.trim() !== "" ? formImageFolder.trim() : null,
                       category: formCategory,
                       featured: formFeatured,
                       adminPassword: "admin123",
@@ -343,10 +343,10 @@ export default function AdminProductManager({
                       id: editingProduct?.id,
                       name: formName,
                       price: formPrice,
-                      oldPrice: formOldPrice || undefined,
+                      oldPrice: formOldPrice && formOldPrice > 0 ? Number(formOldPrice) : null,
                       description: formDescription,
                       shortDesc: formShortDesc,
-                      imageFolder: formImageFolder || undefined,
+                      imageFolder: formImageFolder && formImageFolder.trim() !== "" ? formImageFolder.trim() : null,
                       category: formCategory,
                       featured: formFeatured,
                       adminPassword: "admin123",
@@ -1121,36 +1121,104 @@ export default function AdminProductManager({
                                                     {formImageFolder}
                                                 </span>
                                             </div>
-                                            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
-                                                {selectedFolderData?.imageCount ||
-                                                    0}{" "}
-                                                ảnh
-                                            </span>
+                                            <div className="flex items-center gap-2">
+                                                <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
+                                                    {selectedFolderData?.imageCount ||
+                                                        0}{" "}
+                                                    ảnh
+                                                </span>
+                                                {selectedFolderData &&
+                                                    selectedFolderData.imageCount > 0 && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() =>
+                                                                handleDeleteAllInFolder(
+                                                                    formImageFolder,
+                                                                )
+                                                            }
+                                                            disabled={isDeletingAll}
+                                                            className="inline-flex items-center gap-1 text-[11px] font-medium text-rose-600 transition hover:text-rose-700 hover:underline disabled:opacity-50"
+                                                        >
+                                                            {isDeletingAll ? (
+                                                                <RefreshCw className="h-3 w-3 animate-spin" />
+                                                            ) : (
+                                                                <Trash2 className="h-3 w-3" />
+                                                            )}
+                                                            Xoá tất cả ảnh
+                                                        </button>
+                                                    )}
+                                            </div>
                                         </div>
 
-                                        {/* Ảnh xem trước */}
-                                        {selectedFolderData &&
-                                            selectedFolderData.sampleImages
-                                                .length > 0 && (
-                                                <div className="mt-2.5 flex flex-wrap gap-2">
-                                                    {selectedFolderData.sampleImages.map(
-                                                        (src, i) => (
-                                                            <div
-                                                                key={i}
-                                                                className="relative h-14 w-14 overflow-hidden rounded-xl border border-stone-200 bg-stone-50 shadow-2xs"
-                                                            >
-                                                                <Image
-                                                                    src={src}
-                                                                    alt=""
-                                                                    fill
-                                                                    className="object-cover"
-                                                                    sizes="56px"
-                                                                />
-                                                            </div>
-                                                        ),
-                                                    )}
+                                        {/* Danh sách ảnh xem trước với nút xoá từng ảnh */}
+                                        {(() => {
+                                            const currentFolderImages =
+                                                selectedFolderData?.images ||
+                                                selectedFolderData?.sampleImages ||
+                                                [];
+                                            if (currentFolderImages.length === 0) {
+                                                return (
+                                                    <div className="py-3 text-center text-xs text-stone-400 italic">
+                                                        Thư mục này chưa có file ảnh nào. Hãy tải ảnh lên ở trên!
+                                                    </div>
+                                                );
+                                            }
+
+                                            return (
+                                                <div className="mt-2.5">
+                                                    <p className="mb-2 text-[11px] text-stone-500">
+                                                        Bấm biểu tượng{" "}
+                                                        <span className="font-bold text-rose-600">
+                                                            thùng rác (🗑️)
+                                                        </span>{" "}
+                                                        trên từng ảnh để xoá ảnh đó khỏi thư mục:
+                                                    </p>
+                                                    <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
+                                                        {currentFolderImages.map(
+                                                            (src, i) => (
+                                                                <div
+                                                                    key={i}
+                                                                    className="group relative aspect-square overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs"
+                                                                >
+                                                                    <Image
+                                                                        src={src}
+                                                                        alt={`Ảnh ${i + 1}`}
+                                                                        fill
+                                                                        className="object-cover transition group-hover:scale-105"
+                                                                        sizes="96px"
+                                                                    />
+
+                                                                    {/* Nút xoá trên từng ảnh */}
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={(e) => {
+                                                                            e.preventDefault();
+                                                                            e.stopPropagation();
+                                                                            handleDeleteImage(src);
+                                                                        }}
+                                                                        disabled={
+                                                                            deletingImageSrc === src
+                                                                        }
+                                                                        title="Xoá ảnh này"
+                                                                        className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full bg-rose-600/90 text-white shadow-md transition hover:bg-rose-700 hover:scale-110 active:scale-95 disabled:opacity-50"
+                                                                    >
+                                                                        {deletingImageSrc === src ? (
+                                                                            <RefreshCw className="h-3 w-3 animate-spin" />
+                                                                        ) : (
+                                                                            <Trash2 className="h-3 w-3" />
+                                                                        )}
+                                                                    </button>
+
+                                                                    <span className="absolute bottom-1 left-1 rounded bg-black/60 px-1.5 py-0.2 text-[9px] font-bold text-white backdrop-blur">
+                                                                        #{i + 1}
+                                                                    </span>
+                                                                </div>
+                                                            ),
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            )}
+                                            );
+                                        })()}
                                     </div>
                                 ) : (
                                     <div className="mt-2 text-center text-xs text-stone-400">

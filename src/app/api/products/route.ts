@@ -93,23 +93,44 @@ export async function PUT(req: Request) {
         }
 
         // Cập nhật các trường
-        list[index] = {
-            ...list[index],
-            ...(name !== undefined ? { name } : {}),
-            ...(price !== undefined ? { price: Number(price) } : {}),
-            ...(oldPrice !== undefined
-                ? { oldPrice: oldPrice ? Number(oldPrice) : undefined }
-                : {}),
-            ...(description !== undefined ? { description } : {}),
-            ...(shortDesc !== undefined ? { shortDesc } : {}),
-            ...(imageFolder !== undefined
-                ? { imageFolder: imageFolder || undefined }
-                : {}),
-            ...(category !== undefined
-                ? { category: category as CategoryId }
-                : {}),
-            ...(featured !== undefined ? { featured: Boolean(featured) } : {}),
-        };
+        if (name !== undefined) list[index].name = name;
+        if (price !== undefined) list[index].price = Number(price);
+
+        // Xử lý giá niêm yết cũ (oldPrice) - nếu để trống hoặc null thì xoá bỏ hoàn toàn
+        if ("oldPrice" in body) {
+            const num = Number(body.oldPrice);
+            if (
+                body.oldPrice !== null &&
+                body.oldPrice !== undefined &&
+                body.oldPrice !== "" &&
+                !isNaN(num) &&
+                num > 0
+            ) {
+                list[index].oldPrice = num;
+            } else {
+                delete list[index].oldPrice;
+            }
+        }
+
+        if (description !== undefined) list[index].description = description;
+        if (shortDesc !== undefined) list[index].shortDesc = shortDesc;
+
+        // Xử lý thư mục ảnh (imageFolder)
+        if ("imageFolder" in body) {
+            if (
+                body.imageFolder &&
+                typeof body.imageFolder === "string" &&
+                body.imageFolder.trim() !== ""
+            ) {
+                list[index].imageFolder = body.imageFolder.trim();
+            } else {
+                delete list[index].imageFolder;
+            }
+        }
+
+        if (category !== undefined)
+            list[index].category = category as CategoryId;
+        if (featured !== undefined) list[index].featured = Boolean(featured);
 
         const saved = saveProductsServer(list);
         if (!saved) {
@@ -193,15 +214,21 @@ export async function POST(req: Request) {
             "-" +
             Date.now().toString().slice(-4);
 
+        const parsedOldPrice =
+            oldPrice && Number(oldPrice) > 0 ? Number(oldPrice) : undefined;
+
         const newProduct: Product = {
             id: `p-${Date.now()}`,
             slug,
             name,
             price: Number(price),
-            oldPrice: oldPrice ? Number(oldPrice) : undefined,
+            ...(parsedOldPrice ? { oldPrice: parsedOldPrice } : {}),
             description: description || "",
             shortDesc: shortDesc || "",
-            imageFolder: imageFolder || undefined,
+            imageFolder:
+                imageFolder && imageFolder.trim() !== ""
+                    ? imageFolder.trim()
+                    : undefined,
             category: (category as CategoryId) || "giuong-sat",
             type: "bunk",
             color: "#2a7065",
