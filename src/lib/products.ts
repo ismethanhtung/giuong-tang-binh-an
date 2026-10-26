@@ -13,6 +13,12 @@ export type Category = {
     icon: string;
 };
 
+export type ProductVariant = {
+    label: string;
+    price: number;
+    oldPrice?: number;
+};
+
 export type Product = {
     id?: string;
     slug: string;
@@ -21,6 +27,7 @@ export type Product = {
     type: ProductType;
     price: number;
     oldPrice?: number;
+    variants?: ProductVariant[];
     rating?: number;
     reviews?: number;
     badge?: string;

@@ -151,8 +151,12 @@ export default function HomePage() {
                         </Link>
                     </div>
                     <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-                        {featured.map((p) => (
-                            <ProductCard key={p.slug} product={p} />
+                        {featured.map((p, idx) => (
+                            <ProductCard
+                                key={p.slug}
+                                product={p}
+                                priority={idx < 4}
+                            />
                         ))}
                     </div>
                 </section>

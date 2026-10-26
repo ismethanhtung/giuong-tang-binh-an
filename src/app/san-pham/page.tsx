@@ -133,8 +133,12 @@ export default async function ProductsPage({
                 </div>
             ) : (
                 <div className="mt-5 grid grid-cols-2 gap-3 pb-4 sm:gap-4 lg:grid-cols-4">
-                    {list.map((p) => (
-                        <ProductCard key={p.slug} product={p} />
+                    {list.map((p, idx) => (
+                        <ProductCard
+                            key={p.slug}
+                            product={p}
+                            priority={idx < 4}
+                        />
                     ))}
                 </div>
             )}

@@ -10,18 +10,7 @@ import {
     ZaloIcon,
 } from "./icons";
 import Logo from "./Logo";
-
-function VietnamFlag({ className = "h-3.5 w-5" }: { className?: string }) {
-    return (
-        <svg viewBox="0 0 30 20" className={className} aria-hidden="true">
-            <rect width="30" height="20" fill="#da251d" />
-            <polygon
-                points="15,4 16.5,8.8 21.6,8.8 17.5,11.8 19.1,16.6 15,13.6 10.9,16.6 12.5,11.8 8.4,8.8 13.5,8.8"
-                fill="#ff0"
-            />
-        </svg>
-    );
-}
+import VietnamFlag from "./VietnamFlag";
 
 export default function Footer() {
     return (
@@ -30,7 +19,21 @@ export default function Footer() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
                     {/* Cột 1: Thông tin thương hiệu & Mạng xã hội */}
                     <div className="md:col-span-2">
-                        <Logo />
+                        <Link
+                            href="/"
+                            className="inline-flex items-center gap-2"
+                        >
+                            <Logo />
+                            <span className="leading-tight">
+                                <span className="flex items-center gap-1.5 text-[15px] font-bold tracking-tight text-stone-900">
+                                    {site.name}
+                                    <VietnamFlag className="h-4 w-4" />
+                                </span>
+                                <span className="block text-[11px] text-stone-500">
+                                    {site.tagline}
+                                </span>
+                            </span>
+                        </Link>
                         <p className="mt-3 max-w-sm text-sm text-stone-500">
                             {site.description}
                         </p>

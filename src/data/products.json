@@ -255,17 +255,22 @@
         "name": "Giường đơn gỗ sồi",
         "category": "giuong-go",
         "type": "bed",
-        "price": 2400000,
-        "oldPrice": 2900000,
+        "price": 2200000,
         "badge": "Gỗ tự nhiên",
         "featured": true,
         "shortDesc": "Gỗ sồi tự nhiên màu sáng đẹp, đã tẩm sấy chống cong vênh mối mọt.",
         "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
         "color": "#d4a373",
+        "variants": [
+            { "label": "1m2", "price": 2200000 },
+            { "label": "1m4", "price": 2400000 },
+            { "label": "1m6", "price": 2400000 },
+            { "label": "1m8", "price": 2600000 }
+        ],
         "specs": [
             {
                 "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6"
+                "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6 / 1m8"
             },
             {
                 "label": "Chất liệu",

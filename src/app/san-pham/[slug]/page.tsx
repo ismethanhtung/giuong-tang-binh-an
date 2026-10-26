@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AddToCartFull } from "@/components/AddToCart";
 import ProductCard from "@/components/ProductCard";
 import ProductGallery from "@/components/ProductGallery";
+import ProductPurchaseSection from "@/components/ProductPurchaseSection";
 import { BadgeCheckIcon, ShieldIcon, TruckIcon } from "@/components/icons";
-import { formatPrice, getCategory } from "@/lib/products";
+import { getCategory } from "@/lib/products";
 import {
     getProductBySlugServer,
     getProductsServer,
 } from "@/lib/products-server";
-import { site } from "@/lib/site";
 
 export function generateStaticParams() {
     const all = getProductsServer();
@@ -60,9 +59,6 @@ export default async function ProductDetailPage({
             (p) => p.category === product.category && p.slug !== product.slug,
         )
         .slice(0, 4);
-    const discount = product.oldPrice
-        ? Math.round((1 - product.price / product.oldPrice) * 100)
-        : 0;
 
     return (
         <div className="mx-auto max-w-6xl px-4">
@@ -96,42 +92,14 @@ export default async function ProductDetailPage({
                         {product.name}
                     </h1>
 
-                    <div className="mt-4 flex flex-wrap items-baseline gap-3 rounded-2xl bg-brand-50/70 px-4 py-3">
-                        <span className="text-2xl font-extrabold text-brand-600 sm:text-3xl">
-                            {formatPrice(product.price)}
-                        </span>
-                        {product.oldPrice && (
-                            <>
-                                <span className="text-sm text-stone-400 line-through">
-                                    {formatPrice(product.oldPrice)}
-                                </span>
-                                <span className="rounded-full bg-red-500 px-2 py-0.5 text-xs font-bold text-white">
-                                    -{discount}%
-                                </span>
-                            </>
-                        )}
-                    </div>
+                    {product.shortDesc && (
+                        <p className="mt-2 text-[15px] leading-relaxed text-stone-600">
+                            {product.shortDesc}
+                        </p>
+                    )}
 
-                    <p className="mt-4 text-[15px] leading-relaxed text-stone-600">
-                        {product.shortDesc}
-                    </p>
-
-                    <div className="mt-5">
-                        <AddToCartFull
-                            item={{
-                                slug: product.slug,
-                                name: product.name,
-                                price: product.price,
-                            }}
-                        />
-                    </div>
-
-                    <a
-                        href={site.phoneHref}
-                        className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-full border border-brand-200 bg-white text-[15px] font-bold text-brand-700 transition active:scale-[0.98] hover:bg-brand-50"
-                    >
-                        Gọi đặt hàng: {site.phone}
-                    </a>
+                    {/* Khu vực chọn phân loại / kích thước & mua hàng */}
+                    <ProductPurchaseSection product={product} />
 
                     <div className="mt-6 grid grid-cols-3 gap-2 border-y border-stone-200/80 py-4">
                         {trust.map((t) => (
