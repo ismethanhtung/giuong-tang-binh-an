@@ -163,7 +163,8 @@ export default function Footer() {
                         Tự hào hàng Việt Nam chất lượng cao.
                     </span>
                     <span>
-                        Cam kết hàng như ảnh, đúng chất lượng, bảo hành uy tín.
+                        Cam kết hàng như ảnh, đúng chất lượng, an toàn chắc
+                        chắn.
                     </span>
                 </div>
             </div>

@@ -47,8 +47,7 @@ export default function HomePage() {
                             </span>
                         </h1>
                         <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-200 sm:text-base">
-                            Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế
-                            ăn.
+                            Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế.
                         </p>
                         <div className="mt-7 flex flex-wrap gap-3">
                             <Link
@@ -161,10 +160,10 @@ export default function HomePage() {
                 {/* CTA band */}
                 <section className="mt-12 overflow-hidden rounded-3xl border border-brand-100 bg-brand-50/70 p-6 text-center sm:p-8">
                     <h2 className="text-xl font-bold tracking-tight text-stone-900 sm:text-2xl">
-                        Cần tư vấn chọn giường phù hợp?
+                        Cần tư vấn giường phù hợp?
                     </h2>
                     <p className="mx-auto mt-2 max-w-lg text-sm text-stone-600">
-                        Gọi hoặc chat Zalo, chúng tôi tư vấn kích thước, màu sắc
+                        Gọi hoặc chat Zalo, bên mình tư vấn kích thước, màu sắc
                         và báo giá trong vài phút.
                     </p>
                     <div className="mt-5 flex flex-wrap justify-center gap-3">

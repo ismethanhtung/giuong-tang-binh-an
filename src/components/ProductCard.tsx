@@ -42,14 +42,14 @@ export default function ProductCard({ product }: { product: Product }) {
                 href={`/san-pham/${product.slug}`}
                 className="flex flex-1 flex-col"
             >
-                {/* Ảnh sản phẩm chiếm ưu thế chính (tỉ lệ vuông 1:1 rõ nét) */}
+                {/* Ảnh sản phẩm: tỉ lệ chiều cao 0.85 (aspect-[20/17]) */}
                 <div className="relative overflow-hidden bg-stone-100">
                     <ProductImage
                         type={product.type}
                         color={product.color}
                         src={currentImage}
                         alt={product.name}
-                        className="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-102"
+                        className="aspect-[20/17] w-full object-cover transition-transform duration-300 group-hover:scale-102"
                     />
 
                     {/* Badge bên trái: kích thước, padding và font đồng bộ hoàn toàn với badge 'hàng như ảnh' bên phải */}
@@ -81,7 +81,7 @@ export default function ProductCard({ product }: { product: Product }) {
                                                     ? `Xem thêm ${remainingCount} ảnh nữa`
                                                     : `Xem ảnh ${idx + 1}`
                                             }
-                                            className={`relative h-8 w-8 sm:h-9 sm:w-9 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
+                                            className={`relative h-7.5 w-7.5 sm:h-8.5 sm:w-8.5 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
                                                 isActive
                                                     ? "border-brand-400 shadow-md opacity-100"
                                                     : "border-white/70 opacity-80 hover:opacity-100 hover:border-white"
@@ -107,11 +107,11 @@ export default function ProductCard({ product }: { product: Product }) {
                     )}
                 </div>
 
-                {/* Phần thông tin bên dưới tinh gọn và thanh thoát */}
-                <div className="flex flex-1 flex-col p-2.5 sm:p-3">
-                    {/* Tên sản phẩm gọn 1 dòng */}
+                {/* Phần thông tin bên dưới được tăng không gian và giãn cách thoáng hơn */}
+                <div className="flex flex-1 flex-col p-3 sm:p-3.5">
+                    {/* Tên sản phẩm co giãn tự nhiên: 1 dòng nếu ngắn, tối đa 2 dòng nếu dài */}
                     <h3
-                        className="line-clamp-1 text-xs sm:text-[13.5px] font-bold leading-snug text-stone-900 group-hover:text-brand-600 transition"
+                        className="line-clamp-2 text-xs sm:text-[13.5px] font-bold leading-snug text-stone-900 group-hover:text-brand-600 transition"
                         title={product.name}
                     >
                         {product.name}
@@ -119,28 +119,31 @@ export default function ProductCard({ product }: { product: Product }) {
 
                     {/* Mô tả sản phẩm gọn 1 dòng */}
                     {desc && (
-                        <p className="mt-0.5 line-clamp-1 text-[11px] leading-tight text-stone-500">
+                        <p className="mt-1 line-clamp-1 text-[11px] sm:text-xs leading-relaxed text-stone-500">
                             {desc}
                         </p>
                     )}
 
                     {/* Khu vực giá bán & nút thêm vào giỏ */}
-                    <div className="mt-auto pt-2 border-t border-stone-100 flex items-center justify-between gap-1.5">
+                    <div className="mt-auto pt-2.5 sm:pt-3 border-t border-stone-100 flex items-center justify-between gap-1.5">
                         <div className="flex flex-col min-w-0">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                                <span className="text-sm font-extrabold text-brand-600 sm:text-[15px] whitespace-nowrap">
-                                    {formatPrice(product.price)}
-                                </span>
-                                {discount > 0 && (
-                                    <span className="inline-flex items-center rounded bg-rose-50 px-1 py-0.5 text-[10px] font-bold text-rose-600 border border-rose-200/70 leading-none whitespace-nowrap">
-                                        -{discount}%
-                                    </span>
-                                )}
-                            </div>
+                            {/* Giá bán chính */}
+                            <span className="text-sm font-extrabold text-brand-600 sm:text-[15px] leading-tight whitespace-nowrap">
+                                {formatPrice(product.price)}
+                            </span>
+
+                            {/* Giá cũ và % giảm nằm chung 1 hàng ngay bên dưới, không bị rớt hàng */}
                             {product.oldPrice && (
-                                <span className="text-[11px] text-stone-400 line-through leading-none mt-0.5">
-                                    {formatPrice(product.oldPrice)}
-                                </span>
+                                <div className="mt-0.5 flex items-center gap-1.5 flex-nowrap">
+                                    <span className="text-[11px] text-stone-400 line-through leading-none whitespace-nowrap">
+                                        {formatPrice(product.oldPrice)}
+                                    </span>
+                                    {discount > 0 && (
+                                        <span className="inline-flex items-center rounded bg-rose-50 px-1 py-0.5 text-[9.5px] font-bold text-rose-600 border border-rose-200/70 leading-none whitespace-nowrap shrink-0">
+                                            -{discount}%
+                                        </span>
+                                    )}
+                                </div>
                             )}
                         </div>
 

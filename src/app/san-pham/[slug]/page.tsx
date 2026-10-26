@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { AddToCartFull } from "@/components/AddToCart";
 import ProductCard from "@/components/ProductCard";
 import ProductGallery from "@/components/ProductGallery";
-import { ShieldIcon, TruckIcon, WrenchIcon } from "@/components/icons";
+import { BadgeCheckIcon, ShieldIcon, TruckIcon } from "@/components/icons";
 import { formatPrice, getCategory } from "@/lib/products";
 import {
     getProductBySlugServer,
@@ -31,12 +31,6 @@ export async function generateMetadata({
     };
 }
 
-const trust = [
-    { icon: TruckIcon, text: "Giao & lắp đặt tận nhà" },
-    { icon: ShieldIcon, text: "Sắt thép Hoà Phát" },
-    { icon: WrenchIcon, text: "Hỗ trợ sửa chữa trọn đời" },
-];
-
 export default async function ProductDetailPage({
     params,
 }: {
@@ -45,6 +39,19 @@ export default async function ProductDetailPage({
     const { slug } = await params;
     const product = getProductBySlugServer(slug);
     if (!product) notFound();
+
+    const isIron =
+        product.category === "giuong-sat" ||
+        product.name.toLowerCase().includes("sắt") ||
+        Boolean(product.material?.toLowerCase().includes("sắt"));
+
+    const materialText = isIron ? "Sắt thép Hoà Phát" : "Chất lượng cao";
+
+    const trust = [
+        { icon: TruckIcon, text: "Giao & lắp đặt tận nhà" },
+        { icon: BadgeCheckIcon, text: materialText },
+        { icon: ShieldIcon, text: "An toàn chắc chắn" },
+    ];
 
     const allProducts = getProductsServer();
     const category = getCategory(product.category);
@@ -85,12 +92,7 @@ export default async function ProductDetailPage({
                 </div>
 
                 <div>
-                    {product.badge && (
-                        <span className="inline-block rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
-                            {product.badge}
-                        </span>
-                    )}
-                    <h1 className="mt-2 text-2xl font-extrabold leading-snug tracking-tight text-stone-900 sm:text-3xl">
+                    <h1 className="mb-2 text-2xl font-extrabold leading-snug tracking-tight text-stone-900 sm:text-3xl">
                         {product.name}
                     </h1>
 
