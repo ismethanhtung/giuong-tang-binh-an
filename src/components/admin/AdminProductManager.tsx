@@ -69,7 +69,9 @@ export default function AdminProductManager({
     const [isCreatingNew, setIsCreatingNew] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
-    const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(null);
+    const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(
+        null,
+    );
     const [isDeletingAll, setIsDeletingAll] = useState<boolean>(false);
     const [showManualFolderSelect, setShowManualFolderSelect] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -330,10 +332,16 @@ export default function AdminProductManager({
                 ? {
                       name: formName,
                       price: formPrice,
-                      oldPrice: formOldPrice && formOldPrice > 0 ? Number(formOldPrice) : null,
+                      oldPrice:
+                          formOldPrice && formOldPrice > 0
+                              ? Number(formOldPrice)
+                              : null,
                       description: formDescription,
                       shortDesc: formShortDesc,
-                      imageFolder: formImageFolder && formImageFolder.trim() !== "" ? formImageFolder.trim() : null,
+                      imageFolder:
+                          formImageFolder && formImageFolder.trim() !== ""
+                              ? formImageFolder.trim()
+                              : null,
                       category: formCategory,
                       featured: formFeatured,
                       adminPassword: "admin123",
@@ -343,10 +351,16 @@ export default function AdminProductManager({
                       id: editingProduct?.id,
                       name: formName,
                       price: formPrice,
-                      oldPrice: formOldPrice && formOldPrice > 0 ? Number(formOldPrice) : null,
+                      oldPrice:
+                          formOldPrice && formOldPrice > 0
+                              ? Number(formOldPrice)
+                              : null,
                       description: formDescription,
                       shortDesc: formShortDesc,
-                      imageFolder: formImageFolder && formImageFolder.trim() !== "" ? formImageFolder.trim() : null,
+                      imageFolder:
+                          formImageFolder && formImageFolder.trim() !== ""
+                              ? formImageFolder.trim()
+                              : null,
                       category: formCategory,
                       featured: formFeatured,
                       adminPassword: "admin123",
@@ -623,102 +637,6 @@ export default function AdminProductManager({
             </div>
 
             {/* Thư mục ảnh đã tìm thấy trong public/images */}
-            <div className="mt-8 rounded-2xl border border-stone-200 bg-stone-50/50 p-4 sm:p-5">
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <Folder className="h-4.5 w-4.5 text-brand-600" />
-                        <h2 className="text-sm font-bold text-stone-900">
-                            Các thư mục ảnh thực tế tìm thấy trong{" "}
-                            <code className="font-mono text-xs text-brand-700">
-                                public/images/
-                            </code>
-                        </h2>
-                    </div>
-                    <span className="text-xs font-medium text-stone-500">
-                        {folders.length} thư mục có sẵn
-                    </span>
-                </div>
-
-                <div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                    {folders.map((f) => {
-                        const linkedProduct = products.find(
-                            (p) => p.imageFolder === f.folder,
-                        );
-                        return (
-                            <div
-                                key={f.folder}
-                                className="flex flex-col justify-between rounded-xl border border-stone-200 bg-white p-3 shadow-2xs transition hover:border-brand-300"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between">
-                                        <span className="inline-flex items-center gap-1 rounded-md bg-stone-100 px-2 py-0.5 font-mono text-xs font-medium text-stone-700">
-                                            📂 {f.folder}
-                                        </span>
-                                        <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-700">
-                                            {f.imageCount} ảnh
-                                        </span>
-                                    </div>
-
-                                    {/* Sample images thumbnails */}
-                                    {f.sampleImages.length > 0 && (
-                                        <div className="mt-2.5 flex items-center gap-1.5 overflow-hidden rounded-lg bg-stone-50 p-1">
-                                            {f.sampleImages.map((src, i) => (
-                                                <div
-                                                    key={i}
-                                                    className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-stone-200"
-                                                >
-                                                    <Image
-                                                        src={src}
-                                                        alt=""
-                                                        fill
-                                                        className="object-cover"
-                                                        sizes="48px"
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-
-                                    {linkedProduct ? (
-                                        <p className="mt-2 text-xs text-stone-600">
-                                            Đã gắn vào:{" "}
-                                            <span className="font-semibold text-brand-700">
-                                                {linkedProduct.name}
-                                            </span>
-                                        </p>
-                                    ) : (
-                                        <p className="mt-2 text-xs font-medium text-amber-600">
-                                            ⚠️ Chưa gắn vào sản phẩm nào
-                                        </p>
-                                    )}
-                                </div>
-
-                                <div className="mt-3 flex items-center justify-end gap-2 border-t border-stone-100 pt-2">
-                                    {linkedProduct ? (
-                                        <button
-                                            onClick={() =>
-                                                openEditModal(linkedProduct)
-                                            }
-                                            className="text-xs font-bold text-brand-600 hover:text-brand-700"
-                                        >
-                                            Sửa sản phẩm này →
-                                        </button>
-                                    ) : (
-                                        <button
-                                            onClick={() =>
-                                                openCreateModal(f.folder)
-                                            }
-                                            className="text-xs font-bold text-emerald-600 hover:text-emerald-700"
-                                        >
-                                            + Tạo sản phẩm từ folder này
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            </div>
 
             {/* Search and Filters */}
             <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-2xs sm:flex-row sm:items-center sm:justify-between">
@@ -1128,7 +1046,8 @@ export default function AdminProductManager({
                                                     ảnh
                                                 </span>
                                                 {selectedFolderData &&
-                                                    selectedFolderData.imageCount > 0 && (
+                                                    selectedFolderData.imageCount >
+                                                        0 && (
                                                         <button
                                                             type="button"
                                                             onClick={() =>
@@ -1136,7 +1055,9 @@ export default function AdminProductManager({
                                                                     formImageFolder,
                                                                 )
                                                             }
-                                                            disabled={isDeletingAll}
+                                                            disabled={
+                                                                isDeletingAll
+                                                            }
                                                             className="inline-flex items-center gap-1 text-[11px] font-medium text-rose-600 transition hover:text-rose-700 hover:underline disabled:opacity-50"
                                                         >
                                                             {isDeletingAll ? (
@@ -1156,10 +1077,14 @@ export default function AdminProductManager({
                                                 selectedFolderData?.images ||
                                                 selectedFolderData?.sampleImages ||
                                                 [];
-                                            if (currentFolderImages.length === 0) {
+                                            if (
+                                                currentFolderImages.length === 0
+                                            ) {
                                                 return (
                                                     <div className="py-3 text-center text-xs text-stone-400 italic">
-                                                        Thư mục này chưa có file ảnh nào. Hãy tải ảnh lên ở trên!
+                                                        Thư mục này chưa có file
+                                                        ảnh nào. Hãy tải ảnh lên
+                                                        ở trên!
                                                     </div>
                                                 );
                                             }
@@ -1171,7 +1096,8 @@ export default function AdminProductManager({
                                                         <span className="font-bold text-rose-600">
                                                             thùng rác (🗑️)
                                                         </span>{" "}
-                                                        trên từng ảnh để xoá ảnh đó khỏi thư mục:
+                                                        trên từng ảnh để xoá ảnh
+                                                        đó khỏi thư mục:
                                                     </p>
                                                     <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
                                                         {currentFolderImages.map(
@@ -1181,7 +1107,9 @@ export default function AdminProductManager({
                                                                     className="group relative aspect-square overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs"
                                                                 >
                                                                     <Image
-                                                                        src={src}
+                                                                        src={
+                                                                            src
+                                                                        }
                                                                         alt={`Ảnh ${i + 1}`}
                                                                         fill
                                                                         className="object-cover transition group-hover:scale-105"
@@ -1191,18 +1119,24 @@ export default function AdminProductManager({
                                                                     {/* Nút xoá trên từng ảnh */}
                                                                     <button
                                                                         type="button"
-                                                                        onClick={(e) => {
+                                                                        onClick={(
+                                                                            e,
+                                                                        ) => {
                                                                             e.preventDefault();
                                                                             e.stopPropagation();
-                                                                            handleDeleteImage(src);
+                                                                            handleDeleteImage(
+                                                                                src,
+                                                                            );
                                                                         }}
                                                                         disabled={
-                                                                            deletingImageSrc === src
+                                                                            deletingImageSrc ===
+                                                                            src
                                                                         }
                                                                         title="Xoá ảnh này"
                                                                         className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full bg-rose-600/90 text-white shadow-md transition hover:bg-rose-700 hover:scale-110 active:scale-95 disabled:opacity-50"
                                                                     >
-                                                                        {deletingImageSrc === src ? (
+                                                                        {deletingImageSrc ===
+                                                                        src ? (
                                                                             <RefreshCw className="h-3 w-3 animate-spin" />
                                                                         ) : (
                                                                             <Trash2 className="h-3 w-3" />
