@@ -1,47 +1,58 @@
 import type { ComponentProps } from "react";
 import {
-    Home,
-    LayoutGrid,
-    ShoppingCart,
-    Search,
-    Phone,
-    MessageCircle,
-    MapPin,
-    Clock,
-    Star,
-    Plus,
-    Minus,
-    Trash2,
-    ChevronRight,
-    Check,
-    Truck,
-    ShieldCheck,
-    Wrench,
-    BadgeCheck,
     Award,
+    BadgeCheck,
+    Check,
+    ChevronDown,
+    ChevronLeft,
+    ChevronRight,
+    Clock,
+    Heart,
+    Home,
+    Image,
+    LayoutGrid,
+    MapPin,
+    MessageCircle,
+    Minus,
+    Phone,
+    Plus,
+    Search,
+    Share2,
+    ShieldCheck,
+    ShoppingCart,
+    Star,
+    Trash2,
+    Truck,
+    Wrench,
+    X,
 } from "lucide-react";
 
 export type IconProps = ComponentProps<typeof Home>;
 
-// Re-export Lucide icons with project-compatible names
 export const HomeIcon = Home;
 export const GridIcon = LayoutGrid;
 export const CartIcon = ShoppingCart;
 export const SearchIcon = Search;
 export const PhoneIcon = Phone;
-export const ChatIcon = MessageCircle;
+export const MessageIcon = MessageCircle;
 export const MapPinIcon = MapPin;
 export const ClockIcon = Clock;
 export const PlusIcon = Plus;
 export const MinusIcon = Minus;
 export const TrashIcon = Trash2;
 export const ChevronRightIcon = ChevronRight;
+export const ChevronLeftIcon = ChevronLeft;
+export const ChevronDownIcon = ChevronDown;
 export const CheckIcon = Check;
 export const TruckIcon = Truck;
 export const ShieldIcon = ShieldCheck;
 export const WrenchIcon = Wrench;
 export const BadgeCheckIcon = BadgeCheck;
 export const AwardIcon = Award;
+export const HeartIcon = Heart;
+export const ShareIcon = Share2;
+export const ImageIcon = Image;
+export const XIcon = X;
 
 export function StarIcon({ className = "", ...props }: IconProps) {
     return (
@@ -54,7 +65,6 @@ export function StarIcon({ className = "", ...props }: IconProps) {
     );
 }
 
-// Brand icons: Facebook, Messenger, Zalo
 export function FacebookIcon({
     className = "h-4 w-4",
     ...props
