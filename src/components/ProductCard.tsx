@@ -105,7 +105,7 @@ export default function ProductCard({
                                                 src={imgSrc}
                                                 alt=""
                                                 fill
-                                                className="object-contain p-0.5"
+                                                className="object-contain"
                                                 sizes="36px"
                                             />
                                             {isFourthSlotWithMore && (

@@ -58,14 +58,14 @@ export default function ProductGallery({
                     className="object-cover blur-2xl scale-125 opacity-35 select-none pointer-events-none"
                 />
 
-                {/* Ảnh chính hiển thị full 100% không cắt xén bất cứ chi tiết nào */}
+                {/* Ảnh chính hiển thị full 100% không padding, không cắt xén */}
                 <Image
                     src={activeImage}
                     alt={`${productName} - Ảnh ${activeIdx + 1}`}
                     fill
                     priority
                     sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-contain p-2 sm:p-3 transition-transform duration-300 group-hover:scale-102"
+                    className="object-contain transition-transform duration-300 group-hover:scale-102"
                 />
 
                 {/* Badge cam kết ảnh thật */}
@@ -133,7 +133,7 @@ export default function ProductGallery({
                                     alt={`Thumbnail ${idx + 1}`}
                                     fill
                                     sizes="72px"
-                                    className="object-contain p-0.5"
+                                    className="object-contain"
                                 />
                             </button>
                         );

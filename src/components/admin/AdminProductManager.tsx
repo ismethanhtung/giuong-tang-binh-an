@@ -1277,7 +1277,7 @@ export default function AdminProductManager({
                                                                         src={src}
                                                                         alt={`Ảnh ${i + 1}`}
                                                                         fill
-                                                                        className="object-contain p-1 transition group-hover:scale-105"
+                                                                        className="object-contain transition group-hover:scale-105"
                                                                         sizes="96px"
                                                                     />
 

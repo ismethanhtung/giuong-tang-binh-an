@@ -320,14 +320,14 @@ export default function ProductImage({
                     className="object-cover blur-xl scale-125 opacity-35 select-none pointer-events-none"
                 />
 
-                {/* Ảnh chính hiển thị trọn vẹn 100% full ảnh, không bị cắt xén bất cứ chi tiết nào */}
+                {/* Ảnh chính chiếm trọn vẹn 100% khung hình, không padding, không margin */}
                 <Image
                     src={src}
                     alt={alt}
                     fill
                     priority={priority}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                    className="object-contain p-1 sm:p-1.5 transition-transform duration-300 group-hover:scale-103"
+                    className="object-contain transition-transform duration-300 group-hover:scale-102"
                 />
 
                 {showHint && (
