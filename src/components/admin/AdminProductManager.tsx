@@ -31,6 +31,11 @@ import {
     ChevronDown,
     ChevronUp,
     Trash2,
+    Crop,
+    RotateCw,
+    ZoomIn,
+    ZoomOut,
+    Move,
 } from "lucide-react";
 
 type FolderInfo = {
@@ -75,6 +80,159 @@ export default function AdminProductManager({
     const [isDeletingAll, setIsDeletingAll] = useState<boolean>(false);
     const [showManualFolderSelect, setShowManualFolderSelect] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    // Trạng thái cắt ảnh vuông (Square Crop)
+    const [croppingImageSrc, setCroppingImageSrc] = useState<string | null>(null);
+    const [isCropping, setIsCropping] = useState<boolean>(false);
+    const [cropZoom, setCropZoom] = useState<number>(1);
+    const [cropRotation, setCropRotation] = useState<number>(0);
+    const [cropPan, setCropPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+    const isDraggingRef = useRef(false);
+    const dragStartRef = useRef({ x: 0, y: 0 });
+    const panStartRef = useRef({ x: 0, y: 0 });
+    const cropContainerRef = useRef<HTMLDivElement>(null);
+    const cropImgRef = useRef<HTMLImageElement>(null);
+
+    const openCropModal = (src: string) => {
+        setCroppingImageSrc(src);
+        setCropZoom(1);
+        setCropRotation(0);
+        setCropPan({ x: 0, y: 0 });
+    };
+
+    const closeCropModal = () => {
+        setCroppingImageSrc(null);
+        setIsCropping(false);
+    };
+
+    // Hàm tự động cắt ảnh vuông ở tâm ảnh khi chọn file
+    const cropFileToSquareCenter = (file: File): Promise<File> => {
+        return new Promise((resolve) => {
+            const img = new window.Image();
+            const objectUrl = URL.createObjectURL(file);
+            img.onload = () => {
+                URL.revokeObjectURL(objectUrl);
+                const size = Math.min(img.naturalWidth, img.naturalHeight);
+                const canvas = document.createElement("canvas");
+                const targetDim = Math.min(size, 1600);
+                canvas.width = targetDim;
+                canvas.height = targetDim;
+                const ctx = canvas.getContext("2d");
+                if (!ctx) {
+                    resolve(file);
+                    return;
+                }
+                const sx = (img.naturalWidth - size) / 2;
+                const sy = (img.naturalHeight - size) / 2;
+                ctx.drawImage(img, sx, sy, size, size, 0, 0, targetDim, targetDim);
+                canvas.toBlob(
+                    (blob) => {
+                        if (!blob) {
+                            resolve(file);
+                            return;
+                        }
+                        const croppedFile = new File([blob], file.name, {
+                            type: file.type || "image/jpeg",
+                            lastModified: Date.now(),
+                        });
+                        resolve(croppedFile);
+                    },
+                    file.type === "image/png" ? "image/png" : "image/jpeg",
+                    0.92,
+                );
+            };
+            img.onerror = () => {
+                URL.revokeObjectURL(objectUrl);
+                resolve(file);
+            };
+            img.src = objectUrl;
+        });
+    };
+
+    // Hàm lưu ảnh cắt từ Crop Modal và ghi đè trực tiếp
+    const handleSaveCroppedImage = async () => {
+        if (!croppingImageSrc || !cropContainerRef.current || !cropImgRef.current) return;
+        setIsCropping(true);
+
+        try {
+            const container = cropContainerRef.current;
+            const img = cropImgRef.current;
+            const containerRect = container.getBoundingClientRect();
+            const containerSize = containerRect.width;
+
+            const canvas = document.createElement("canvas");
+            const outSize = 1200;
+            canvas.width = outSize;
+            canvas.height = outSize;
+            const ctx = canvas.getContext("2d");
+            if (!ctx) throw new Error("Không thể khởi tạo canvas");
+
+            const scaleFactor = outSize / containerSize;
+
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, outSize, outSize);
+
+            ctx.save();
+            ctx.translate(outSize / 2, outSize / 2);
+            ctx.translate(cropPan.x * scaleFactor, cropPan.y * scaleFactor);
+            ctx.rotate((cropRotation * Math.PI) / 180);
+            ctx.scale(cropZoom, cropZoom);
+
+            const imgAspect = img.naturalWidth / img.naturalHeight;
+            let drawW = containerSize;
+            let drawH = containerSize;
+            if (imgAspect > 1) {
+                drawW = containerSize * imgAspect;
+                drawH = containerSize;
+            } else {
+                drawW = containerSize;
+                drawH = containerSize / imgAspect;
+            }
+
+            const outDrawW = drawW * scaleFactor;
+            const outDrawH = drawH * scaleFactor;
+
+            ctx.drawImage(img, -outDrawW / 2, -outDrawH / 2, outDrawW, outDrawH);
+            ctx.restore();
+
+            const blob = await new Promise<Blob | null>((res) =>
+                canvas.toBlob(res, "image/jpeg", 0.92),
+            );
+            if (!blob) throw new Error("Lỗi trích xuất ảnh");
+
+            const fileName = croppingImageSrc.split("/").pop() || "cropped.jpg";
+            const croppedFile = new File([blob], fileName, { type: "image/jpeg" });
+
+            const formData = new FormData();
+            formData.append("adminPassword", "admin123");
+            formData.append("replacePath", croppingImageSrc);
+            formData.append("files", croppedFile);
+
+            const res = await fetch("/api/upload", {
+                method: "POST",
+                headers: {
+                    "x-admin-password": "admin123",
+                },
+                body: formData,
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                showToast("Đã cắt và lưu ảnh vuông 1:1 thành công!");
+                if (data.folders) setFolders(data.folders);
+                if (data.products) setProducts(data.products);
+                closeCropModal();
+                handleRefreshFolders();
+            } else {
+                showToast("Lỗi lưu ảnh: " + data.error, "error");
+            }
+        } catch (err) {
+            showToast("Lỗi khi cắt ảnh: " + (err as Error).message, "error");
+        } finally {
+            setIsCropping(false);
+        }
+    };
 
     const [toastMessage, setToastMessage] = useState<{
         text: string;
@@ -986,6 +1144,7 @@ export default function AdminProductManager({
 
                                 {/* Nút tải ảnh & khung kéo thả */}
                                 <div className="mt-3.5">
+                                    
                                     <input
                                         ref={fileInputRef}
                                         type="file"
@@ -1115,6 +1274,20 @@ export default function AdminProductManager({
                                                                         className="object-cover transition group-hover:scale-105"
                                                                         sizes="96px"
                                                                     />
+
+                                                                    {/* Nút cắt chỉnh ảnh vuông 1:1 */}
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={(e) => {
+                                                                            e.preventDefault();
+                                                                            e.stopPropagation();
+                                                                            openCropModal(src);
+                                                                        }}
+                                                                        title="Cắt căn chỉnh ảnh vuông 1:1"
+                                                                        className="absolute top-1 left-1 grid h-6 w-6 place-items-center rounded-full bg-brand-600/90 text-white shadow-md transition hover:bg-brand-700 hover:scale-110 active:scale-95"
+                                                                    >
+                                                                        <Crop className="h-3 w-3" />
+                                                                    </button>
 
                                                                     {/* Nút xoá trên từng ảnh */}
                                                                     <button
@@ -1282,6 +1455,188 @@ export default function AdminProductManager({
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* MODAL CẮT ẢNH VUÔNG 1:1 THỦ CÔNG */}
+            {croppingImageSrc && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-3 sm:p-4 backdrop-blur-sm animate-fade-in">
+                    <div className="relative flex max-h-[94vh] w-full max-w-lg flex-col overflow-hidden rounded-3xl bg-white shadow-2xl">
+                        {/* Header */}
+                        <div className="flex items-center justify-between border-b border-stone-100 px-5 py-4">
+                            <div className="flex items-center gap-2.5">
+                                <div className="grid h-8 w-8 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                                    <Crop className="h-4 w-4" />
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-bold text-stone-900">
+                                        Cắt căn chỉnh ảnh vuông 1:1
+                                    </h3>
+                                    <p className="text-[11px] text-stone-500">
+                                        Kéo thả di chuyển, phóng to hoặc xoay để góc chụp ưng ý nhất
+                                    </p>
+                                </div>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={closeCropModal}
+                                className="grid h-8 w-8 place-items-center rounded-full text-stone-400 hover:bg-stone-100 hover:text-stone-700"
+                            >
+                                <X className="h-4 w-4" />
+                            </button>
+                        </div>
+
+                        {/* Viewport khung cắt vuông 1:1 */}
+                        <div className="flex-1 overflow-y-auto p-4 sm:p-5">
+                            <div
+                                ref={cropContainerRef}
+                                onMouseDown={(e) => {
+                                    isDraggingRef.current = true;
+                                    dragStartRef.current = { x: e.clientX, y: e.clientY };
+                                    panStartRef.current = { ...cropPan };
+                                }}
+                                onMouseMove={(e) => {
+                                    if (!isDraggingRef.current) return;
+                                    const dx = e.clientX - dragStartRef.current.x;
+                                    const dy = e.clientY - dragStartRef.current.y;
+                                    setCropPan({
+                                        x: panStartRef.current.x + dx,
+                                        y: panStartRef.current.y + dy,
+                                    });
+                                }}
+                                onMouseUp={() => { isDraggingRef.current = false; }}
+                                onMouseLeave={() => { isDraggingRef.current = false; }}
+                                onTouchStart={(e) => {
+                                    if (e.touches.length === 1) {
+                                        isDraggingRef.current = true;
+                                        dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                                        panStartRef.current = { ...cropPan };
+                                    }
+                                }}
+                                onTouchMove={(e) => {
+                                    if (!isDraggingRef.current || e.touches.length !== 1) return;
+                                    const dx = e.touches[0].clientX - dragStartRef.current.x;
+                                    const dy = e.touches[0].clientY - dragStartRef.current.y;
+                                    setCropPan({
+                                        x: panStartRef.current.x + dx,
+                                        y: panStartRef.current.y + dy,
+                                    });
+                                }}
+                                onTouchEnd={() => { isDraggingRef.current = false; }}
+                                className="relative aspect-square w-full max-w-[340px] sm:max-w-[380px] mx-auto overflow-hidden rounded-2xl bg-stone-950 border-2 border-brand-500 shadow-xl cursor-grab active:cursor-grabbing select-none"
+                            >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    ref={cropImgRef}
+                                    src={croppingImageSrc}
+                                    alt="Ảnh đang cắt"
+                                    crossOrigin="anonymous"
+                                    draggable={false}
+                                    style={{
+                                        transform: `translate(${cropPan.x}px, ${cropPan.y}px) scale(${cropZoom}) rotate(${cropRotation}deg)`,
+                                        transformOrigin: "center center",
+                                        transition: isDraggingRef.current ? "none" : "transform 0.08s ease-out",
+                                    }}
+                                    className="absolute inset-0 m-auto h-full w-full object-contain pointer-events-none"
+                                />
+
+                                {/* Lưới 3x3 hỗ trợ căn bố cục */}
+                                <div className="pointer-events-none absolute inset-0 grid grid-cols-3 grid-rows-3">
+                                    <div className="border-r border-b border-white/25" />
+                                    <div className="border-r border-b border-white/25" />
+                                    <div className="border-b border-white/25" />
+                                    <div className="border-r border-b border-white/25" />
+                                    <div className="border-r border-b border-white/25" />
+                                    <div className="border-b border-white/25" />
+                                    <div className="border-r border-b border-white/25" />
+                                    <div className="border-r border-b border-white/25" />
+                                    <div />
+                                </div>
+
+                                {/* Badge tỉ lệ 1:1 */}
+                                <div className="pointer-events-none absolute top-2 right-2 rounded-md bg-black/60 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur">
+                                    Vuông 1:1
+                                </div>
+                            </div>
+
+                            {/* Thanh công cụ điều khiển Zoom & Xoay */}
+                            <div className="mt-4 space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <ZoomOut className="h-4 w-4 text-stone-400 shrink-0" />
+                                    <input
+                                        type="range"
+                                        min="1"
+                                        max="3"
+                                        step="0.05"
+                                        value={cropZoom}
+                                        onChange={(e) => setCropZoom(parseFloat(e.target.value))}
+                                        className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-stone-200 accent-brand-600"
+                                    />
+                                    <ZoomIn className="h-4 w-4 text-stone-600 shrink-0" />
+                                    <span className="w-10 text-right text-xs font-mono font-bold text-stone-700">
+                                        {Math.round(cropZoom * 100)}%
+                                    </span>
+                                </div>
+
+                                <div className="flex items-center justify-between gap-2 pt-1 text-xs">
+                                    <div className="flex items-center gap-2">
+                                        <button
+                                            type="button"
+                                            onClick={() => setCropRotation((r) => (r + 90) % 360)}
+                                            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 font-semibold text-stone-700 hover:bg-stone-100 active:scale-95 transition"
+                                        >
+                                            <RotateCw className="h-3.5 w-3.5" />
+                                            Xoay 90°
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setCropZoom(1);
+                                                setCropRotation(0);
+                                                setCropPan({ x: 0, y: 0 });
+                                            }}
+                                            className="rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 font-semibold text-stone-600 hover:bg-stone-100 active:scale-95 transition"
+                                        >
+                                            Đặt lại
+                                        </button>
+                                    </div>
+                                    <span className="text-[11px] text-stone-400">
+                                        Chuẩn 1200x1200px
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Footer Buttons */}
+                        <div className="flex items-center justify-end gap-2.5 border-t border-stone-100 bg-stone-50/60 px-5 py-3.5">
+                            <button
+                                type="button"
+                                onClick={closeCropModal}
+                                disabled={isCropping}
+                                className="rounded-xl border border-stone-200 bg-white px-4 py-2 text-xs font-bold text-stone-600 hover:bg-stone-100 transition"
+                            >
+                                Huỷ
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleSaveCroppedImage}
+                                disabled={isCropping}
+                                className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2 text-xs font-bold text-white shadow-md shadow-brand-600/20 hover:bg-brand-700 active:scale-95 transition disabled:opacity-50"
+                            >
+                                {isCropping ? (
+                                    <>
+                                        <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+                                        <span>Đang cắt & lưu...</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Check className="h-3.5 w-3.5" />
+                                        <span>Cắt & Lưu ảnh vuông</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

@@ -1,729 +1,729 @@
 [
-    {
-        "slug": "giuong-tang-sat-1m-1m-khong-hoc",
-        "name": "Giường tầng sắt 1m – 1m",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 3100000,
-        "badge": "Tiết kiệm",
-        "featured": true,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Trên 1m dưới 1m, chắc chắn, không rung lắc.",
-        "description": "Giường tầng sắt kích thước trên 1m dưới 1m tối ưu diện tích cho phòng nhỏ, ký túc xá, homestay. Khung sắt hộp Hoà Phát dày dặn chịu tải cao, sơn tĩnh điện cao cấp bền màu, chống bong tróc và rỉ sét.",
-        "color": "#3bb39a",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
-            },
-            {
-                "label": "Tải trọng",
-                "value": "~250kg/tầng"
-            },
-            {
-                "label": "Quy cách",
-                "value": "Sắt thép Hoà Phát loại 1"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m-1m-khong-hoc/1792838656798_1_828615684_2471157629960440_6313605761606662100_n.jpg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m-1m-khong-hoc"
-    },
-    {
-        "slug": "giuong-tang-sat-1m-1m-co-hoc",
-        "name": "Giường tầng sắt 1m – 1m (thêm hộc)",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 4400000,
-        "oldPrice": 5100000,
-        "badge": "Tiện ích",
-        "featured": false,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Trên 1m dưới 1m kèm hộc kéo tiện dụng.",
-        "description": "Mẫu giường tầng sắt hộp Hoà Phát trên 1m dưới 1m tích hợp thêm 2 hộc kéo chứa đồ lớn dưới gầm, tiết kiệm tối đa diện tích phòng ngủ và giữ phòng luôn ngăn nắp.",
-        "color": "#3bb39a",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m"
-            },
-            {
-                "label": "Hộc tủ",
-                "value": "2 hộc kéo chứa đồ rộng rãi"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
-            },
-            {
-                "label": "Quy cách",
-                "value": "Sắt thép Hoà Phát loại 1"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m-1m-co-hoc/1792838646947_1_749231852_1066020789434932_1562471271653142916_n.jpg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m-1m-co-hoc"
-    },
-    {
-        "slug": "giuong-tang-sat-1m-1m2-khong-hoc",
-        "name": "Giường tầng sắt 1m – 1m2",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 3400000,
-        "oldPrice": 3900000,
-        "badge": "Bán chạy",
-        "featured": true,
-        "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m, khung hộp vững chắc.",
-        "description": "Giường tầng sắt hộp cao cấp Hòa Phát, kích thước tiêu chuẩn tầng trên 1m tầng dưới 1m2 phù hợp phòng gia đình, nhà trọ, ký túc xá. Sơn tĩnh điện chống trầy xước, không rỉ sét, chịu lực tối đa tới 250kg mỗi tầng. Hàng thực tế 100% như ảnh chụp tại xưởng.",
-        "color": "#3bb39a",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hòa Phát, sơn tĩnh điện"
-            },
-            {
-                "label": "Tải trọng",
-                "value": "~250kg/tầng"
-            },
-            {
-                "label": "Sắt thép",
-                "value": "Sắt thép Hoà Phát"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m-1m2-khong-hoc/1792838557641_1_67de4d28-6143-44a5-aff3-dd6164f3b984.jpeg"
-        ]
-    },
-    {
-        "slug": "giuong-tang-sat-1m-1m2-co-hoc",
-        "name": "Giường tầng sắt 1m – 1m2 (thêm hộc)",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 4700000,
-        "oldPrice": 5400000,
-        "badge": "Đa năng",
-        "featured": false,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m kèm hộc kéo tiện dụng.",
-        "description": "Giường tầng sắt tầng trên 1m tầng dưới 1m2 kết hợp hộc kéo gầm giường rộng rãi. Sắt thép Hoà Phát dày dặn dập gân chịu lực, sơn tĩnh điện mịn đẹp.",
-        "color": "#3bb39a",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
-            },
-            {
-                "label": "Hộc kéo",
-                "value": "Có hộc kéo tiện lợi gầm giường"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
-            },
-            {
-                "label": "Sắt thép",
-                "value": "Sắt thép Hoà Phát"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m-1m2-co-hoc/1792838542377_1_c8699bd0-93d9-40b8-8d3b-bf834bf209cb.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc"
-    },
-    {
-        "slug": "giuong-tang-sat-1m2-1m4-khong-hoc",
-        "name": "Giường tầng sắt 1m2 – 1m4",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 3700000,
-        "oldPrice": 4300000,
-        "badge": "Mẫu mới",
-        "featured": true,
-        "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-khong-hoc",
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2, chắc chắn, không rung lắc.",
-        "description": "Mẫu giường tầng sắt rộng rãi dành cho cả người lớn và trẻ em. Tầng dưới 1m4 thoải mái cho 2 người nằm, tầng trên 1m2 có lan can an toàn cao. Gia công bằng sắt thép Hòa Phát loại 1, mối hàn ngấu đẹp và sơn tĩnh điện bền màu.",
-        "color": "#38a3a5",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
-            },
-            {
-                "label": "Khung trụ",
-                "value": "Sắt hộp Hoà Phát dày dặn"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt thép Hoà Phát sơn tĩnh điện"
-            },
-            {
-                "label": "Lan can",
-                "value": "Cao 35cm an toàn tuyệt đối"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m2-1m4-khong-hoc/1792838512908_1_490632332826732020_1_.jpg"
-        ]
-    },
-    {
-        "slug": "giuong-tang-sat-1m2-1m4-co-hoc",
-        "name": "Giường tầng sắt 1m2 – 1m4 (thêm hộc)",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 5000000,
-        "oldPrice": 5800000,
-        "badge": "Sang trọng",
-        "featured": false,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2 kèm hộc kéo tiện lợi.",
-        "description": "Phiên bản có hộc của giường tầng 1m2 - 1m4. Hộc kéo gầm giường ray trượt êm nhẹ, chứa chăn ga gối đệm dễ dàng. Khung sắt hộp Hoà Phát sơn tĩnh điện bền đẹp.",
-        "color": "#38a3a5",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
-            },
-            {
-                "label": "Hộc tủ",
-                "value": "Hộc kéo trượt nhẹ nhàng"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m2-1m4-co-hoc/1792838490860_1_cbd2726d-2295-41dc-b39a-3a424715c7b3.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-co-hoc"
-    },
-    {
-        "slug": "giuong-tang-sat-1m4-1m6-khong-hoc",
-        "name": "Giường tầng sắt 1m4 – 1m6",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 4500000,
-        "oldPrice": 5200000,
-        "badge": "Cỡ đại",
-        "featured": true,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4, chịu tải cực lớn.",
-        "description": "Giường tầng kích thước đại: tầng trên 1m4, tầng dưới 1m6 nằm được 3-4 người thoải mái. Khung cột sắt hộp Hoà Phát khổ lớn dập gân siêu chắc chắn, không phát ra tiếng kêu kẽo kẹt.",
-        "color": "#2a7065",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát dày dặn, sơn tĩnh điện"
-            },
-            {
-                "label": "Tải trọng",
-                "value": "~350kg/tầng"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m4-1m6-khong-hoc/1792838477477_1_490632332826732020_3_.jpg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-khong-hoc"
-    },
-    {
-        "slug": "giuong-tang-sat-1m4-1m6-co-hoc",
-        "name": "Giường tầng sắt 1m4 – 1m6 (thêm hộc)",
-        "category": "giuong-sat",
-        "type": "bunk",
-        "price": 5800000,
-        "oldPrice": 6600000,
-        "badge": "Cao cấp",
-        "featured": false,
-        "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4 kèm hộc kéo tiện dụng.",
-        "description": "Mẫu giường tầng cỡ lớn 1m4 - 1m6 tích hợp hệ hộc kéo tiện ích. Thiết kế vững chắc, an toàn tuyệt đối cho người lớn và trẻ nhỏ, chịu lực tốt.",
-        "color": "#2a7065",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
-            },
-            {
-                "label": "Hộc tủ",
-                "value": "Hộc kéo lớn tối ưu không gian"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt thép Hoà Phát loại 1"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-tang-sat-1m4-1m6-co-hoc/1792838462176_1_f76b2637-b608-4830-bd66-82079d0b2c47.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-co-hoc"
-    },
-    {
-        "slug": "giuong-don-go-soi",
-        "name": "Giường đơn gỗ sồi",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 2200000,
-        "badge": "Gỗ tự nhiên",
-        "featured": true,
-        "shortDesc": "Gỗ sồi tự nhiên màu sáng đẹp, đã tẩm sấy chống cong vênh mối mọt.",
-        "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
-        "color": "#d4a373",
-        "variants": [
-            {
-                "label": "1m2",
-                "price": 2200000
-            },
-            {
-                "label": "1m4",
-                "price": 2400000
-            },
-            {
-                "label": "1m6",
-                "price": 2400000
-            },
-            {
-                "label": "1m8",
-                "price": 2700000
-            }
-        ],
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6 / 1m8"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ sồi tự nhiên tẩm sấy"
-            },
-            {
-                "label": "Bề mặt",
-                "value": "Sơn PU bóng mờ giữ vân gỗ"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-don-go-soi"
-    },
-    {
-        "slug": "giuong-don-go-soi-giat-phan",
-        "name": "Giường đơn gỗ sồi (giạt phản)",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 4100000,
-        "badge": "Giát phản",
-        "featured": true,
-        "shortDesc": "Gỗ sồi tự nhiên phiên bản giát phản cao cấp, chịu lực tốt, nằm êm mát.",
-        "description": "Giường ngủ gỗ sồi tự nhiên giát phản sang trọng với mặt giát phản nguyên tấm dày dặn, phẳng mịn. Gỗ sồi đã qua xử lý sấy công nghệ cao chống co ngót, mối mọt, mang lại sự bền bỉ và đẳng cấp.",
-        "color": "#d4a373",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m6 / 1m8"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ sồi tự nhiên tẩm sấy"
-            },
-            {
-                "label": "Kiểu dát",
-                "value": "Giát phản cao cấp chịu lực"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-don-go-soi-giat-phan"
-    },
-    {
-        "slug": "giuong-don-go-xoan-dao-xin",
-        "name": "Giường đơn gỗ xoan đào xịn",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 2700000,
-        "oldPrice": 3200000,
-        "badge": "Gỗ tuyển chọn",
-        "featured": true,
-        "shortDesc": "Xoan đào tự nhiên loại xịn đanh chắc, vân gỗ đỏ sậm sang trọng.",
-        "description": "Giường ngủ gỗ xoan đào xịn tuyển chọn từng thớ gỗ đanh, chắc nịch và nặng tay. Màu cánh gián sang trọng truyền thống, độ bền hàng chục năm không lo hỏng hóc hay ọp ẹp.",
-        "color": "#bc6c25",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m4 / 1m6"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ xoan đào tự nhiên xịn"
-            },
-            {
-                "label": "Đặc tính",
-                "value": "Gỗ đanh chắc, chịu lực cao"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-don-go-xoan-dao-xin/1792838436094_1_734081ff-5612-4754-8465-19c756a545e9.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-don-go-xoan-dao-xin"
-    },
-    {
-        "slug": "giuong-don-go-xoan-thuong",
-        "name": "Giường đơn gỗ xoan thường",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 1900000,
-        "oldPrice": 2300000,
-        "badge": "Giá bình dân",
-        "featured": false,
-        "shortDesc": "Gỗ xoan tự nhiên bền chắc, giá xưởng bình dân tiết kiệm chi phí.",
-        "description": "Lựa chọn tiết kiệm tối đa cho gia đình, nhà trọ và công trình. Khung gỗ xoan tự nhiên gia công chắc chắn, mộng gỗ chuẩn xác, bề mặt sơn PU bóng sạch dễ vệ sinh.",
-        "color": "#c48b59",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m2 / 1m4"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ xoan tự nhiên"
-            },
-            {
-                "label": "Ưu điểm",
-                "value": "Giá tận xưởng, tiết kiệm"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-don-go-xoan-thuong/1792838429044_1_5979c2e2-424c-487b-b4ab-7748a18ba394.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-don-go-xoan-thuong"
-    },
-    {
-        "slug": "giuong-don-go-huong-xam",
-        "name": "Giường Hương Xám",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 3400000,
-        "oldPrice": 3800000,
-        "badge": "Cao cấp",
-        "featured": true,
-        "shortDesc": "Gỗ hương xám cao cấp, vân gỗ cuộn tuyệt đẹp, chất gỗ đanh bền bỉ.",
-        "description": "Giường ngủ gỗ hương xám thuộc phân khúc cao cấp với những đường vân gỗ độc đáo, uốn lượn sắc sảo. Thớ gỗ mịn, nặng, chống cong vênh và mang lại vẻ đẹp bề thế cho phòng ngủ.",
-        "color": "#8c6239",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m6 / 1m8"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ hương xám cao cấp"
-            },
-            {
-                "label": "Đặc tính",
-                "value": "Vân gỗ cuộn tự nhiên, gỗ đanh nặng"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-don-go-huong-xam/1792838416445_1_b84d2047-c6c6-4e2f-bab0-00ef0f1faed2.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-don-go-huong-xam",
-        "variants": [
-            {
-                "label": "1m6",
-                "price": 3400000
-            },
-            {
-                "label": "1m8",
-                "price": 3900000
-            }
-        ]
-    },
-    {
-        "slug": "giuong-sat-don-boc-nem",
-        "name": "Giường sắt bọc nệm",
-        "category": "giuong-sat",
-        "type": "bed",
-        "price": 2600000,
-        "oldPrice": 3200000,
-        "badge": "Êm ái",
-        "featured": true,
-        "shortDesc": "Sắt hộp Hoà Phát sơn tĩnh điện, đầu giường bọc nệm êm ái hiện đại.",
-        "description": "Mẫu giường sắt đơn thế hệ mới với đầu giường bọc đệm êm ái, tạo cảm giác dễ chịu khi tựa lưng đọc sách hay lướt điện thoại. Khung sắt hộp Hoà Phát phủ sơn tĩnh điện nhám mịn, chống xước và cực kỳ vững chãi.",
-        "color": "#2a9d8f",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6"
-            },
-            {
-                "label": "Đầu giường",
-                "value": "Bọc đệm mút êm ái"
-            },
-            {
-                "label": "Khung giường",
-                "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-sat-don-boc-nem/1792838397467_1_372beca2-6773-48b9-953b-60a350315c75.jpeg"
-        ],
-        "imageFolder": "giuong/giuong-sat-don-boc-nem"
-    },
-    {
-        "slug": "giuong-sat-don-khong-boc",
-        "name": "Giường sắt không bọc (sắt hộp)",
-        "category": "giuong-sat",
-        "type": "bed",
-        "price": 2300000,
-        "oldPrice": 2800000,
-        "badge": "Giá xưởng",
-        "featured": true,
-        "imageFolder": "giuong/giuong-sat-don-khong-boc",
-        "shortDesc": "Sắt hộp Hoà Phát sơn tĩnh điện cao cấp, siêu bền, lau chùi dễ dàng.",
-        "description": "Giường sắt đơn không bọc thiết kế tối giản, sạch sẽ và siêu bền. Sử dụng hoàn toàn sắt hộp Hoà Phát chịu lực cao, sơn tĩnh điện chống rỉ sét tuyệt đối. Hàng thực tế chụp trực tiếp tại xưởng.",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
-            },
-            {
-                "label": "Ưu điểm",
-                "value": "Dễ vệ sinh, siêu chắc chắn"
-            }
-        ],
-        "images": [
-            "/images/giuong/giuong-sat-don-khong-boc/1792838386222_1_6884e0e3-e73f-44c6-ba5e-978ec127f05e.jpeg"
-        ]
-    },
-    {
-        "slug": "giuong-huong-phan",
-        "name": "Giường Hương phản",
-        "category": "giuong-go",
-        "type": "bed",
-        "price": 4700000,
-        "badge": "Cao cấp",
-        "featured": true,
-        "shortDesc": "Gỗ hương tự nhiên giát phản cao cấp, vân gỗ sang trọng, nằm êm mát.",
-        "description": "Mẫu giường gỗ hương giát phản sang trọng với mặt phản phẳng mịn, chịu lực cực tốt. Thớ gỗ hương tự nhiên đanh chắc, vân gỗ sắc sảo, chống mối mọt cong vênh.",
-        "color": "#9a4b37",
-        "variants": [
-            {
-                "label": "1m6",
-                "price": 4700000
-            },
-            {
-                "label": "1m8",
-                "price": 5000000
-            }
-        ],
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Dài 2m x Rộng 1m6 / 1m8"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ hương tự nhiên"
-            },
-            {
-                "label": "Giát giường",
-                "value": "Giát phản cao cấp"
-            }
-        ],
-        "images": [
-            "/images/products/giuong-go-tu-nhien-cam-lai.jpg"
-        ],
-        "imageFolder": "giuong/giuong-huong-phan"
-    },
-    {
-        "slug": "tu-tho-go-cam-xe",
-        "name": "Tủ thờ gỗ căm xe",
-        "category": "khac",
-        "type": "wardrobe",
-        "price": 4500000,
-        "badge": "Gỗ căm xe",
-        "featured": true,
-        "shortDesc": "Gỗ căm xe tự nhiên chắc nặng, chạm khắc hoa văn tinh xảo, độ bền truyền đời.",
-        "description": "Tủ thờ chế tác từ gỗ căm xe tự nhiên tuyển chọn, thớ gỗ chắc nặng, chống mối mọt tuyệt đối. Hoàn thiện sơn bóng PU cao cấp, trang nghiêm cho không gian thờ phụng.",
-        "color": "#7a3b2e",
-        "variants": [
-            {
-                "label": "1m2",
-                "price": 4500000
-            },
-            {
-                "label": "1m4",
-                "price": 5000000
-            },
-            {
-                "label": "1m6",
-                "price": 5300000
-            }
-        ],
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Ngang 1m2 / 1m4 / 1m6"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ căm xe tự nhiên"
-            },
-            {
-                "label": "Hoàn thiện",
-                "value": "Sơn bóng PU cao cấp"
-            }
-        ],
-        "images": [
-            "/images/products/tu-dau-giuong-go.jpg"
-        ],
-        "imageFolder": "tu/tu-tho-go-cam-xe"
-    },
-    {
-        "slug": "tu-tho-go-huong",
-        "name": "Tủ thờ gỗ hương",
-        "category": "khac",
-        "type": "wardrobe",
-        "price": 4500000,
-        "badge": "Gỗ hương",
-        "featured": true,
-        "shortDesc": "Gỗ hương tự nhiên cao cấp, vân gỗ sang trọng, trang nghiêm chuẩn phong thuỷ.",
-        "description": "Tủ thờ gỗ hương tự nhiên với thớ gỗ mịn đanh, màu sắc ấm cúng sang trọng và vân gỗ cuộn tự nhiên. Thiết kế chuẩn thước Lỗ Ban mang lại bình an, tài lộc.",
-        "color": "#8c4a32",
-        "variants": [
-            {
-                "label": "1m2",
-                "price": 4500000
-            },
-            {
-                "label": "1m4",
-                "price": 5000000
-            },
-            {
-                "label": "1m6",
-                "price": 5300000
-            }
-        ],
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Ngang 1m2 / 1m4 / 1m6"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ hương tự nhiên"
-            },
-            {
-                "label": "Hoàn thiện",
-                "value": "Sơn PU bóng mờ cao cấp"
-            }
-        ],
-        "images": [
-            "/images/products/tu-dau-giuong-go.jpg"
-        ],
-        "imageFolder": "tu/tu-tho-go-huong"
-    },
-    {
-        "slug": "tu-go-cong-nghiep-3-canh",
-        "name": "Tủ gỗ công nghiệp 3 cánh",
-        "category": "tu-go",
-        "type": "wardrobe",
-        "price": 2800000,
-        "badge": "Hiện đại",
-        "featured": false,
-        "shortDesc": "Tủ áo gỗ công nghiệp 3 cánh hiện đại, chống ẩm tốt, chia ngăn tiện lợi.",
-        "description": "Tủ quần áo gỗ công nghiệp MDF phủ Melamine chống trầy xước, chống ẩm. Thiết kế 3 cánh mở rộng rãi, nhiều ngăn xếp và buồng treo đồ tiện dụng cho phòng ngủ gia đình.",
-        "color": "#d5bdaf",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Rộng 1m2 x Cao 2m x Sâu 55cm"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ công nghiệp MDF phủ Melamine"
-            },
-            {
-                "label": "Cấu tạo",
-                "value": "3 cánh mở, hộc kéo tiện lợi"
-            }
-        ],
-        "images": [
-            "/images/products/tu-quan-ao-3-canh.jpg"
-        ],
-        "imageFolder": "tu/tu-go-cong-nghiep-3-canh"
-    },
-    {
-        "slug": "tu-huong-xam-3-canh",
-        "name": "Tủ Hương Xám 3 cánh",
-        "category": "tu-go",
-        "type": "wardrobe",
-        "price": 6300000,
-        "badge": "Gỗ tự nhiên",
-        "featured": false,
-        "shortDesc": "Gỗ hương xám tự nhiên cao cấp, 3 cánh rộng rãi, vân gỗ cuộn tuyệt đẹp.",
-        "description": "Tủ quần áo 3 cánh chất liệu gỗ hương xám tự nhiên 100%. Gỗ chắc nặng đã qua tẩm sấy chống mối mọt, chia khoang treo đồ và ngăn gấp đồ tối ưu diện tích.",
-        "color": "#8c6239",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Rộng 1m6 x Cao 2m x Sâu 60cm"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ hương xám tự nhiên"
-            },
-            {
-                "label": "Cấu tạo",
-                "value": "3 cánh mở rộng rãi, hộc kéo âm"
-            }
-        ],
-        "images": [
-            "/images/products/tu-quan-ao-3-canh.jpg"
-        ],
-        "imageFolder": "tu/tu-huong-xam-3-canh"
-    },
-    {
-        "slug": "tu-soi-4-canh",
-        "name": "Tủ sồi 4 cánh",
-        "category": "tu-go",
-        "type": "wardrobe",
-        "price": 6500000,
-        "badge": "Cỡ lớn",
-        "featured": false,
-        "shortDesc": "Gỗ sồi tự nhiên màu sáng sang trọng, 4 cánh chứa đồ thoải mái cho gia đình.",
-        "description": "Tủ quần áo gỗ sồi tự nhiên 4 cánh kích thước lớn, màu sắc trang nhã, vân gỗ tự nhiên sắc sảo. Không gian lưu trữ đồ rộng rãi với nhiều buồng treo và ngăn chứa chăn màn.",
-        "color": "#d4a373",
-        "specs": [
-            {
-                "label": "Kích thước",
-                "value": "Rộng 1m8 x Cao 2m x Sâu 60cm"
-            },
-            {
-                "label": "Chất liệu",
-                "value": "Gỗ sồi tự nhiên tẩm sấy"
-            },
-            {
-                "label": "Cấu tạo",
-                "value": "4 cánh mở rộng rãi, ngăn kéo tiện ích"
-            }
-        ],
-        "images": [
-            "/images/products/tu-quan-ao-3-canh.jpg"
-        ],
-        "imageFolder": "tu/tu-soi-4-canh"
-    }
+  {
+    "slug": "giuong-tang-sat-1m-1m-khong-hoc",
+    "name": "Giường tầng sắt 1m – 1m",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3100000,
+    "badge": "Tiết kiệm",
+    "featured": true,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Trên 1m dưới 1m, chắc chắn, không rung lắc.",
+    "description": "Giường tầng sắt kích thước trên 1m dưới 1m tối ưu diện tích cho phòng nhỏ, ký túc xá, homestay. Khung sắt hộp Hoà Phát dày dặn chịu tải cao, sơn tĩnh điện cao cấp bền màu, chống bong tróc và rỉ sét.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~250kg/tầng"
+      },
+      {
+        "label": "Quy cách",
+        "value": "Sắt thép Hoà Phát loại 1"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m-1m-khong-hoc/1792838656798_1_828615684_2471157629960440_6313605761606662100_n.jpg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m-khong-hoc"
+  },
+  {
+    "slug": "giuong-tang-sat-1m-1m-co-hoc",
+    "name": "Giường tầng sắt 1m – 1m (thêm hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 4400000,
+    "oldPrice": 5100000,
+    "badge": "Tiện ích",
+    "featured": false,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Trên 1m dưới 1m kèm hộc kéo tiện dụng.",
+    "description": "Mẫu giường tầng sắt hộp Hoà Phát trên 1m dưới 1m tích hợp thêm 2 hộc kéo chứa đồ lớn dưới gầm, tiết kiệm tối đa diện tích phòng ngủ và giữ phòng luôn ngăn nắp.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m"
+      },
+      {
+        "label": "Hộc tủ",
+        "value": "2 hộc kéo chứa đồ rộng rãi"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
+      },
+      {
+        "label": "Quy cách",
+        "value": "Sắt thép Hoà Phát loại 1"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m-1m-co-hoc/1792838646947_1_749231852_1066020789434932_1562471271653142916_n.jpg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m-co-hoc"
+  },
+  {
+    "slug": "giuong-tang-sat-1m-1m2-khong-hoc",
+    "name": "Giường tầng sắt 1m – 1m2",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3400000,
+    "oldPrice": 3900000,
+    "badge": "Bán chạy",
+    "featured": true,
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m, khung hộp vững chắc.",
+    "description": "Giường tầng sắt hộp cao cấp Hòa Phát, kích thước tiêu chuẩn tầng trên 1m tầng dưới 1m2 phù hợp phòng gia đình, nhà trọ, ký túc xá. Sơn tĩnh điện chống trầy xước, không rỉ sét, chịu lực tối đa tới 250kg mỗi tầng. Hàng thực tế 100% như ảnh chụp tại xưởng.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hòa Phát, sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~250kg/tầng"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m-1m2-khong-hoc/1792838557641_1_67de4d28-6143-44a5-aff3-dd6164f3b984.jpeg"
+    ]
+  },
+  {
+    "slug": "giuong-tang-sat-1m-1m2-co-hoc",
+    "name": "Giường tầng sắt 1m – 1m2 (thêm hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 4700000,
+    "oldPrice": 5400000,
+    "badge": "Đa năng",
+    "featured": false,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m kèm hộc kéo tiện dụng.",
+    "description": "Giường tầng sắt tầng trên 1m tầng dưới 1m2 kết hợp hộc kéo gầm giường rộng rãi. Sắt thép Hoà Phát dày dặn dập gân chịu lực, sơn tĩnh điện mịn đẹp.",
+    "color": "#3bb39a",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
+      },
+      {
+        "label": "Hộc kéo",
+        "value": "Có hộc kéo tiện lợi gầm giường"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
+      },
+      {
+        "label": "Sắt thép",
+        "value": "Sắt thép Hoà Phát"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m-1m2-co-hoc/1792838542377_1_c8699bd0-93d9-40b8-8d3b-bf834bf209cb.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc"
+  },
+  {
+    "slug": "giuong-tang-sat-1m2-1m4-khong-hoc",
+    "name": "Giường tầng sắt 1m2 – 1m4",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 3700000,
+    "oldPrice": 4300000,
+    "badge": "Mẫu mới",
+    "featured": true,
+    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-khong-hoc",
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2, chắc chắn, không rung lắc.",
+    "description": "Mẫu giường tầng sắt rộng rãi dành cho cả người lớn và trẻ em. Tầng dưới 1m4 thoải mái cho 2 người nằm, tầng trên 1m2 có lan can an toàn cao. Gia công bằng sắt thép Hòa Phát loại 1, mối hàn ngấu đẹp và sơn tĩnh điện bền màu.",
+    "color": "#38a3a5",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
+      },
+      {
+        "label": "Khung trụ",
+        "value": "Sắt hộp Hoà Phát dày dặn"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt thép Hoà Phát sơn tĩnh điện"
+      },
+      {
+        "label": "Lan can",
+        "value": "Cao 35cm an toàn tuyệt đối"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m2-1m4-khong-hoc/1792838512908_1_490632332826732020_1_.jpg"
+    ]
+  },
+  {
+    "slug": "giuong-tang-sat-1m2-1m4-co-hoc",
+    "name": "Giường tầng sắt 1m2 – 1m4 (thêm hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 5000000,
+    "oldPrice": 5800000,
+    "badge": "Sang trọng",
+    "featured": false,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2 kèm hộc kéo tiện lợi.",
+    "description": "Phiên bản có hộc của giường tầng 1m2 - 1m4. Hộc kéo gầm giường ray trượt êm nhẹ, chứa chăn ga gối đệm dễ dàng. Khung sắt hộp Hoà Phát sơn tĩnh điện bền đẹp.",
+    "color": "#38a3a5",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
+      },
+      {
+        "label": "Hộc tủ",
+        "value": "Hộc kéo trượt nhẹ nhàng"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m2-1m4-co-hoc/1792838490860_1_cbd2726d-2295-41dc-b39a-3a424715c7b3.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-co-hoc"
+  },
+  {
+    "slug": "giuong-tang-sat-1m4-1m6-khong-hoc",
+    "name": "Giường tầng sắt 1m4 – 1m6",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 4500000,
+    "oldPrice": 5200000,
+    "badge": "Cỡ đại",
+    "featured": true,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4, chịu tải cực lớn.",
+    "description": "Giường tầng kích thước đại: tầng trên 1m4, tầng dưới 1m6 nằm được 3-4 người thoải mái. Khung cột sắt hộp Hoà Phát khổ lớn dập gân siêu chắc chắn, không phát ra tiếng kêu kẽo kẹt.",
+    "color": "#2a7065",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát dày dặn, sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~350kg/tầng"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m4-1m6-khong-hoc/1792838477477_1_490632332826732020_3_.jpg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-khong-hoc"
+  },
+  {
+    "slug": "giuong-tang-sat-1m4-1m6-co-hoc",
+    "name": "Giường tầng sắt 1m4 – 1m6 (thêm hộc)",
+    "category": "giuong-sat",
+    "type": "bunk",
+    "price": 5800000,
+    "oldPrice": 6600000,
+    "badge": "Cao cấp",
+    "featured": false,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4 kèm hộc kéo tiện dụng.",
+    "description": "Mẫu giường tầng cỡ lớn 1m4 - 1m6 tích hợp hệ hộc kéo tiện ích. Thiết kế vững chắc, an toàn tuyệt đối cho người lớn và trẻ nhỏ, chịu lực tốt.",
+    "color": "#2a7065",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
+      },
+      {
+        "label": "Hộc tủ",
+        "value": "Hộc kéo lớn tối ưu không gian"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt thép Hoà Phát loại 1"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-tang-sat-1m4-1m6-co-hoc/1792838462176_1_f76b2637-b608-4830-bd66-82079d0b2c47.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-co-hoc"
+  },
+  {
+    "slug": "giuong-don-go-soi",
+    "name": "Giường đơn gỗ sồi",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 2200000,
+    "badge": "Gỗ tự nhiên",
+    "featured": true,
+    "shortDesc": "Gỗ sồi tự nhiên màu sáng đẹp, đã tẩm sấy chống cong vênh mối mọt.",
+    "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
+    "color": "#d4a373",
+    "variants": [
+      {
+        "label": "1m2",
+        "price": 2200000
+      },
+      {
+        "label": "1m4",
+        "price": 2400000
+      },
+      {
+        "label": "1m6",
+        "price": 2400000
+      },
+      {
+        "label": "1m8",
+        "price": 2700000
+      }
+    ],
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6 / 1m8"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ sồi tự nhiên tẩm sấy"
+      },
+      {
+        "label": "Bề mặt",
+        "value": "Sơn PU bóng mờ giữ vân gỗ"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-don-go-soi"
+  },
+  {
+    "slug": "giuong-don-go-soi-giat-phan",
+    "name": "Giường đơn gỗ sồi (giạt phản)",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 4100000,
+    "badge": "Giát phản",
+    "featured": true,
+    "shortDesc": "Gỗ sồi tự nhiên phiên bản giát phản cao cấp, chịu lực tốt, nằm êm mát.",
+    "description": "Giường ngủ gỗ sồi tự nhiên giát phản sang trọng với mặt giát phản nguyên tấm dày dặn, phẳng mịn. Gỗ sồi đã qua xử lý sấy công nghệ cao chống co ngót, mối mọt, mang lại sự bền bỉ và đẳng cấp.",
+    "color": "#d4a373",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m6 / 1m8"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ sồi tự nhiên tẩm sấy"
+      },
+      {
+        "label": "Kiểu dát",
+        "value": "Giát phản cao cấp chịu lực"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-don-go-soi-giat-phan"
+  },
+  {
+    "slug": "giuong-don-go-xoan-dao-xin",
+    "name": "Giường đơn gỗ xoan đào xịn",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 2700000,
+    "oldPrice": 3200000,
+    "badge": "Gỗ tuyển chọn",
+    "featured": true,
+    "shortDesc": "Xoan đào tự nhiên loại xịn đanh chắc, vân gỗ đỏ sậm sang trọng.",
+    "description": "Giường ngủ gỗ xoan đào xịn tuyển chọn từng thớ gỗ đanh, chắc nịch và nặng tay. Màu cánh gián sang trọng truyền thống, độ bền hàng chục năm không lo hỏng hóc hay ọp ẹp.",
+    "color": "#bc6c25",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m4 / 1m6"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ xoan đào tự nhiên xịn"
+      },
+      {
+        "label": "Đặc tính",
+        "value": "Gỗ đanh chắc, chịu lực cao"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-don-go-xoan-dao-xin/1792838436094_1_734081ff-5612-4754-8465-19c756a545e9.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-don-go-xoan-dao-xin"
+  },
+  {
+    "slug": "giuong-don-go-xoan-thuong",
+    "name": "Giường đơn gỗ xoan thường",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 1900000,
+    "oldPrice": 2300000,
+    "badge": "Giá bình dân",
+    "featured": false,
+    "shortDesc": "Gỗ xoan tự nhiên bền chắc, giá xưởng bình dân tiết kiệm chi phí.",
+    "description": "Lựa chọn tiết kiệm tối đa cho gia đình, nhà trọ và công trình. Khung gỗ xoan tự nhiên gia công chắc chắn, mộng gỗ chuẩn xác, bề mặt sơn PU bóng sạch dễ vệ sinh.",
+    "color": "#c48b59",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m2 / 1m4"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ xoan tự nhiên"
+      },
+      {
+        "label": "Ưu điểm",
+        "value": "Giá tận xưởng, tiết kiệm"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-don-go-xoan-thuong/1792838429044_1_5979c2e2-424c-487b-b4ab-7748a18ba394.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-don-go-xoan-thuong"
+  },
+  {
+    "slug": "giuong-don-go-huong-xam",
+    "name": "Giường Hương Xám",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 3400000,
+    "oldPrice": 3800000,
+    "badge": "Cao cấp",
+    "featured": true,
+    "shortDesc": "Gỗ hương xám cao cấp, vân gỗ cuộn tuyệt đẹp, chất gỗ đanh bền bỉ.",
+    "description": "Giường ngủ gỗ hương xám thuộc phân khúc cao cấp với những đường vân gỗ độc đáo, uốn lượn sắc sảo. Thớ gỗ mịn, nặng, chống cong vênh và mang lại vẻ đẹp bề thế cho phòng ngủ.",
+    "color": "#8c6239",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m6 / 1m8"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ hương xám cao cấp"
+      },
+      {
+        "label": "Đặc tính",
+        "value": "Vân gỗ cuộn tự nhiên, gỗ đanh nặng"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-don-go-huong-xam/1792838416445_1_b84d2047-c6c6-4e2f-bab0-00ef0f1faed2.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-don-go-huong-xam",
+    "variants": [
+      {
+        "label": "1m6",
+        "price": 3400000
+      },
+      {
+        "label": "1m8",
+        "price": 3900000
+      }
+    ]
+  },
+  {
+    "slug": "giuong-sat-don-boc-nem",
+    "name": "Giường sắt bọc nệm",
+    "category": "giuong-sat",
+    "type": "bed",
+    "price": 2600000,
+    "oldPrice": 3200000,
+    "badge": "Êm ái",
+    "featured": true,
+    "shortDesc": "Sắt hộp Hoà Phát sơn tĩnh điện, đầu giường bọc nệm êm ái hiện đại.",
+    "description": "Mẫu giường sắt đơn thế hệ mới với đầu giường bọc đệm êm ái, tạo cảm giác dễ chịu khi tựa lưng đọc sách hay lướt điện thoại. Khung sắt hộp Hoà Phát phủ sơn tĩnh điện nhám mịn, chống xước và cực kỳ vững chãi.",
+    "color": "#2a9d8f",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6"
+      },
+      {
+        "label": "Đầu giường",
+        "value": "Bọc đệm mút êm ái"
+      },
+      {
+        "label": "Khung giường",
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-sat-don-boc-nem/1792838397467_1_372beca2-6773-48b9-953b-60a350315c75.jpeg"
+    ],
+    "imageFolder": "giuong/giuong-sat-don-boc-nem"
+  },
+  {
+    "slug": "giuong-sat-don-khong-boc",
+    "name": "Giường sắt không bọc (sắt hộp)",
+    "category": "giuong-sat",
+    "type": "bed",
+    "price": 2300000,
+    "oldPrice": 2800000,
+    "badge": "Giá xưởng",
+    "featured": true,
+    "imageFolder": "giuong/giuong-sat-don-khong-boc",
+    "shortDesc": "Sắt hộp Hoà Phát sơn tĩnh điện cao cấp, siêu bền, lau chùi dễ dàng.",
+    "description": "Giường sắt đơn không bọc thiết kế tối giản, sạch sẽ và siêu bền. Sử dụng hoàn toàn sắt hộp Hoà Phát chịu lực cao, sơn tĩnh điện chống rỉ sét tuyệt đối. Hàng thực tế chụp trực tiếp tại xưởng.",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m2 / 1m4 / 1m6"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
+      },
+      {
+        "label": "Ưu điểm",
+        "value": "Dễ vệ sinh, siêu chắc chắn"
+      }
+    ],
+    "images": [
+      "/images/giuong/giuong-sat-don-khong-boc/1792838386222_1_6884e0e3-e73f-44c6-ba5e-978ec127f05e.jpeg"
+    ]
+  },
+  {
+    "slug": "giuong-huong-phan",
+    "name": "Giường Hương phản",
+    "category": "giuong-go",
+    "type": "bed",
+    "price": 4700000,
+    "badge": "Cao cấp",
+    "featured": true,
+    "shortDesc": "Gỗ hương tự nhiên giát phản cao cấp, vân gỗ sang trọng, nằm êm mát.",
+    "description": "Mẫu giường gỗ hương giát phản sang trọng với mặt phản phẳng mịn, chịu lực cực tốt. Thớ gỗ hương tự nhiên đanh chắc, vân gỗ sắc sảo, chống mối mọt cong vênh.",
+    "color": "#9a4b37",
+    "variants": [
+      {
+        "label": "1m6",
+        "price": 4700000
+      },
+      {
+        "label": "1m8",
+        "price": 5000000
+      }
+    ],
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Dài 2m x Rộng 1m6 / 1m8"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ hương tự nhiên"
+      },
+      {
+        "label": "Giát giường",
+        "value": "Giát phản cao cấp"
+      }
+    ],
+    "images": [
+      "/images/products/giuong-go-tu-nhien-cam-lai.jpg"
+    ],
+    "imageFolder": "giuong/giuong-huong-phan"
+  },
+  {
+    "slug": "tu-tho-go-cam-xe",
+    "name": "Tủ thờ gỗ căm xe",
+    "category": "khac",
+    "type": "wardrobe",
+    "price": 4500000,
+    "badge": "Gỗ căm xe",
+    "featured": true,
+    "shortDesc": "Gỗ căm xe tự nhiên chắc nặng, chạm khắc hoa văn tinh xảo, độ bền truyền đời.",
+    "description": "Tủ thờ chế tác từ gỗ căm xe tự nhiên tuyển chọn, thớ gỗ chắc nặng, chống mối mọt tuyệt đối. Hoàn thiện sơn bóng PU cao cấp, trang nghiêm cho không gian thờ phụng.",
+    "color": "#7a3b2e",
+    "variants": [
+      {
+        "label": "1m2",
+        "price": 4500000
+      },
+      {
+        "label": "1m4",
+        "price": 5000000
+      },
+      {
+        "label": "1m6",
+        "price": 5300000
+      }
+    ],
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Ngang 1m2 / 1m4 / 1m6"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ căm xe tự nhiên"
+      },
+      {
+        "label": "Hoàn thiện",
+        "value": "Sơn bóng PU cao cấp"
+      }
+    ],
+    "images": [
+      "/images/products/tu-dau-giuong-go.jpg"
+    ],
+    "imageFolder": "tu/tu-tho-go-cam-xe"
+  },
+  {
+    "slug": "tu-tho-go-huong",
+    "name": "Tủ thờ gỗ hương",
+    "category": "khac",
+    "type": "wardrobe",
+    "price": 4500000,
+    "badge": "Gỗ hương",
+    "featured": true,
+    "shortDesc": "Gỗ hương tự nhiên cao cấp, vân gỗ sang trọng, trang nghiêm chuẩn phong thuỷ.",
+    "description": "Tủ thờ gỗ hương tự nhiên với thớ gỗ mịn đanh, màu sắc ấm cúng sang trọng và vân gỗ cuộn tự nhiên. Thiết kế chuẩn thước Lỗ Ban mang lại bình an, tài lộc.",
+    "color": "#8c4a32",
+    "variants": [
+      {
+        "label": "1m2",
+        "price": 4500000
+      },
+      {
+        "label": "1m4",
+        "price": 5000000
+      },
+      {
+        "label": "1m6",
+        "price": 5300000
+      }
+    ],
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Ngang 1m2 / 1m4 / 1m6"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ hương tự nhiên"
+      },
+      {
+        "label": "Hoàn thiện",
+        "value": "Sơn PU bóng mờ cao cấp"
+      }
+    ],
+    "images": [
+      "/images/products/tu-dau-giuong-go.jpg"
+    ],
+    "imageFolder": "tu/tu-tho-go-huong"
+  },
+  {
+    "slug": "tu-go-cong-nghiep-3-canh",
+    "name": "Tủ gỗ công nghiệp 3 cánh",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 2800000,
+    "badge": "Hiện đại",
+    "featured": false,
+    "shortDesc": "Tủ áo gỗ công nghiệp 3 cánh hiện đại, chống ẩm tốt, chia ngăn tiện lợi.",
+    "description": "Tủ quần áo gỗ công nghiệp MDF phủ Melamine chống trầy xước, chống ẩm. Thiết kế 3 cánh mở rộng rãi, nhiều ngăn xếp và buồng treo đồ tiện dụng cho phòng ngủ gia đình.",
+    "color": "#d5bdaf",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Rộng 1m2 x Cao 2m x Sâu 55cm"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ công nghiệp MDF phủ Melamine"
+      },
+      {
+        "label": "Cấu tạo",
+        "value": "3 cánh mở, hộc kéo tiện lợi"
+      }
+    ],
+    "images": [
+      "/images/products/tu-quan-ao-3-canh.jpg"
+    ],
+    "imageFolder": "tu/tu-go-cong-nghiep-3-canh"
+  },
+  {
+    "slug": "tu-huong-xam-3-canh",
+    "name": "Tủ Hương Xám 3 cánh",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 6300000,
+    "badge": "Gỗ tự nhiên",
+    "featured": false,
+    "shortDesc": "Gỗ hương xám tự nhiên cao cấp, 3 cánh rộng rãi, vân gỗ cuộn tuyệt đẹp.",
+    "description": "Tủ quần áo 3 cánh chất liệu gỗ hương xám tự nhiên 100%. Gỗ chắc nặng đã qua tẩm sấy chống mối mọt, chia khoang treo đồ và ngăn gấp đồ tối ưu diện tích.",
+    "color": "#8c6239",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Rộng 1m6 x Cao 2m x Sâu 60cm"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ hương xám tự nhiên"
+      },
+      {
+        "label": "Cấu tạo",
+        "value": "3 cánh mở rộng rãi, hộc kéo âm"
+      }
+    ],
+    "images": [
+      "/images/products/tu-quan-ao-3-canh.jpg"
+    ],
+    "imageFolder": "tu/tu-huong-xam-3-canh"
+  },
+  {
+    "slug": "tu-soi-4-canh",
+    "name": "Tủ sồi 4 cánh",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 6500000,
+    "badge": "Cỡ lớn",
+    "featured": false,
+    "shortDesc": "Gỗ sồi tự nhiên màu sáng sang trọng, 4 cánh chứa đồ thoải mái cho gia đình.",
+    "description": "Tủ quần áo gỗ sồi tự nhiên 4 cánh kích thước lớn, màu sắc trang nhã, vân gỗ tự nhiên sắc sảo. Không gian lưu trữ đồ rộng rãi với nhiều buồng treo và ngăn chứa chăn màn.",
+    "color": "#d4a373",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Rộng 1m8 x Cao 2m x Sâu 60cm"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ sồi tự nhiên tẩm sấy"
+      },
+      {
+        "label": "Cấu tạo",
+        "value": "4 cánh mở rộng rãi, ngăn kéo tiện ích"
+      }
+    ],
+    "images": [
+      "/images/products/tu-quan-ao-3-canh.jpg"
+    ],
+    "imageFolder": "tu/tu-soi-4-canh"
+  }
 ]

@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import { getImagesFromFolder, scanImageFolders } from "@/lib/products-server";
+import {
+    getImagesFromFolder,
+    getProductsServer,
+    scanImageFolders,
+} from "@/lib/products-server";
 
 const IMAGES_DIR = path.join(process.cwd(), "public/images");
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
@@ -35,9 +39,39 @@ export async function POST(req: Request) {
             );
         }
 
+        const files = formData.getAll("files") as File[];
+        const replacePath = (formData.get("replacePath") as string)?.trim();
+
+        // Trường hợp cắt ảnh vuông và ghi đè trực tiếp vào file ảnh cũ
+        if (replacePath && files.length > 0) {
+            const cleanPath = replacePath
+                .replace(/^\/?images\//, "")
+                .replace(/^\//, "");
+            const targetFile = path.resolve(path.join(IMAGES_DIR, cleanPath));
+            if (!targetFile.startsWith(path.resolve(IMAGES_DIR))) {
+                return NextResponse.json(
+                    { success: false, error: "Đường dẫn ảnh không hợp lệ" },
+                    { status: 400 },
+                );
+            }
+
+            const buffer = Buffer.from(await files[0].arrayBuffer());
+            fs.writeFileSync(targetFile, buffer);
+
+            const relFolder = path.dirname(cleanPath);
+            const allImages = getImagesFromFolder(relFolder);
+
+            return NextResponse.json({
+                success: true,
+                message: "Đã cắt và lưu ảnh vuông thành công!",
+                images: allImages,
+                folders: scanImageFolders(),
+                products: getProductsServer(),
+            });
+        }
+
         const slug = (formData.get("slug") as string)?.trim();
         const category = formData.get("category") as string;
-        const files = formData.getAll("files") as File[];
 
         if (!slug) {
             return NextResponse.json(
@@ -92,6 +126,97 @@ export async function POST(req: Request) {
         });
     } catch (error) {
         console.error("Lỗi tải ảnh:", error);
+        return NextResponse.json(
+            { success: false, error: (error as Error).message },
+            { status: 500 },
+        );
+    }
+}
+
+export async function DELETE(req: Request) {
+    try {
+        const body = await req.json();
+        const headerPass = req.headers.get("x-admin-password");
+        if (
+            body.adminPassword !== ADMIN_PASSWORD &&
+            headerPass !== ADMIN_PASSWORD
+        ) {
+            return NextResponse.json(
+                { success: false, error: "Mật khẩu quản trị không đúng" },
+                { status: 401 },
+            );
+        }
+
+        const { imagePath, folderPath } = body;
+
+        // Xoá 1 ảnh đơn lẻ
+        if (imagePath) {
+            const cleanPath = imagePath
+                .replace(/^\/?images\//, "")
+                .replace(/^\//, "");
+            const fullPath = path.resolve(path.join(IMAGES_DIR, cleanPath));
+
+            if (!fullPath.startsWith(path.resolve(IMAGES_DIR))) {
+                return NextResponse.json(
+                    { success: false, error: "Đường dẫn không hợp lệ" },
+                    { status: 400 },
+                );
+            }
+
+            if (fs.existsSync(fullPath)) {
+                fs.unlinkSync(fullPath);
+            }
+
+            return NextResponse.json({
+                success: true,
+                message: "Đã xoá ảnh thành công!",
+                folders: scanImageFolders(),
+                products: getProductsServer(),
+            });
+        }
+
+        // Xoá toàn bộ ảnh trong 1 thư mục
+        if (folderPath) {
+            const cleanFolder = folderPath
+                .replace(/^\/?images\//, "")
+                .replace(/^\//, "");
+            const fullFolderPath = path.resolve(
+                path.join(IMAGES_DIR, cleanFolder),
+            );
+
+            if (!fullFolderPath.startsWith(path.resolve(IMAGES_DIR))) {
+                return NextResponse.json(
+                    { success: false, error: "Đường dẫn không hợp lệ" },
+                    { status: 400 },
+                );
+            }
+
+            if (
+                fs.existsSync(fullFolderPath) &&
+                fs.statSync(fullFolderPath).isDirectory()
+            ) {
+                const files = fs.readdirSync(fullFolderPath);
+                for (const file of files) {
+                    if (!file.startsWith(".")) {
+                        fs.unlinkSync(path.join(fullFolderPath, file));
+                    }
+                }
+            }
+
+            return NextResponse.json({
+                success: true,
+                message: "Đã xoá toàn bộ ảnh trong thư mục!",
+                folders: scanImageFolders(),
+                products: getProductsServer(),
+            });
+        }
+
+        return NextResponse.json(
+            { success: false, error: "Thiếu thông tin ảnh cần xoá" },
+            { status: 400 },
+        );
+    } catch (error) {
+        console.error("Lỗi xoá ảnh:", error);
         return NextResponse.json(
             { success: false, error: (error as Error).message },
             { status: 500 },
