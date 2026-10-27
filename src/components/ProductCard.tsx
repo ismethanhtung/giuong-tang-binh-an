@@ -56,7 +56,7 @@ export default function ProductCard({
                         src={currentImage}
                         alt={product.name}
                         priority={priority}
-                        className="aspect-[20/17] w-full object-cover transition-transform duration-300 group-hover:scale-102"
+                        className="aspect-[20/17] w-full"
                     />
 
                     {/* Badge bên trái */}
@@ -90,19 +90,26 @@ export default function ProductCard({
                                             }
                                             className={`relative h-7.5 w-7.5 sm:h-8.5 sm:w-8.5 shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
                                                 isActive
-                                                    ? "border-brand-400 shadow-md opacity-100"
-                                                    : "border-white/70 opacity-80 hover:opacity-100 hover:border-white"
+                                                    ? "border-brand-400 shadow-md opacity-100 bg-stone-100"
+                                                    : "border-white/70 opacity-80 hover:opacity-100 hover:border-white bg-stone-50"
                                             }`}
                                         >
                                             <Image
                                                 src={imgSrc}
                                                 alt=""
                                                 fill
-                                                className="object-cover"
+                                                className="object-cover blur-xs scale-125 opacity-35"
+                                                sizes="36px"
+                                            />
+                                            <Image
+                                                src={imgSrc}
+                                                alt=""
+                                                fill
+                                                className="object-contain p-0.5"
                                                 sizes="36px"
                                             />
                                             {isFourthSlotWithMore && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-black/65 font-bold text-white text-[10px] sm:text-[11px]">
+                                                <div className="absolute inset-0 flex items-center justify-center bg-black/65 font-bold text-white text-[10px] sm:text-[11px] z-10">
                                                     +{remainingCount}
                                                 </div>
                                             )}

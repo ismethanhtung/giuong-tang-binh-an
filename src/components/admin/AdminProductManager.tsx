@@ -1266,12 +1266,18 @@ export default function AdminProductManager({
                                                                     className="group relative aspect-square overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs"
                                                                 >
                                                                     <Image
-                                                                        src={
-                                                                            src
-                                                                        }
+                                                                        src={src}
+                                                                        alt=""
+                                                                        fill
+                                                                        aria-hidden="true"
+                                                                        className="object-cover blur-md scale-125 opacity-35 select-none pointer-events-none"
+                                                                        sizes="48px"
+                                                                    />
+                                                                    <Image
+                                                                        src={src}
                                                                         alt={`Ảnh ${i + 1}`}
                                                                         fill
-                                                                        className="object-cover transition group-hover:scale-105"
+                                                                        className="object-contain p-1 transition group-hover:scale-105"
                                                                         sizes="96px"
                                                                     />
 

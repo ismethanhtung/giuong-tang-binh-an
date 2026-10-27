@@ -307,17 +307,31 @@ export default function ProductImage({
 }: Props) {
     if (src) {
         return (
-            <div className={`relative overflow-hidden bg-white ${className}`}>
+            <div
+                className={`relative overflow-hidden bg-stone-100 ${className}`}
+            >
+                {/* Lớp nền mờ lấy trực tiếp màu sắc/ảnh gốc để lấp đầy khoảng thiếu một cách hài hoà */}
+                <Image
+                    src={src}
+                    alt=""
+                    fill
+                    aria-hidden="true"
+                    sizes="60px"
+                    className="object-cover blur-xl scale-125 opacity-35 select-none pointer-events-none"
+                />
+
+                {/* Ảnh chính hiển thị trọn vẹn 100% full ảnh, không bị cắt xén bất cứ chi tiết nào */}
                 <Image
                     src={src}
                     alt={alt}
                     fill
                     priority={priority}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-contain p-1 sm:p-1.5 transition-transform duration-300 group-hover:scale-103"
                 />
+
                 {showHint && (
-                    <span className="absolute right-2 top-2 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
+                    <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
                         hàng như ảnh
                     </span>
                 )}
