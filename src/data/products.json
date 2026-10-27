@@ -28,7 +28,9 @@
                 "value": "Sắt thép Hoà Phát loại 1"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m-1m-khong-hoc/1792838656798_1_828615684_2471157629960440_6313605761606662100_n.jpg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m-1m-khong-hoc"
     },
     {
@@ -61,7 +63,9 @@
                 "value": "Sắt thép Hoà Phát loại 1"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m-1m-co-hoc/1792838646947_1_749231852_1066020789434932_1562471271653142916_n.jpg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m-1m-co-hoc"
     },
     {
@@ -95,7 +99,9 @@
                 "value": "Sắt thép Hoà Phát"
             }
         ],
-        "images": []
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m-1m2-khong-hoc/1792838557641_1_67de4d28-6143-44a5-aff3-dd6164f3b984.jpeg"
+        ]
     },
     {
         "slug": "giuong-tang-sat-1m-1m2-co-hoc",
@@ -127,7 +133,9 @@
                 "value": "Sắt thép Hoà Phát"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m-1m2-co-hoc/1792838542377_1_c8699bd0-93d9-40b8-8d3b-bf834bf209cb.jpeg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc"
     },
     {
@@ -161,7 +169,9 @@
                 "value": "Cao 35cm an toàn tuyệt đối"
             }
         ],
-        "images": []
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m2-1m4-khong-hoc/1792838512908_1_490632332826732020_1_.jpg"
+        ]
     },
     {
         "slug": "giuong-tang-sat-1m2-1m4-co-hoc",
@@ -189,7 +199,9 @@
                 "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m2-1m4-co-hoc/1792838490860_1_cbd2726d-2295-41dc-b39a-3a424715c7b3.jpeg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-co-hoc"
     },
     {
@@ -218,7 +230,9 @@
                 "value": "~350kg/tầng"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m4-1m6-khong-hoc/1792838477477_1_490632332826732020_3_.jpg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-khong-hoc"
     },
     {
@@ -247,7 +261,9 @@
                 "value": "Sắt thép Hoà Phát loại 1"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-tang-sat-1m4-1m6-co-hoc/1792838462176_1_f76b2637-b608-4830-bd66-82079d0b2c47.jpeg"
+        ],
         "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-co-hoc"
     },
     {
@@ -262,10 +278,22 @@
         "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
         "color": "#d4a373",
         "variants": [
-            { "label": "1m2", "price": 2200000 },
-            { "label": "1m4", "price": 2400000 },
-            { "label": "1m6", "price": 2400000 },
-            { "label": "1m8", "price": 2600000 }
+            {
+                "label": "1m2",
+                "price": 2200000
+            },
+            {
+                "label": "1m4",
+                "price": 2400000
+            },
+            {
+                "label": "1m6",
+                "price": 2400000
+            },
+            {
+                "label": "1m8",
+                "price": 2600000
+            }
         ],
         "specs": [
             {
@@ -281,7 +309,9 @@
                 "value": "Sơn PU bóng mờ giữ vân gỗ"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
+        ],
         "imageFolder": "giuong/giuong-don-go-soi"
     },
     {
@@ -310,7 +340,9 @@
                 "value": "Gỗ đanh chắc, chịu lực cao"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-don-go-xoan-dao-xin/1792838436094_1_734081ff-5612-4754-8465-19c756a545e9.jpeg"
+        ],
         "imageFolder": "giuong/giuong-don-go-xoan-dao-xin"
     },
     {
@@ -339,7 +371,9 @@
                 "value": "Giá tận xưởng, tiết kiệm"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-don-go-xoan-thuong/1792838429044_1_5979c2e2-424c-487b-b4ab-7748a18ba394.jpeg"
+        ],
         "imageFolder": "giuong/giuong-don-go-xoan-thuong"
     },
     {
@@ -368,7 +402,9 @@
                 "value": "Vân gỗ cuộn tự nhiên, gỗ đanh nặng"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-don-go-huong-xam/1792838416445_1_b84d2047-c6c6-4e2f-bab0-00ef0f1faed2.jpeg"
+        ],
         "imageFolder": "giuong/giuong-don-go-huong-xam"
     },
     {
@@ -397,7 +433,9 @@
                 "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
             }
         ],
-        "images": [],
+        "images": [
+            "/images/giuong/giuong-sat-don-boc-nem/1792838397467_1_372beca2-6773-48b9-953b-60a350315c75.jpeg"
+        ],
         "imageFolder": "giuong/giuong-sat-don-boc-nem"
     },
     {
@@ -426,6 +464,8 @@
                 "value": "Dễ vệ sinh, siêu chắc chắn"
             }
         ],
-        "images": []
+        "images": [
+            "/images/giuong/giuong-sat-don-khong-boc/1792838386222_1_6884e0e3-e73f-44c6-ba5e-978ec127f05e.jpeg"
+        ]
     }
 ]

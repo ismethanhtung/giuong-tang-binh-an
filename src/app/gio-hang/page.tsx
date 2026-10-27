@@ -12,16 +12,18 @@ export default function CartPage() {
 
     if (lines.length === 0) {
         return (
-            <div className="mx-auto flex max-w-6xl flex-col items-center px-4 py-20 text-center">
+            <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-4 py-16 text-center">
                 <span className="text-6xl">🛒</span>
-                <h1 className="mt-5 text-2xl font-bold">Giỏ hàng trống</h1>
-                <p className="mt-2 text-sm text-stone-500">
+                <h1 className="mt-5 text-2xl font-bold text-stone-900">
+                    Giỏ hàng trống
+                </h1>
+                <p className="mt-2 max-w-md text-sm text-stone-500">
                     Chưa có sản phẩm nào trong giỏ. Xem ngay các mẫu giường và
                     nội thất.
                 </p>
                 <Link
                     href="/san-pham"
-                    className="mt-6 rounded-full bg-brand-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
+                    className="mt-6 rounded-full bg-brand-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
                 >
                     Xem sản phẩm
                 </Link>
@@ -30,7 +32,7 @@ export default function CartPage() {
     }
 
     return (
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto w-full max-w-6xl flex-1 px-4">
             <div className="mt-6 flex items-center justify-between">
                 <h1 className="text-2xl font-extrabold tracking-tight">
                     Giỏ hàng{" "}
@@ -47,11 +49,12 @@ export default function CartPage() {
                 </button>
             </div>
 
-            <div className="mt-4 grid gap-6 pb-4 lg:grid-cols-[1fr_20rem]">
+            <div className="mt-4 grid gap-6 pb-4 lg:grid-cols-[1fr_21.5rem]">
                 <div className="space-y-3">
                     {lines.map((line) => {
                         const product = getProduct(line.slug);
                         const lineKey = getCartLineKey(line);
+                        const itemImage = line.image || product?.images?.[0];
 
                         return (
                             <div
@@ -65,6 +68,7 @@ export default function CartPage() {
                                     <ProductImage
                                         type={product?.type ?? "bed"}
                                         color={product?.color ?? "#c2703a"}
+                                        src={itemImage}
                                         alt={line.name}
                                         showHint={false}
                                         className="h-24 w-24 rounded-xl sm:h-28 sm:w-28"
@@ -136,7 +140,7 @@ export default function CartPage() {
                     })}
                 </div>
 
-                <aside className="h-fit rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:sticky lg:top-24">
+                <aside className="h-fit rounded-2xl border border-stone-200 bg-white p-4.5 sm:p-5 shadow-sm lg:sticky lg:top-24">
                     <h2 className="font-bold text-stone-900">Tổng tiền</h2>
                     <dl className="mt-3 space-y-2 text-sm">
                         <div className="flex justify-between text-stone-500">
@@ -147,7 +151,13 @@ export default function CartPage() {
                         </div>
                         <div className="flex justify-between text-stone-500">
                             <dt>Phí giao nội thành</dt>
-                            <dd className="font-medium text-green-600">
+                            <dd className="font-medium text-emerald-600">
+                                Miễn phí
+                            </dd>
+                        </div>
+                        <div className="flex justify-between text-stone-500">
+                            <dt>Phí lắp ráp</dt>
+                            <dd className="font-medium text-emerald-600">
                                 Miễn phí
                             </dd>
                         </div>
@@ -166,9 +176,30 @@ export default function CartPage() {
                     >
                         Xác nhận đặt hàng
                     </a>
-                    <p className="mt-2 text-center text-[11px] leading-relaxed text-stone-400">
-                        Demo: hoàn tất đơn hàng bằng cuộc gọi / Zalo tới{" "}
-                        {site.phone}.
+                    <p className="mt-2.5 text-center text-[10.5px] sm:text-[11px] leading-tight text-stone-500 whitespace-nowrap tracking-tight">
+                        Hoàn tất đơn hàng bằng{" "}
+                        <a
+                            href={site.phoneHref}
+                            className="font-bold text-brand-600 underline underline-offset-2 hover:text-brand-700 transition"
+                        >
+                            cuộc gọi
+                        </a>{" "}
+                        /{" "}
+                        <a
+                            href={site.zalo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-bold text-[#0068FF] underline underline-offset-2 hover:text-blue-700 transition"
+                        >
+                            Zalo
+                        </a>{" "}
+                        <a
+                            href={site.phoneHref}
+                            className="font-bold text-stone-800 hover:text-brand-600 transition"
+                        >
+                            {site.phone}
+                        </a>
+                        .
                     </p>
                 </aside>
             </div>

@@ -14,7 +14,7 @@ import VietnamFlag from "./VietnamFlag";
 
 export default function Footer() {
     return (
-        <footer className="mt-16 border-t border-stone-200 bg-white">
+        <footer className="mt-auto border-t border-stone-200 bg-white">
             <div className="mx-auto max-w-6xl px-4 py-10">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
                     {/* Cột 1: Thông tin thương hiệu & Mạng xã hội */}
@@ -41,34 +41,37 @@ export default function Footer() {
                             🇻🇳 Tự hào hàng Việt Nam chất lượng cao
                         </p>
 
-                        {/* Mạng xã hội: 3 nút đồng đều trên 1 hàng */}
-                        <div className="mt-4 grid max-w-xs grid-cols-3 gap-2">
+                        {/* Mạng xã hội: các nút icon tròn tối giản, thanh lịch, chuẩn giao diện hiện đại */}
+                        <div className="mt-4 flex items-center gap-2.5">
                             <a
                                 href={site.zalo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-sky-200/80 bg-sky-50/70 px-1.5 text-[11.5px] font-semibold text-sky-900 shadow-2xs transition active:scale-95 hover:border-sky-300 hover:bg-sky-100"
+                                title="Chat qua Zalo"
+                                aria-label="Zalo"
+                                className="grid h-9 w-9 place-items-center rounded-full border border-stone-200/90 bg-stone-50 text-[#0068FF] transition-all hover:-translate-y-0.5 hover:border-[#0068FF] hover:bg-sky-50 hover:shadow-2xs active:scale-95"
                             >
-                                <ZaloIcon className="h-3.5 w-3.5 shrink-0" />
-                                <span>Zalo</span>
+                                <ZaloIcon className="w-6 h-auto text-[#0068FF]" />
                             </a>
                             <a
                                 href={site.messenger}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-blue-200/80 bg-blue-50/70 px-1.5 text-[11.5px] font-semibold text-blue-900 shadow-2xs transition active:scale-95 hover:border-blue-300 hover:bg-blue-100"
+                                title="Chat qua Messenger"
+                                aria-label="Messenger"
+                                className="grid h-9 w-9 place-items-center rounded-full border border-stone-200/90 bg-stone-50 text-[#0084FF] transition-all hover:-translate-y-0.5 hover:border-[#0084FF] hover:bg-blue-50 hover:shadow-2xs active:scale-95"
                             >
-                                <MessengerIcon className="h-3.5 w-3.5 shrink-0 text-[#0084FF]" />
-                                <span>Messenger</span>
+                                <MessengerIcon className="h-4.5 w-4.5" />
                             </a>
                             <a
                                 href={site.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-indigo-200/80 bg-indigo-50/70 px-1.5 text-[11.5px] font-semibold text-indigo-900 shadow-2xs transition active:scale-95 hover:border-indigo-300 hover:bg-indigo-100"
+                                title="Xem trang Facebook"
+                                aria-label="Facebook"
+                                className="grid h-9 w-9 place-items-center rounded-full border border-stone-200/90 bg-stone-50 text-[#1877F2] transition-all hover:-translate-y-0.5 hover:border-[#1877F2] hover:bg-indigo-50 hover:shadow-2xs active:scale-95"
                             >
-                                <FacebookIcon className="h-3.5 w-3.5 shrink-0 text-[#1877F2]" />
-                                <span>Facebook</span>
+                                <FacebookIcon className="h-4.5 w-4.5" />
                             </a>
                         </div>
                     </div>

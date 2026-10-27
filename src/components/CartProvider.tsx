@@ -8,6 +8,7 @@ export type CartLine = {
     price: number;
     qty: number;
     variant?: string;
+    image?: string;
 };
 
 export function getCartLineKey(l: { slug: string; variant?: string }): string {
@@ -75,7 +76,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                     if (found) {
                         return prev.map((l) =>
                             getCartLineKey(l) === targetKey
-                                ? { ...l, qty: l.qty + qty }
+                                ? {
+                                      ...l,
+                                      qty: l.qty + qty,
+                                      image: item.image || l.image,
+                                  }
                                 : l,
                         );
                     }

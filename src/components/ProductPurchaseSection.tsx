@@ -95,6 +95,7 @@ export default function ProductPurchaseSection({
                         slug: product.slug,
                         name: product.name,
                         price: activePrice,
+                        image: product.images?.[0],
                         variant: selectedVariant?.label,
                     }}
                 />

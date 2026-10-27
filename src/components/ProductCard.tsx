@@ -160,6 +160,7 @@ export default function ProductCard({
                                     slug: product.slug,
                                     name: product.name,
                                     price: product.price,
+                                    image: currentImage,
                                     variant: product.variants?.[0]?.label,
                                 }}
                             />

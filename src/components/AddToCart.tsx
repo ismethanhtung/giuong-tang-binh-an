@@ -5,7 +5,13 @@ import { useCart } from "./CartProvider";
 import { CartIcon, CheckIcon, MinusIcon, PhoneIcon, PlusIcon } from "./icons";
 import { site } from "@/lib/site";
 
-type Item = { slug: string; name: string; price: number; variant?: string };
+type Item = {
+    slug: string;
+    name: string;
+    price: number;
+    variant?: string;
+    image?: string;
+};
 
 export function AddToCartIconButton({ item }: { item: Item }) {
     const { add } = useCart();

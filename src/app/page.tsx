@@ -182,9 +182,9 @@ export default function HomePage() {
                             href={site.zalo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex h-11 items-center gap-2.5 rounded-full border border-brand-200 bg-white px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-brand-50"
+                            className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-200 bg-white px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-brand-50"
                         >
-                            <ZaloIcon className="h-5.5 w-5.5" />
+                            <ZaloIcon className="w-5.5 h-auto text-[#0068FF]" />
                             Chat Zalo
                         </a>
                     </div>
