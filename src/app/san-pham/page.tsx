@@ -54,7 +54,7 @@ export default async function ProductsPage({
     };
 
     return (
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto w-full max-w-6xl px-4">
             <nav className="mt-4 text-sm text-stone-400">
                 <Link href="/" className="hover:text-brand-600">
                     Trang chủ

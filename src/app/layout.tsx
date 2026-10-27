@@ -58,10 +58,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="vi" className={`${beVietnam.variable} h-full antialiased`}>
-            <body className="flex min-h-screen flex-col bg-[#f8fafc] text-stone-800">
+            <body className="flex min-h-screen flex-col bg-[#f8fafc] text-stone-800 overflow-x-clip">
                 <CartProvider>
                     <Header />
-                    <main className="flex flex-1 flex-col pb-20 md:pb-12">
+                    <main className="w-full flex-1 pb-20 md:pb-12">
                         {children}
                     </main>
                     <Footer />

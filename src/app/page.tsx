@@ -95,7 +95,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <div className="mx-auto max-w-6xl px-4">
+            <div className="mx-auto w-full max-w-6xl px-4">
                 {/* Categories */}
                 <section className="mt-8">
                     <div className="flex items-end justify-between">
