@@ -12,5 +12,5 @@ export const site = {
         "Số 03 hẻm 250 đường Phạm Văn Đồng, Phường Thống Nhất (Tp Pleiku), Tỉnh Gia Lai",
     coordinates: { lat: 14.00035, lng: 107.9963 },
     mapUrl: "https://www.google.com/maps?q=14.00035,107.9963",
-    hours: "24/7 luôn mở cửa",
+    hours: "Luôn mở cửa 24/7",
 };

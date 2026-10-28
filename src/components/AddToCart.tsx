@@ -119,16 +119,16 @@ export function AddToCartFull({
                 </div>
             )}
 
-            {/* Hàng 2: Nút Gọi đặt hàng tinh gọn, rõ ràng */}
+            {/* Hàng 2: Nút Gọi đặt hàng nổi bật, tinh gọn & dễ nhận diện */}
             {showCallButton && (
                 <a
                     href={site.phoneHref}
-                    className="flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-brand-200/80 bg-brand-50/50 text-xs sm:text-sm font-bold text-brand-700 hover:bg-brand-100/60 active:scale-[0.99] transition"
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-red-200/90 bg-red-50/70 text-xs sm:text-sm text-stone-700 shadow-2xs transition hover:bg-red-100/80 hover:border-red-300 active:scale-[0.99]"
                 >
-                    <PhoneIcon className="h-4 w-4" />
+                    <PhoneIcon className="h-4.5 w-4.5 text-red-600 shrink-0" />
                     <span>
                         Gọi đặt hàng nhanh:{" "}
-                        <strong className="font-extrabold text-brand-800">
+                        <strong className="font-extrabold text-red-600 tracking-wide text-sm sm:text-[15px]">
                             {site.phone}
                         </strong>
                     </span>
