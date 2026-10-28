@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, HIDE_PRICE, type Product } from "@/lib/products";
 import { AddToCartFull } from "./AddToCart";
 
 export default function ProductPurchaseSection({
@@ -29,7 +29,7 @@ export default function ProductPurchaseSection({
                 <span className="text-2xl font-extrabold text-brand-600 sm:text-3xl">
                     {formatPrice(activePrice)}
                 </span>
-                {activeOldPrice && (
+                {!HIDE_PRICE && activeOldPrice && (
                     <>
                         <span className="text-sm text-stone-400 line-through">
                             {formatPrice(activeOldPrice)}
@@ -72,15 +72,17 @@ export default function ProductPurchaseSection({
                                     }`}
                                 >
                                     <span>{v.label}</span>
-                                    <span
-                                        className={`text-xs ${
-                                            isSelected
-                                                ? "font-bold text-brand-600"
-                                                : "text-stone-400"
-                                        }`}
-                                    >
-                                        {formatPrice(v.price)}
-                                    </span>
+                                    {!HIDE_PRICE && (
+                                        <span
+                                            className={`text-xs ${
+                                                isSelected
+                                                    ? "font-bold text-brand-600"
+                                                    : "text-stone-400"
+                                            }`}
+                                        >
+                                            {formatPrice(v.price)}
+                                        </span>
+                                    )}
                                 </button>
                             );
                         })}

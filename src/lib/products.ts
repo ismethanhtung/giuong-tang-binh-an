@@ -85,7 +85,16 @@ export function getCategory(id: CategoryId): Category | undefined {
     return categories.find((c) => c.id === id);
 }
 
-export function formatPrice(vnd: number): string {
+// Cờ tạm ẩn giá công khai toàn bộ mặt hàng (chuyển về false khi muốn hiển thị lại giá số)
+export const HIDE_PRICE = true;
+
+export function formatPrice(vnd?: number, showActual = false): string {
+    if (HIDE_PRICE && !showActual) {
+        return "Giá liên hệ";
+    }
+    if (!vnd || vnd <= 0) {
+        return "Giá liên hệ";
+    }
     return new Intl.NumberFormat("vi-VN").format(vnd) + "₫";
 }
 

@@ -992,12 +992,13 @@ export default function AdminProductManager({
                                             {/* Price */}
                                             <td className="whitespace-nowrap px-4 py-3 align-middle">
                                                 <span className="font-black text-brand-700">
-                                                    {formatPrice(p.price)}
+                                                    {formatPrice(p.price, true)}
                                                 </span>
                                                 {p.oldPrice && (
                                                     <p className="text-xs text-stone-400 line-through">
                                                         {formatPrice(
                                                             p.oldPrice,
+                                                            true,
                                                         )}
                                                     </p>
                                                 )}
@@ -1117,7 +1118,7 @@ export default function AdminProductManager({
                                         className="mt-1.5 w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-sm font-semibold text-stone-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                                     />
                                     <p className="mt-1 text-xs font-bold text-brand-700">
-                                        Hiển thị: {formatPrice(formPrice)}
+                                        Hiển thị: {formatPrice(formPrice, true)}
                                     </p>
                                 </div>
 
@@ -1143,7 +1144,7 @@ export default function AdminProductManager({
                                     {formOldPrice ? (
                                         <p className="mt-1 text-xs text-stone-500 line-through">
                                             Hiển thị:{" "}
-                                            {formatPrice(formOldPrice)}
+                                            {formatPrice(formOldPrice, true)}
                                         </p>
                                     ) : null}
                                 </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, HIDE_PRICE, type Product } from "@/lib/products";
 import { AddToCartIconButton } from "./AddToCart";
 import ProductImage from "./ProductImage";
 
@@ -147,7 +147,7 @@ export default function ProductCard({
                             </span>
 
                             {/* Giá cũ và % giảm nằm chung 1 hàng ngay bên dưới */}
-                            {product.oldPrice && (
+                            {!HIDE_PRICE && product.oldPrice && (
                                 <div className="mt-0.5 flex items-center gap-1.5 flex-nowrap">
                                     <span className="text-[11px] text-stone-400 line-through leading-none whitespace-nowrap">
                                         {formatPrice(product.oldPrice)}
