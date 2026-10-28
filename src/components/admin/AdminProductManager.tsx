@@ -281,6 +281,19 @@ export default function AdminProductManager({
     const [formCategory, setFormCategory] = useState("giuong-sat");
     const [formFeatured, setFormFeatured] = useState(false);
 
+    // Ngăn chặn trình duyệt mở file khi kéo thả ra ngoài dropzone
+    useEffect(() => {
+        const preventDefaultDrop = (e: DragEvent) => {
+            e.preventDefault();
+        };
+        window.addEventListener("dragover", preventDefaultDrop);
+        window.addEventListener("drop", preventDefaultDrop);
+        return () => {
+            window.removeEventListener("dragover", preventDefaultDrop);
+            window.removeEventListener("drop", preventDefaultDrop);
+        };
+    }, []);
+
     // Kiểm tra đăng nhập đã lưu trong sessionStorage
     useEffect(() => {
         try {
@@ -1209,25 +1222,72 @@ export default function AdminProductManager({
 
                                     <label
                                         htmlFor="product-image-upload"
+                                        onDragEnter={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setIsDraggingOver(true);
+                                        }}
+                                        onDragOver={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            e.dataTransfer.dropEffect = "copy";
+                                            if (!isDraggingOver) {
+                                                setIsDraggingOver(true);
+                                            }
+                                        }}
+                                        onDragLeave={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            if (
+                                                !e.currentTarget.contains(
+                                                    e.relatedTarget as Node,
+                                                )
+                                            ) {
+                                                setIsDraggingOver(false);
+                                            }
+                                        }}
+                                        onDrop={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            setIsDraggingOver(false);
+                                            if (
+                                                e.dataTransfer.files &&
+                                                e.dataTransfer.files.length > 0
+                                            ) {
+                                                handleUploadFiles(
+                                                    e.dataTransfer.files,
+                                                );
+                                            }
+                                        }}
                                         className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed p-5 text-center transition ${
                                             isUploading
-                                                ? "border-brand-400 bg-brand-100/50 opacity-70"
+                                                ? "border-brand-400 bg-brand-100/50 opacity-70 cursor-not-allowed"
+                                                : isDraggingOver
+                                                ? "border-brand-600 bg-brand-50 shadow-md ring-4 ring-brand-200/70 scale-[1.01]"
                                                 : "border-brand-300 bg-white hover:border-brand-500 hover:bg-brand-50/70"
                                         }`}
                                     >
-                                        <div className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600 shadow-2xs">
+                                        <div className="pointer-events-none grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600 shadow-2xs">
                                             {isUploading ? (
                                                 <RefreshCw className="h-6 w-6 animate-spin text-brand-600" />
                                             ) : (
-                                                <UploadCloud className="h-6 w-6" />
+                                                <UploadCloud
+                                                    className={`h-6 w-6 transition ${
+                                                        isDraggingOver
+                                                            ? "scale-110 text-brand-700"
+                                                            : ""
+                                                    }`}
+                                                />
                                             )}
                                         </div>
-                                        <p className="mt-2 text-xs font-bold text-stone-800">
+                                        <p className="pointer-events-none mt-2 text-xs font-bold text-stone-800">
                                             {isUploading
                                                 ? "Đang lưu ảnh và tạo thư mục..."
+                                                : isDraggingOver
+                                                ? "Thả các file ảnh vào đây ngay..."
                                                 : "Bấm để chọn nhiều ảnh hoặc kéo thả vào đây"}
                                         </p>
-                                        <p className="mt-0.5 text-[11px] text-stone-500">
+                                        <p className="pointer-events-none mt-0.5 text-[11px] text-stone-500">
                                             Hỗ trợ định dạng JPG, PNG, WEBP
                                             (chọn được nhiều ảnh cùng lúc)
                                         </p>
