@@ -28,9 +28,7 @@
         "value": "Sắt thép Hoà Phát loại 1"
       }
     ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m-1m-khong-hoc/1792838656798_1_828615684_2471157629960440_6313605761606662100_n.jpg"
-    ],
+    "images": [],
     "imageFolder": "giuong/giuong-tang-sat-1m-1m-khong-hoc"
   },
   {
@@ -271,17 +269,13 @@
     "name": "Giường đơn gỗ sồi",
     "category": "giuong-go",
     "type": "bed",
-    "price": 2200000,
+    "price": 2400000,
     "badge": "Gỗ tự nhiên",
     "featured": true,
     "shortDesc": "Gỗ sồi tự nhiên màu sáng đẹp, đã tẩm sấy chống cong vênh mối mọt.",
     "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
     "color": "#d4a373",
     "variants": [
-      {
-        "label": "1m2",
-        "price": 2200000
-      },
       {
         "label": "1m4",
         "price": 2400000
@@ -310,7 +304,7 @@
       }
     ],
     "images": [
-      "/images/giuong/giuong-don-go-soi/1792838443094_1_882e8e39-9a22-4dce-8dc5-eb9a58aafaa3.jpeg"
+      "/images/giuong/giuong-don-go-soi/1793122110792_1_a7fcba60-8dee-4131-a38a-7ee2819834a0.jpeg"
     ],
     "imageFolder": "giuong/giuong-don-go-soi"
   },
@@ -319,7 +313,7 @@
     "name": "Giường đơn gỗ sồi (giạt phản)",
     "category": "giuong-go",
     "type": "bed",
-    "price": 4100000,
+    "price": 4200000,
     "badge": "Giát phản",
     "featured": true,
     "shortDesc": "Gỗ sồi tự nhiên phiên bản giát phản cao cấp, chịu lực tốt, nằm êm mát.",
@@ -402,7 +396,8 @@
       }
     ],
     "images": [
-      "/images/giuong/giuong-don-go-xoan-thuong/1792838429044_1_5979c2e2-424c-487b-b4ab-7748a18ba394.jpeg"
+      "/images/giuong/giuong-don-go-xoan-thuong/1792838429044_1_5979c2e2-424c-487b-b4ab-7748a18ba394.jpeg",
+      "/images/giuong/giuong-don-go-xoan-thuong/1793120922083_1_511d9a18-a9af-462d-ad4c-0dfd43bc9e16.jpeg"
     ],
     "imageFolder": "giuong/giuong-don-go-xoan-thuong"
   },
@@ -544,7 +539,8 @@
       }
     ],
     "images": [
-      "/images/products/giuong-go-tu-nhien-cam-lai.jpg"
+      "/images/giuong/giuong-huong-phan/1793120908863_1_b6c5d616-2aaf-4de0-88a0-c83f4090c204.jpeg",
+      "/images/giuong/giuong-huong-phan/1793120908863_2_ef42218a-ac02-40ca-ad25-a3fc43f223e5.jpeg"
     ],
     "imageFolder": "giuong/giuong-huong-phan"
   },
@@ -588,7 +584,7 @@
       }
     ],
     "images": [
-      "/images/products/tu-dau-giuong-go.jpg"
+      "/images/tu/tu-tho-go-cam-xe/1793120059806_1_52daf961-e6a2-443b-af80-28303f13630e.jpeg"
     ],
     "imageFolder": "tu/tu-tho-go-cam-xe"
   },
@@ -632,7 +628,7 @@
       }
     ],
     "images": [
-      "/images/products/tu-dau-giuong-go.jpg"
+      "/images/tu/tu-tho-go-huong/1793120050446_1_52daf961-e6a2-443b-af80-28303f13630e.jpeg"
     ],
     "imageFolder": "tu/tu-tho-go-huong"
   },
@@ -662,7 +658,7 @@
       }
     ],
     "images": [
-      "/images/products/tu-quan-ao-3-canh.jpg"
+      "/images/tu/tu-go-cong-nghiep-3-canh/1793120889036_1_357a57ca-0a99-4653-a4b6-d99a0b6ce3a7.jpeg"
     ],
     "imageFolder": "tu/tu-go-cong-nghiep-3-canh"
   },
@@ -692,7 +688,7 @@
       }
     ],
     "images": [
-      "/images/products/tu-quan-ao-3-canh.jpg"
+      "/images/tu/tu-huong-xam-3-canh/1793120880025_1_82eba0b6-868a-4f2f-99a9-0b329073b17a.jpeg"
     ],
     "imageFolder": "tu/tu-huong-xam-3-canh"
   },
@@ -722,7 +718,8 @@
       }
     ],
     "images": [
-      "/images/products/tu-quan-ao-3-canh.jpg"
+      "/images/tu/tu-soi-4-canh/1793120858357_1_ae867d3f-d7fc-4019-8a26-3ed9a2ea1550.jpeg",
+      "/images/tu/tu-soi-4-canh/1793120867376_1_a4f4dd0a-1553-4243-b88c-426f0575feba.jpeg"
     ],
     "imageFolder": "tu/tu-soi-4-canh"
   }

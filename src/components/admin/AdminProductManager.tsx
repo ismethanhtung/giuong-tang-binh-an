@@ -74,6 +74,7 @@ export default function AdminProductManager({
     const [isCreatingNew, setIsCreatingNew] = useState(false);
     const [isSaving, setIsSaving] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
+    const [isDraggingOver, setIsDraggingOver] = useState(false);
     const [deletingImageSrc, setDeletingImageSrc] = useState<string | null>(
         null,
     );
@@ -82,11 +83,16 @@ export default function AdminProductManager({
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     // Trạng thái cắt ảnh vuông (Square Crop)
-    const [croppingImageSrc, setCroppingImageSrc] = useState<string | null>(null);
+    const [croppingImageSrc, setCroppingImageSrc] = useState<string | null>(
+        null,
+    );
     const [isCropping, setIsCropping] = useState<boolean>(false);
     const [cropZoom, setCropZoom] = useState<number>(1);
     const [cropRotation, setCropRotation] = useState<number>(0);
-    const [cropPan, setCropPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [cropPan, setCropPan] = useState<{ x: number; y: number }>({
+        x: 0,
+        y: 0,
+    });
 
     const isDraggingRef = useRef(false);
     const dragStartRef = useRef({ x: 0, y: 0 });
@@ -125,7 +131,17 @@ export default function AdminProductManager({
                 }
                 const sx = (img.naturalWidth - size) / 2;
                 const sy = (img.naturalHeight - size) / 2;
-                ctx.drawImage(img, sx, sy, size, size, 0, 0, targetDim, targetDim);
+                ctx.drawImage(
+                    img,
+                    sx,
+                    sy,
+                    size,
+                    size,
+                    0,
+                    0,
+                    targetDim,
+                    targetDim,
+                );
                 canvas.toBlob(
                     (blob) => {
                         if (!blob) {
@@ -152,7 +168,12 @@ export default function AdminProductManager({
 
     // Hàm lưu ảnh cắt từ Crop Modal và ghi đè trực tiếp
     const handleSaveCroppedImage = async () => {
-        if (!croppingImageSrc || !cropContainerRef.current || !cropImgRef.current) return;
+        if (
+            !croppingImageSrc ||
+            !cropContainerRef.current ||
+            !cropImgRef.current
+        )
+            return;
         setIsCropping(true);
 
         try {
@@ -193,7 +214,13 @@ export default function AdminProductManager({
             const outDrawW = drawW * scaleFactor;
             const outDrawH = drawH * scaleFactor;
 
-            ctx.drawImage(img, -outDrawW / 2, -outDrawH / 2, outDrawW, outDrawH);
+            ctx.drawImage(
+                img,
+                -outDrawW / 2,
+                -outDrawH / 2,
+                outDrawW,
+                outDrawH,
+            );
             ctx.restore();
 
             const blob = await new Promise<Blob | null>((res) =>
@@ -202,7 +229,9 @@ export default function AdminProductManager({
             if (!blob) throw new Error("Lỗi trích xuất ảnh");
 
             const fileName = croppingImageSrc.split("/").pop() || "cropped.jpg";
-            const croppedFile = new File([blob], fileName, { type: "image/jpeg" });
+            const croppedFile = new File([blob], fileName, {
+                type: "image/jpeg",
+            });
 
             const formData = new FormData();
             formData.append("adminPassword", "admin123");
@@ -350,6 +379,20 @@ export default function AdminProductManager({
     const handleUploadFiles = async (files: FileList | File[]) => {
         if (!files || files.length === 0) return;
 
+        const validFiles = Array.from(files).filter(
+            (file) =>
+                file.type.startsWith("image/") ||
+                /\.(jpe?g|png|webp|gif|avif)$/i.test(file.name),
+        );
+
+        if (validFiles.length === 0) {
+            showToast(
+                "Vui lòng chọn hoặc kéo thả các file định dạng ảnh (JPG, PNG, WEBP)",
+                "error",
+            );
+            return;
+        }
+
         // Xác định slug để tạo folder
         const targetSlug =
             editingProduct?.slug ||
@@ -372,7 +415,7 @@ export default function AdminProductManager({
             formData.append("slug", targetSlug);
             formData.append("category", formCategory);
             formData.append("adminPassword", "admin123");
-            Array.from(files).forEach((file) => formData.append("files", file));
+            validFiles.forEach((file) => formData.append("files", file));
 
             const res = await fetch("/api/upload", {
                 method: "POST",
@@ -911,9 +954,14 @@ export default function AdminProductManager({
                                             {/* Name & details */}
                                             <td className="px-4 py-3 align-middle">
                                                 <div className="flex items-center gap-2">
-                                                    <p className="font-bold text-stone-900 transition group-hover:text-brand-600">
+                                                    <Link
+                                                        href={`/san-pham/${p.slug}`}
+                                                        target="_blank"
+                                                        title="Xem trang sản phẩm"
+                                                        className="font-bold text-stone-900 transition hover:text-brand-600 group-hover:text-brand-600"
+                                                    >
                                                         {p.name}
-                                                    </p>
+                                                    </Link>
                                                     {p.featured && (
                                                         <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
                                                             Nổi bật
@@ -1121,10 +1169,9 @@ export default function AdminProductManager({
                                                 Hình ảnh thực tế của sản phẩm
                                             </label>
                                             <p className="text-[11px] text-stone-500">
-                                                Tải ảnh trực tiếp từ máy
-                                                tính/điện thoại — hệ thống sẽ tự
-                                                tạo thư mục và gán ngay cho sản
-                                                phẩm!
+                                                Tải ảnh trực tiếp, hệ thống sẽ
+                                                tự tạo thư mục và gán ngay cho
+                                                sản phẩm!
                                             </p>
                                         </div>
                                     </div>
@@ -1144,7 +1191,6 @@ export default function AdminProductManager({
 
                                 {/* Nút tải ảnh & khung kéo thả */}
                                 <div className="mt-3.5">
-                                    
                                     <input
                                         ref={fileInputRef}
                                         type="file"
@@ -1233,7 +1279,16 @@ export default function AdminProductManager({
                                         {/* Danh sách ảnh xem trước với nút xoá từng ảnh */}
                                         {(() => {
                                             const currentFolderImages =
-                                                selectedFolderData?.images ||
+                                                (selectedFolderData?.images &&
+                                                    selectedFolderData.images
+                                                        .length > 0 &&
+                                                    selectedFolderData.images) ||
+                                                (editingProduct?.imageFolder ===
+                                                    formImageFolder &&
+                                                    editingProduct?.images &&
+                                                    editingProduct.images
+                                                        .length > 0 &&
+                                                    editingProduct.images) ||
                                                 selectedFolderData?.sampleImages ||
                                                 [];
                                             if (
@@ -1266,7 +1321,9 @@ export default function AdminProductManager({
                                                                     className="group relative aspect-square overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs"
                                                                 >
                                                                     <Image
-                                                                        src={src}
+                                                                        src={
+                                                                            src
+                                                                        }
                                                                         alt=""
                                                                         fill
                                                                         aria-hidden="true"
@@ -1274,7 +1331,9 @@ export default function AdminProductManager({
                                                                         sizes="48px"
                                                                     />
                                                                     <Image
-                                                                        src={src}
+                                                                        src={
+                                                                            src
+                                                                        }
                                                                         alt={`Ảnh ${i + 1}`}
                                                                         fill
                                                                         className="object-contain transition group-hover:scale-105"
@@ -1284,10 +1343,14 @@ export default function AdminProductManager({
                                                                     {/* Nút cắt chỉnh ảnh vuông 1:1 */}
                                                                     <button
                                                                         type="button"
-                                                                        onClick={(e) => {
+                                                                        onClick={(
+                                                                            e,
+                                                                        ) => {
                                                                             e.preventDefault();
                                                                             e.stopPropagation();
-                                                                            openCropModal(src);
+                                                                            openCropModal(
+                                                                                src,
+                                                                            );
                                                                         }}
                                                                         title="Cắt căn chỉnh ảnh vuông 1:1"
                                                                         className="absolute top-1 left-1 grid h-6 w-6 place-items-center rounded-full bg-brand-600/90 text-white shadow-md transition hover:bg-brand-700 hover:scale-110 active:scale-95"
@@ -1480,7 +1543,8 @@ export default function AdminProductManager({
                                         Cắt căn chỉnh ảnh vuông 1:1
                                     </h3>
                                     <p className="text-[11px] text-stone-500">
-                                        Kéo thả di chuyển, phóng to hoặc xoay để góc chụp ưng ý nhất
+                                        Kéo thả di chuyển, phóng to hoặc xoay để
+                                        góc chụp ưng ý nhất
                                     </p>
                                 </div>
                             </div>
@@ -1499,37 +1563,59 @@ export default function AdminProductManager({
                                 ref={cropContainerRef}
                                 onMouseDown={(e) => {
                                     isDraggingRef.current = true;
-                                    dragStartRef.current = { x: e.clientX, y: e.clientY };
+                                    dragStartRef.current = {
+                                        x: e.clientX,
+                                        y: e.clientY,
+                                    };
                                     panStartRef.current = { ...cropPan };
                                 }}
                                 onMouseMove={(e) => {
                                     if (!isDraggingRef.current) return;
-                                    const dx = e.clientX - dragStartRef.current.x;
-                                    const dy = e.clientY - dragStartRef.current.y;
+                                    const dx =
+                                        e.clientX - dragStartRef.current.x;
+                                    const dy =
+                                        e.clientY - dragStartRef.current.y;
                                     setCropPan({
                                         x: panStartRef.current.x + dx,
                                         y: panStartRef.current.y + dy,
                                     });
                                 }}
-                                onMouseUp={() => { isDraggingRef.current = false; }}
-                                onMouseLeave={() => { isDraggingRef.current = false; }}
+                                onMouseUp={() => {
+                                    isDraggingRef.current = false;
+                                }}
+                                onMouseLeave={() => {
+                                    isDraggingRef.current = false;
+                                }}
                                 onTouchStart={(e) => {
                                     if (e.touches.length === 1) {
                                         isDraggingRef.current = true;
-                                        dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                                        dragStartRef.current = {
+                                            x: e.touches[0].clientX,
+                                            y: e.touches[0].clientY,
+                                        };
                                         panStartRef.current = { ...cropPan };
                                     }
                                 }}
                                 onTouchMove={(e) => {
-                                    if (!isDraggingRef.current || e.touches.length !== 1) return;
-                                    const dx = e.touches[0].clientX - dragStartRef.current.x;
-                                    const dy = e.touches[0].clientY - dragStartRef.current.y;
+                                    if (
+                                        !isDraggingRef.current ||
+                                        e.touches.length !== 1
+                                    )
+                                        return;
+                                    const dx =
+                                        e.touches[0].clientX -
+                                        dragStartRef.current.x;
+                                    const dy =
+                                        e.touches[0].clientY -
+                                        dragStartRef.current.y;
                                     setCropPan({
                                         x: panStartRef.current.x + dx,
                                         y: panStartRef.current.y + dy,
                                     });
                                 }}
-                                onTouchEnd={() => { isDraggingRef.current = false; }}
+                                onTouchEnd={() => {
+                                    isDraggingRef.current = false;
+                                }}
                                 className="relative aspect-square w-full max-w-[340px] sm:max-w-[380px] mx-auto overflow-hidden rounded-2xl bg-stone-950 border-2 border-brand-500 shadow-xl cursor-grab active:cursor-grabbing select-none"
                             >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1542,7 +1628,9 @@ export default function AdminProductManager({
                                     style={{
                                         transform: `translate(${cropPan.x}px, ${cropPan.y}px) scale(${cropZoom}) rotate(${cropRotation}deg)`,
                                         transformOrigin: "center center",
-                                        transition: isDraggingRef.current ? "none" : "transform 0.08s ease-out",
+                                        transition: isDraggingRef.current
+                                            ? "none"
+                                            : "transform 0.08s ease-out",
                                     }}
                                     className="absolute inset-0 m-auto h-full w-full object-contain pointer-events-none"
                                 />
@@ -1576,7 +1664,11 @@ export default function AdminProductManager({
                                         max="3"
                                         step="0.05"
                                         value={cropZoom}
-                                        onChange={(e) => setCropZoom(parseFloat(e.target.value))}
+                                        onChange={(e) =>
+                                            setCropZoom(
+                                                parseFloat(e.target.value),
+                                            )
+                                        }
                                         className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-stone-200 accent-brand-600"
                                     />
                                     <ZoomIn className="h-4 w-4 text-stone-600 shrink-0" />
@@ -1589,7 +1681,11 @@ export default function AdminProductManager({
                                     <div className="flex items-center gap-2">
                                         <button
                                             type="button"
-                                            onClick={() => setCropRotation((r) => (r + 90) % 360)}
+                                            onClick={() =>
+                                                setCropRotation(
+                                                    (r) => (r + 90) % 360,
+                                                )
+                                            }
                                             className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 font-semibold text-stone-700 hover:bg-stone-100 active:scale-95 transition"
                                         >
                                             <RotateCw className="h-3.5 w-3.5" />

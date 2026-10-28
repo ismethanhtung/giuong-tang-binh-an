@@ -55,6 +55,7 @@ export function scanImageFolders(): {
     folder: string;
     imageCount: number;
     sampleImages: string[];
+    images: string[];
 }[] {
     if (!fs.existsSync(IMAGES_DIR)) return [];
 
@@ -63,6 +64,7 @@ export function scanImageFolders(): {
         folder: string;
         imageCount: number;
         sampleImages: string[];
+        images: string[];
     }[] = [];
 
     try {
@@ -85,6 +87,7 @@ export function scanImageFolders(): {
                     folder: relFolder,
                     imageCount: images.length,
                     sampleImages: images.slice(0, 3),
+                    images,
                 });
             }
         }
