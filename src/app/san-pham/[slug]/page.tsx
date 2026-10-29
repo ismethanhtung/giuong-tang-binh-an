@@ -33,10 +33,13 @@ export async function generateMetadata({
 
     const category = getCategory(product.category);
     const pageUrl = `${site.url}/san-pham/${product.slug}`;
-    const pageTitle = `${product.name} – Giá Xưởng Tốt Nhất`;
+    const isIronBed = product.category === "giuong-sat";
+    const pageTitle = isIronBed
+        ? `${product.name} – Giường Tầng Sắt Bình An Gia Lai`
+        : `${product.name} – Xưởng Bình An Gia Lai`;
     const pageDescription =
         product.description ||
-        `${product.name} tại Giường tầng Bình An (Pleiku, Gia Lai). ${product.shortDesc}. Bảo hành chu đáo, giao lắp tận nơi.`;
+        `${product.name} chất lượng cao tại xưởng Giường tầng Bình An (Pleiku, Gia Lai). ${product.shortDesc}. Bảo hành chu đáo, giao lắp tận nơi.`;
 
     const ogImages =
         product.images && product.images.length > 0

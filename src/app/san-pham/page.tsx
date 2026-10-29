@@ -25,8 +25,12 @@ export async function generateMetadata({
     let description =
         "Xem danh sách các mẫu giường tầng sắt hộp Hoà Phát, giường sắt, giường gỗ, tủ quần áo, bàn ghế giá xưởng tại Pleiku, Gia Lai. Giao lắp tận nhà.";
 
-    if (active) {
-        title = `${active.name} Giá Xưởng Bền Đẹp`;
+    if (activeCat === "giuong-sat") {
+        title = "Giường Tầng Sắt, Giường Sắt Hộp Hoà Phát Giá Xưởng Gia Lai";
+        description =
+            "Xưởng sản xuất giường tầng sắt, giường sắt tầng, giường sắt hộp Hoà Phát sơn tĩnh điện bền đẹp tại Pleiku, Gia Lai. Đủ kích thước 1m, 1m2, 1m4, 1m6, giá tận xưởng.";
+    } else if (active) {
+        title = `${active.name} Giá Xưởng Bền Đẹp Tại Gia Lai`;
         description = `Khám phá các mẫu ${active.name.toLowerCase()} bền đẹp, chất lượng cao tại xưởng Giường tầng Bình An (Pleiku, Gia Lai). Đầy đủ kích thước, mẫu mã đa dạng, giá tận xưởng tốt nhất.`;
     } else if (q) {
         title = `Tìm kiếm: "${q}"`;
@@ -113,23 +117,32 @@ export default async function ProductsPage({
                 </span>
             </nav>
 
-            {/*<header className="mt-3">
-                <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
-                    {active ? active.name : "Tất cả sản phẩm"}
+            <header className="mt-3">
+                <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-stone-900">
+                    {activeCat === "giuong-sat"
+                        ? "Giường Tầng Sắt, Giường Sắt Hộp Tại Gia Lai"
+                        : active
+                          ? `${active.name} Giá Xưởng – Bình An Gia Lai`
+                          : q
+                            ? `Kết quả tìm kiếm cho: "${q}"`
+                            : "Giường Tầng, Giường Sắt & Nội Thất Bình An"}
                 </h1>
-                <p className="mt-1 text-sm text-stone-500">
+                <p className="mt-1 text-xs sm:text-sm text-stone-500">
                     {q ? (
                         <>
-                            Kết quả cho “
-                            <span className="font-medium text-stone-700">
-                                {q}
-                            </span>
-                            ” —{" "}
+                            Tìm thấy{" "}
+                            <span className="font-semibold text-stone-700">
+                                {list.length}
+                            </span>{" "}
+                            sản phẩm cho từ khoá “{q}”
                         </>
-                    ) : null}
-                    {list.length} sản phẩm
+                    ) : activeCat === "giuong-sat" ? (
+                        "Xưởng sản xuất giường tầng sắt, giường sắt đơn Hoà Phát sơn tĩnh điện giá tận xưởng tại Pleiku, Gia Lai."
+                    ) : (
+                        `Tổng hợp ${list.length} sản phẩm nội thất chất lượng, bảo hành chu đáo, giao lắp tận nơi tại Gia Lai.`
+                    )}
                 </p>
-            </header>*/}
+            </header>
 
             <div className="no-scrollbar -mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1">
                 <Link

@@ -12,8 +12,13 @@ export function getLocalBusinessSchema() {
         "@id": `${site.url}/#store`,
         name: site.name,
         alternateName: [
+            "Giường tầng Bình An",
+            "Giường tầng Gia Lai",
+            "Giường sắt Gia Lai",
+            "Giường sắt tầng Bình An",
             "Giường tầng sắt Bình An Pleiku Gia Lai",
             "Xưởng giường sắt Bình An",
+            "Xưởng Giường Tầng Pleiku",
         ],
         description: site.description,
         url: site.url,
@@ -57,6 +62,59 @@ export function getLocalBusinessSchema() {
             },
         ],
         sameAs: [site.facebook, site.zalo, site.messenger],
+        knowsAbout: [
+            "Giường tầng",
+            "Giường tầng sắt",
+            "Giường sắt",
+            "Giường sắt tầng",
+            "Giường sắt gia lai",
+            "Giường tầng gia lai",
+            "Giường tầng sắt hộp Hoà Phát",
+            "Giường sắt bọc nệm",
+            "Nội thất Gia Lai",
+            "Nội thất Pleiku",
+        ],
+        hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Danh mục sản phẩm xưởng Giường tầng Bình An",
+            itemListElement: [
+                {
+                    "@type": "OfferCatalog",
+                    name: "Giường sắt & giường tầng",
+                    itemListElement: [
+                        {
+                            "@type": "Offer",
+                            itemOffered: {
+                                "@type": "Product",
+                                name: "Giường tầng sắt hộp Hoà Phát Pleiku Gia Lai",
+                                description: "Giường tầng sắt hộp cao cấp, chịu tải 500kg, đủ kích thước 1m, 1m2, 1m4, 1m6, có hộc kéo và thang hộp.",
+                            },
+                        },
+                        {
+                            "@type": "Offer",
+                            itemOffered: {
+                                "@type": "Product",
+                                name: "Giường sắt đơn và giường sắt bọc nệm Gia Lai",
+                                description: "Giường sắt sơn tĩnh điện Hoà Phát, mẫu mã hiện đại, chống rỉ sét, độ bền cao.",
+                            },
+                        },
+                    ],
+                },
+                {
+                    "@type": "OfferCatalog",
+                    name: "Nội thất gỗ",
+                    itemListElement: [
+                        {
+                            "@type": "Offer",
+                            itemOffered: {
+                                "@type": "Product",
+                                name: "Giường gỗ tự nhiên và tủ quần áo Gia Lai",
+                            },
+                        },
+                    ],
+                },
+            ],
+        },
         areaServed: [
             {
                 "@type": "City",
@@ -161,6 +219,30 @@ export function getBreadcrumbSchema(
                 ? item.url
                 : `${site.url}${item.url}`,
         })),
+    };
+}
+
+/**
+ * Schema WebSite kèm Sitelinks Searchbox
+ */
+export function getWebSiteSchema() {
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        url: site.url,
+        name: site.name,
+        alternateName: "Xưởng Giường Tầng Bình An Pleiku Gia Lai",
+        description: site.description,
+        inLanguage: "vi-VN",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: {
+                "@type": "EntryPoint",
+                urlTemplate: `${site.url}/san-pham?q={search_term_string}`,
+            },
+            "query-input": "required name=search_term_string",
+        },
     };
 }
 

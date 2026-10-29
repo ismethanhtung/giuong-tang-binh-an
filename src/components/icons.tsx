@@ -15,6 +15,7 @@ import {
     MessageCircle,
     Minus,
     Phone,
+    PhoneCall,
     Plus,
     Search,
     Share2,
@@ -34,6 +35,7 @@ export const GridIcon = LayoutGrid;
 export const CartIcon = ShoppingCart;
 export const SearchIcon = Search;
 export const PhoneIcon = Phone;
+export const PhoneCallIcon = PhoneCall;
 export const MessageIcon = MessageCircle;
 export const MapPinIcon = MapPin;
 export const ClockIcon = Clock;

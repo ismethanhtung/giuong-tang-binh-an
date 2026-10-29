@@ -3,9 +3,13 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import HomeCtaButton from "@/components/HomeCtaButton";
 import {
+    BadgeCheckIcon,
     ChevronRightIcon,
     PhoneIcon,
+    ShieldIcon,
     StarIcon,
+    TruckIcon,
+    WrenchIcon,
     ZaloIcon,
 } from "@/components/icons";
 import { categories } from "@/lib/products";
@@ -38,16 +42,19 @@ export default function HomePage() {
                     <div className="animate-float-up max-w-xl">
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md">
                             <StarIcon className="h-3.5 w-3.5 text-brand-300" />
-                            Kho giường tầng giá gốc
+                            Kho giường tầng giá gốc Pleiku Gia Lai
                         </span>
                         <h1 className="mt-4 text-[24px] min-[375px]:text-[26px] font-extrabold leading-[1.2] tracking-tight text-white drop-shadow-sm sm:text-4xl lg:text-[2.75rem] sm:leading-[1.12]">
-                            <span className="block">Giường tầng, giường sắt</span>
+                            <span className="block">
+                                Giường tầng, giường sắt
+                            </span>
                             <span className="block bg-gradient-to-r from-brand-200 to-brand-400 bg-clip-text text-transparent">
-                                bền đẹp, giá tận xưởng
+                                Bền đẹp, giá tận xưởng
                             </span>
                         </h1>
                         <p className="mt-4 max-w-md text-sm leading-relaxed text-stone-200 sm:text-base">
-                            Giường tầng, giường sắt, giường gỗ, tủ và bàn ghế.
+                            Kho giường tầng sắt Hoà Phát, giường sắt, giường gỗ,
+                            tủ và bàn ghế giá tận xưởng tại Pleiku, Gia Lai.
                         </p>
                         <div className="mt-7 flex flex-wrap gap-3">
                             <Link
@@ -209,6 +216,113 @@ export default function HomePage() {
                         >
                             Xem thêm
                         </Link>
+                    </div>
+                </section>
+
+                {/* Kho Giường Tầng, Giường Sắt Bình An Tại Pleiku, Gia Lai */}
+                <section className="mt-14 mb-4 rounded-3xl border border-stone-200/80 bg-gradient-to-b from-white to-stone-50/50 p-6 sm:p-8 lg:p-10 shadow-sm">
+                    <div className="max-w-3xl">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 ring-1 ring-inset ring-brand-200">
+                            Kho uy tín tại Pleiku
+                        </span>
+                        <h2 className="mt-3 text-xl font-bold tracking-tight text-stone-900 sm:text-2xl lg:text-3xl">
+                            Kho Giường Tầng, Giường Sắt Bình An Tại Pleiku, Gia
+                            Lai
+                        </h2>
+                        <p className="mt-3 text-sm leading-relaxed text-stone-600 sm:text-base">
+                            <strong className="text-stone-900 font-semibold">
+                                Giường tầng Bình An
+                            </strong>{" "}
+                            – địa chỉ trực tiếp gia công và phân phối các dòng{" "}
+                            <strong className="text-stone-900 font-semibold">
+                                giường tầng
+                            </strong>
+                            ,{" "}
+                            <strong className="text-stone-900 font-semibold">
+                                giường sắt tầng
+                            </strong>
+                            ,{" "}
+                            <strong className="text-stone-900 font-semibold">
+                                giường sắt hộp Hoà Phát
+                            </strong>{" "}
+                            giá tận xưởng tốt tại Gia Lai và khu vực Tây Nguyên.
+                        </p>
+                    </div>
+
+                    <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        <div className="rounded-2xl border border-stone-200/70 bg-white p-4.5 shadow-xs">
+                            <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                                <ShieldIcon className="h-5 w-5" />
+                            </div>
+                            <h3 className="mt-3 text-sm font-bold text-stone-900">
+                                Sắt Hoà Phát chuẩn dày
+                            </h3>
+                            <p className="mt-1 text-xs leading-relaxed text-stone-500">
+                                Khung sắt hộp chịu lực cao tới 500kg, giát
+                                giường đan chắc chắn, cam kết không rung lắc.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-200/70 bg-white p-4.5 shadow-xs">
+                            <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                                <BadgeCheckIcon className="h-5 w-5" />
+                            </div>
+                            <h3 className="mt-3 text-sm font-bold text-stone-900">
+                                Sơn tĩnh điện cao cấp
+                            </h3>
+                            <p className="mt-1 text-xs leading-relaxed text-stone-500">
+                                Bề mặt phủ sơn tĩnh điện công nghệ cao, nhẵn mịn
+                                chống trầy xước, ngăn ngừa rỉ sét tuyệt đối.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-200/70 bg-white p-4.5 shadow-xs">
+                            <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                                <WrenchIcon className="h-5 w-5" />
+                            </div>
+                            <h3 className="mt-3 text-sm font-bold text-stone-900">
+                                Đủ kích thước & tiện ích
+                            </h3>
+                            <p className="mt-1 text-xs leading-relaxed text-stone-500">
+                                Đầy đủ các size 1m, 1m2, 1m4, 1m6; tích hợp hộc
+                                kéo gầm và thang hộp để đồ thông minh.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-200/70 bg-white p-4.5 shadow-xs">
+                            <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                                <TruckIcon className="h-5 w-5" />
+                            </div>
+                            <h3 className="mt-3 text-sm font-bold text-stone-900">
+                                Giao lắp tận nơi Gia Lai
+                            </h3>
+                            <p className="mt-1 text-xs leading-relaxed text-stone-500">
+                                Vận chuyển nhanh và hỗ trợ khiêng vác lắp đặt
+                                tận phòng tại Pleiku và toàn tỉnh Gia Lai.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-7 border-t border-stone-200/60 pt-5 text-xs sm:text-sm leading-relaxed text-stone-600 space-y-2.5">
+                        <p>
+                            Với nhiều năm kinh nghiệm sản xuất nội thất,{" "}
+                            <strong>Kho giường sắt Bình An Gia Lai</strong> là
+                            nơi cung cấp tin cậy của nhiều gia đình, chủ
+                            homestay du lịch, ký túc xá trường học và phòng trọ
+                            cho thuê trên địa bàn TP. Pleiku cũng như các huyện
+                            lân cận (Đak Đoa, Chư Sê, An Khê, Ayun Pa, Mang
+                            Yang, Đức Cơ...).
+                        </p>
+                        <p>
+                            Các dòng sản phẩm chủ lực bao gồm:{" "}
+                            <strong>giường tầng sắt 1m – 1m</strong>,{" "}
+                            <strong>giường tầng sắt 1m – 1m2</strong>,{" "}
+                            <strong>giường tầng sắt có hộc kéo gầm</strong>,{" "}
+                            <strong>giường tầng thang hộp</strong>, cùng các mẫu{" "}
+                            <strong>giường sắt bọc nệm</strong> và giường ngủ
+                            hiện đại. Bên mình nhận đặt đóng kích thước theo yêu
+                            cầu không gian phòng ngủ của khách hàng.
+                        </p>
                     </div>
                 </section>
             </div>

@@ -54,6 +54,14 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
 
             {/* Khung nội dung modal nằm ở vị trí trung tâm */}
             <div className="relative z-10 w-full max-w-sm rounded-3xl bg-white p-4 sm:p-5 shadow-2xl transition-all">
+                {/* Style định nghĩa chuyển động xoay vệt LED Neon chạy mượt mà, đảm bảo luôn chạy trên mọi thiết bị */}
+                <style>{`
+                    @keyframes neonBorderSpin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                `}</style>
+
                 {/* Header của Modal */}
                 <div className="flex items-center justify-between pb-3 border-b border-stone-100">
                     <div>
@@ -78,15 +86,32 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                     {/* Gọi điện thoại */}
                     <a
                         href={site.phoneHref}
-                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-brand-500 hover:text-brand-600"
+                        className="group relative flex overflow-hidden rounded-2xl p-[1.5px] bg-stone-200/60 transition active:scale-95 shadow-2xs hover:shadow-xs"
                     >
-                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-red-50 text-red-600">
-                            <PhoneIcon className="h-4.5 w-4.5" />
-                        </div>
-                        <div className="text-left min-w-0">
-                            <div className="text-[11px] sm:text-xs text-stone-500">Gọi ngay</div>
-                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
-                                {site.phone}
+                        {/* Vệt sáng LED Neon chạy mượt mà quanh viền */}
+                        <div
+                            className="pointer-events-none absolute opacity-95"
+                            style={{
+                                width: "300px",
+                                height: "300px",
+                                top: "calc(50% - 150px)",
+                                left: "calc(50% - 150px)",
+                                background:
+                                    "conic-gradient(from 0deg, transparent 0 160deg, rgba(239, 68, 68, 0.3) 210deg, #ef4444 320deg, transparent 360deg)",
+                                animation: "neonBorderSpin 2.6s linear infinite",
+                                transformOrigin: "center center",
+                                willChange: "transform",
+                            }}
+                        />
+                        <div className="relative flex h-full w-full items-center gap-2.5 sm:gap-3 rounded-[14.5px] bg-white p-2.5 sm:p-3 text-stone-800 transition">
+                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-red-50 text-red-600">
+                                <PhoneIcon className="h-4.5 w-4.5" />
+                            </div>
+                            <div className="text-left min-w-0">
+                                <div className="text-[11px] sm:text-xs text-stone-500">Gọi ngay</div>
+                                <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap text-stone-900">
+                                    {site.phone}
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -96,15 +121,32 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0068FF] hover:text-[#0068FF]"
+                        className="group relative flex overflow-hidden rounded-2xl p-[1.5px] bg-stone-200/60 transition active:scale-95 shadow-2xs hover:shadow-xs"
                     >
-                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-sky-50 text-[#0068FF]">
-                            <ZaloIcon className="w-5 h-auto" />
-                        </div>
-                        <div className="text-left min-w-0">
-                            <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
-                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
-                                Zalo
+                        {/* Vệt sáng LED Neon chạy mượt mà quanh viền */}
+                        <div
+                            className="pointer-events-none absolute opacity-95"
+                            style={{
+                                width: "300px",
+                                height: "300px",
+                                top: "calc(50% - 150px)",
+                                left: "calc(50% - 150px)",
+                                background:
+                                    "conic-gradient(from 0deg, transparent 0 160deg, rgba(0, 104, 255, 0.3) 210deg, #0068ff 320deg, transparent 360deg)",
+                                animation: "neonBorderSpin 2.6s linear infinite",
+                                transformOrigin: "center center",
+                                willChange: "transform",
+                            }}
+                        />
+                        <div className="relative flex h-full w-full items-center gap-2.5 sm:gap-3 rounded-[14.5px] bg-white p-2.5 sm:p-3 text-stone-800 transition">
+                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-sky-50 text-[#0068FF]">
+                                <ZaloIcon className="w-5 h-auto" />
+                            </div>
+                            <div className="text-left min-w-0">
+                                <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
+                                <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap text-stone-900">
+                                    Zalo
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -114,15 +156,32 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.messenger}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0084FF] hover:text-[#0084FF]"
+                        className="group relative flex overflow-hidden rounded-2xl p-[1.5px] bg-stone-200/60 transition active:scale-95 shadow-2xs hover:shadow-xs"
                     >
-                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-50 text-[#0084FF]">
-                            <MessengerIcon className="h-4.5 w-4.5" />
-                        </div>
-                        <div className="text-left min-w-0">
-                            <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
-                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
-                                Messenger
+                        {/* Vệt sáng LED Neon chạy mượt mà quanh viền */}
+                        <div
+                            className="pointer-events-none absolute opacity-95"
+                            style={{
+                                width: "300px",
+                                height: "300px",
+                                top: "calc(50% - 150px)",
+                                left: "calc(50% - 150px)",
+                                background:
+                                    "conic-gradient(from 0deg, transparent 0 160deg, rgba(0, 132, 255, 0.3) 210deg, #0084ff 320deg, transparent 360deg)",
+                                animation: "neonBorderSpin 2.6s linear infinite",
+                                transformOrigin: "center center",
+                                willChange: "transform",
+                            }}
+                        />
+                        <div className="relative flex h-full w-full items-center gap-2.5 sm:gap-3 rounded-[14.5px] bg-white p-2.5 sm:p-3 text-stone-800 transition">
+                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-50 text-[#0084FF]">
+                                <MessengerIcon className="h-4.5 w-4.5" />
+                            </div>
+                            <div className="text-left min-w-0">
+                                <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
+                                <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap text-stone-900">
+                                    Messenger
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -132,15 +191,32 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#1877F2] hover:text-[#1877F2]"
+                        className="group relative flex overflow-hidden rounded-2xl p-[1.5px] bg-stone-200/60 transition active:scale-95 shadow-2xs hover:shadow-xs"
                     >
-                        <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-indigo-50 text-[#1877F2]">
-                            <FacebookIcon className="h-4.5 w-4.5" />
-                        </div>
-                        <div className="text-left min-w-0">
-                            <div className="text-[11px] sm:text-xs text-stone-500">Ghé thăm</div>
-                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
-                                Facebook
+                        {/* Vệt sáng LED Neon chạy mượt mà quanh viền */}
+                        <div
+                            className="pointer-events-none absolute opacity-95"
+                            style={{
+                                width: "300px",
+                                height: "300px",
+                                top: "calc(50% - 150px)",
+                                left: "calc(50% - 150px)",
+                                background:
+                                    "conic-gradient(from 0deg, transparent 0 160deg, rgba(24, 119, 242, 0.3) 210deg, #1877f2 320deg, transparent 360deg)",
+                                animation: "neonBorderSpin 2.6s linear infinite",
+                                transformOrigin: "center center",
+                                willChange: "transform",
+                            }}
+                        />
+                        <div className="relative flex h-full w-full items-center gap-2.5 sm:gap-3 rounded-[14.5px] bg-white p-2.5 sm:p-3 text-stone-800 transition">
+                            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-indigo-50 text-[#1877F2]">
+                                <FacebookIcon className="h-4.5 w-4.5" />
+                            </div>
+                            <div className="text-left min-w-0">
+                                <div className="text-[11px] sm:text-xs text-stone-500">Ghé thăm</div>
+                                <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap text-stone-900">
+                                    Facebook
+                                </div>
                             </div>
                         </div>
                     </a>

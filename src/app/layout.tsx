@@ -6,7 +6,7 @@ import { CartProvider } from "@/components/CartProvider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { site } from "@/lib/site";
-import { JsonLd, getLocalBusinessSchema } from "@/components/JsonLd";
+import { JsonLd, getLocalBusinessSchema, getWebSiteSchema } from "@/components/JsonLd";
 
 const beVietnam = Be_Vietnam_Pro({
     variable: "--font-be-vietnam",
@@ -23,12 +23,22 @@ export const metadata: Metadata = {
     },
     description: site.description,
     keywords: [
+        "giường tầng",
         "giường tầng Bình An",
-        "giường tầng sắt pleiku",
+        "giường sắt",
+        "giường sắt tầng",
         "giường sắt gia lai",
         "giường tầng gia lai",
+        "giuong tang gia lai",
+        "giuong sat gia lai",
+        "giuong tang binh an",
+        "giuong sat binh an",
+        "giuong sat tang",
+        "giường sắt hộp gia lai",
+        "giường tầng sắt pleiku",
         "xưởng giường sắt pleiku",
         "giường tầng hộp hoà phát gia lai",
+        "giường sắt bọc nệm",
         "giường gỗ pleiku",
         "tủ quần áo gia lai",
         "bàn ghế ăn pleiku",
@@ -114,6 +124,7 @@ export default function RootLayout({
         <html lang="vi" className={`${beVietnam.variable} h-full antialiased`}>
             <head>
                 <JsonLd data={localBusinessData} />
+                <JsonLd data={getWebSiteSchema()} />
             </head>
             <body className="flex min-h-screen flex-col bg-[#f8fafc] text-stone-800 overflow-x-clip">
                 <CartProvider>
