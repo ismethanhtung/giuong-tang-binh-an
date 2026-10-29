@@ -61,24 +61,24 @@ export default async function ProductDetailPage({
         .slice(0, 4);
 
     return (
-        <div className="mx-auto max-w-6xl px-4">
-            <nav className="mt-4 flex flex-wrap items-center text-sm text-stone-400">
-                <Link href="/" className="hover:text-brand-600">
+        <div className="mx-auto w-full min-w-0 max-w-6xl px-4">
+            <nav className="mt-4 flex items-center text-sm text-stone-400 min-w-0">
+                <Link href="/" className="shrink-0 hover:text-brand-600">
                     Trang chủ
                 </Link>
-                <span className="mx-1.5">/</span>
+                <span className="mx-1.5 shrink-0">/</span>
                 <Link
                     href={`/san-pham?danh-muc=${product.category}`}
-                    className="hover:text-brand-600"
+                    className="shrink-0 hover:text-brand-600"
                 >
                     {category?.short}
                 </Link>
-                <span className="mx-1.5">/</span>
-                <span className="truncate text-stone-600">{product.name}</span>
+                <span className="mx-1.5 shrink-0">/</span>
+                <span className="truncate min-w-0 text-stone-600">{product.name}</span>
             </nav>
 
-            <div className="mt-4 grid gap-6 md:grid-cols-2 md:gap-10">
-                <div className="md:sticky md:top-24 md:self-start">
+            <div className="mt-4 grid gap-6 md:grid-cols-2 md:gap-10 min-w-0">
+                <div className="min-w-0 md:sticky md:top-24 md:self-start">
                     <ProductGallery
                         images={product.images}
                         productName={product.name}
@@ -87,7 +87,7 @@ export default async function ProductDetailPage({
                     />
                 </div>
 
-                <div>
+                <div className="min-w-0">
                     <h1 className="mb-2 text-2xl font-extrabold leading-snug tracking-tight text-stone-900 sm:text-3xl">
                         {product.name}
                     </h1>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Product } from "@/lib/products";
 import { categories, formatPrice } from "@/lib/products";
+import { matchSearch as checkSearchMatch } from "@/lib/search";
 import ProductImage from "@/components/ProductImage";
 import {
     Search,
@@ -714,9 +715,11 @@ export default function AdminProductManager({
     // Filtered products list
     const filteredProducts = products.filter((p) => {
         const matchSearch =
-            searchTerm === "" ||
-            p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            p.slug.toLowerCase().includes(searchTerm.toLowerCase());
+            searchTerm.trim() === "" ||
+            checkSearchMatch(
+                `${p.name} ${p.slug} ${p.shortDesc} ${p.imageFolder || ""}`,
+                searchTerm,
+            );
 
         const matchCat =
             selectedCategory === "all" || p.category === selectedCategory;

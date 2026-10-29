@@ -2,19 +2,11 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { categories } from "@/lib/products";
 import { getProductsServer } from "@/lib/products-server";
+import { matchSearch } from "@/lib/search";
 
 export const dynamic = "force-dynamic";
 
 type Search = { q?: string; "danh-muc"?: string };
-
-function normalize(s: string) {
-    return s
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/đ/g, "d")
-        .replace(/Đ/g, "D")
-        .toLowerCase();
-}
 
 export const metadata = {
     title: "Sản phẩm",
@@ -37,12 +29,10 @@ export default async function ProductsPage({
     let list = products;
     if (active) list = list.filter((p) => p.category === active.id);
     if (q) {
-        const nq = normalize(q);
-        list = list.filter(
-            (p) =>
-                normalize(p.name).includes(nq) ||
-                normalize(p.shortDesc).includes(nq),
-        );
+        list = list.filter((p) => {
+            const searchableText = `${p.name} ${p.shortDesc} ${p.description || ""} ${p.specs?.map((s) => `${s.label} ${s.value}`).join(" ") || ""}`;
+            return matchSearch(searchableText, q);
+        });
     }
 
     const buildHref = (catId?: string) => {

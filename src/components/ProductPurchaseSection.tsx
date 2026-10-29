@@ -23,7 +23,7 @@ export default function ProductPurchaseSection({
         : 0;
 
     return (
-        <div className="mt-4">
+        <div className="mt-4 min-w-0">
             {/* Box giá bán nổi bật */}
             <div className="flex flex-wrap items-baseline gap-3 rounded-2xl bg-brand-50/70 px-4 py-3">
                 <span className="text-2xl font-extrabold text-brand-600 sm:text-3xl">
@@ -45,7 +45,7 @@ export default function ProductPurchaseSection({
 
             {/* Bộ chọn kích thước / phân loại nếu có */}
             {product.variants && product.variants.length > 0 && (
-                <div className="mt-4">
+                <div className="mt-4 min-w-0">
                     <div className="flex items-center justify-between">
                         <label className="text-xs font-bold uppercase tracking-wider text-stone-600">
                             Kích thước:
@@ -91,7 +91,7 @@ export default function ProductPurchaseSection({
             )}
 
             {/* Khối tác vụ: Số lượng + Thêm vào giỏ hàng + Gọi đặt hàng */}
-            <div className="mt-4">
+            <div className="mt-4 min-w-0">
                 <AddToCartFull
                     item={{
                         slug: product.slug,

@@ -45,7 +45,7 @@ export default function ProductGallery({
     }
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 min-w-0 max-w-full">
             {/* Khung ảnh chính */}
             <div className="group relative aspect-square w-full overflow-hidden rounded-3xl border border-stone-200 bg-stone-100 shadow-sm">
                 {/* Lớp nền mờ tự nhiên hài hoà lấp đầy khoảng trống khi ảnh không phải hình vuông */}
@@ -106,7 +106,7 @@ export default function ProductGallery({
 
             {/* Danh sách ảnh thu nhỏ (Thumbnails) */}
             {images.length > 1 && (
-                <div className="no-scrollbar flex gap-2.5 overflow-x-auto pb-1">
+                <div className="no-scrollbar flex gap-2.5 overflow-x-auto pb-1 max-w-full">
                     {images.map((img, idx) => {
                         const isSelected = idx === activeIdx;
                         return (

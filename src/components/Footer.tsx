@@ -15,10 +15,10 @@ import VietnamFlag from "./VietnamFlag";
 export default function Footer() {
     return (
         <footer className="mt-auto w-full border-t border-stone-200/80 bg-white">
-            <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
-                <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-8">
-                    {/* Cột 1: Thương hiệu & Mạng xã hội (5 cols) */}
-                    <div className="md:col-span-5">
+            <div className="mx-auto max-w-6xl px-4 py-8 md:py-12">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-12 md:gap-8">
+                    {/* Cột 1: Thương hiệu & Mạng xã hội (5 cols trên desktop, full width trên mobile) */}
+                    <div className="sm:col-span-2 md:col-span-5">
                         <Link
                             href="/"
                             className="inline-flex items-center gap-2.5"
@@ -34,15 +34,15 @@ export default function Footer() {
                                 </span>
                             </span>
                         </Link>
-                        <p className="mt-3.5 max-w-sm text-sm leading-relaxed text-stone-500">
+                        <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-stone-500">
                             {site.description}
                         </p>
-                        <p className="mt-2.5 text-xs font-semibold text-brand-700">
+                        <p className="mt-2 text-xs font-semibold text-brand-700">
                             🇻🇳 Tự hào hàng Việt Nam chất lượng cao
                         </p>
 
                         {/* Mạng xã hội */}
-                        <div className="mt-4 flex items-center gap-2.5">
+                        <div className="mt-3.5 flex items-center gap-2.5">
                             <a
                                 href={site.zalo}
                                 target="_blank"
@@ -76,74 +76,69 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Cột 2: Danh mục sản phẩm (3 cols) */}
-                    <div className="md:col-span-3">
-                        <p className="text-sm font-bold tracking-tight text-stone-900">
-                            Danh mục sản phẩm
-                        </p>
-                        <ul className="mt-4 space-y-2.5 text-sm">
-                            {categories.map((c) => (
-                                <li key={c.id}>
-                                    <Link
-                                        href={`/san-pham?danh-muc=${c.id}`}
-                                        className="text-stone-500 transition hover:text-brand-600"
+                    {/* Cột 2 & Cột 3: Chia 2 cột song song ngay trên màn hình di động/tablet nhỏ */}
+                    <div className="grid grid-cols-2 gap-4 sm:col-span-2 md:contents">
+                        {/* Danh mục sản phẩm */}
+                        <div className="md:col-span-3">
+                            <p className="text-sm font-bold tracking-tight text-stone-900">
+                                Danh mục sản phẩm
+                            </p>
+                            <ul className="mt-2.5 space-y-2 text-sm md:mt-4 md:space-y-2.5">
+                                {categories.map((c) => (
+                                    <li key={c.id}>
+                                        <Link
+                                            href={`/san-pham?danh-muc=${c.id}`}
+                                            className="text-stone-500 transition hover:text-brand-600"
+                                        >
+                                            {c.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Liên hệ & Địa chỉ */}
+                        <div className="md:col-span-4">
+                            <p className="text-sm font-bold tracking-tight text-stone-900">
+                                Liên hệ & Địa chỉ
+                            </p>
+
+                            <ul className="mt-2.5 space-y-2 text-sm text-stone-600 md:mt-4 md:space-y-2.5">
+                                {/* Hotline / Zalo */}
+                                <li>
+                                    <span className="text-stone-500">Hotline / Zalo: </span>
+                                    <a
+                                        href={site.phoneHref}
+                                        className="font-semibold text-stone-900 transition hover:text-brand-600"
                                     >
-                                        {c.name}
-                                    </Link>
+                                        {site.phone}
+                                    </a>
                                 </li>
-                            ))}
-                        </ul>
-                    </div>
 
-                    {/* Cột 3: Liên hệ & Bản đồ vị trí (4 cols) */}
-                    <div className="md:col-span-4">
-                        <p className="text-sm font-bold tracking-tight text-stone-900">
-                            Liên hệ & Địa chỉ
-                        </p>
+                                {/* Giờ mở cửa */}
+                                <li>
+                                    <span className="text-stone-500">Mở cửa: </span>
+                                    <span className="text-stone-800">
+                                        {site.hours}
+                                    </span>
+                                </li>
 
-                        <ul className="mt-4 space-y-2.5 text-sm text-stone-600">
-                            {/* Hotline / Zalo */}
-                            <li className="flex items-center gap-2">
-                                <PhoneIcon className="h-4 w-4 shrink-0 text-stone-400" />
-                                <span>Hotline / Zalo:</span>
-                                <a
-                                    href={site.phoneHref}
-                                    className="font-bold text-stone-900 hover:text-brand-600"
-                                >
-                                    {site.phone}
-                                </a>
-                            </li>
-
-                            {/* Giờ phục vụ */}
-                            <li className="flex items-center gap-2">
-                                <ClockIcon className="h-4 w-4 shrink-0 text-stone-400" />
-                                <span>Thời gian phục vụ:</span>
-                                <span className="font-semibold text-stone-800">
-                                    {site.hours}
-                                </span>
-                            </li>
-
-                            {/* Địa chỉ xưởng */}
-                            <li className="flex items-start gap-2">
-                                <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-stone-400" />
-                                <div className="leading-relaxed">
-                                    <span>Địa chỉ: </span>
+                                {/* Địa chỉ xưởng */}
+                                <li className="leading-relaxed">
+                                    <span className="text-stone-500">Địa chỉ: </span>
                                     <span className="text-stone-700">
                                         {site.address}
                                     </span>
-                                </div>
-                            </li>
-                        </ul>
-
-                        {/* Mini Map đơn giản, gọn gàng */}
-                        <div className="mt-3.5 overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs">
-                            <iframe
-                                title="Bản đồ vị trí xưởng"
-                                src={`https://maps.google.com/maps?q=${site.coordinates.lat},${site.coordinates.lng}&hl=vi&z=15&output=embed`}
-                                className="h-32 w-full border-0 block"
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
+                                    <a
+                                        href={site.mapUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="ml-1 inline-flex items-center text-xs font-semibold text-brand-600 transition hover:text-brand-700 hover:underline"
+                                    >
+                                        (Xem bản đồ & chỉ đường ↗)
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
+import ConsultModal from "@/components/ConsultModal";
 import { useCart, getCartLineKey } from "@/components/CartProvider";
 import { MinusIcon, PlusIcon, TrashIcon } from "@/components/icons";
 import { formatPrice, getProduct } from "@/lib/products";
@@ -9,6 +11,7 @@ import { site } from "@/lib/site";
 
 export default function CartPage() {
     const { lines, total, setQty, remove, clear } = useCart();
+    const [isConsultOpen, setIsConsultOpen] = useState(false);
 
     if (lines.length === 0) {
         return (
@@ -170,12 +173,13 @@ export default function CartPage() {
                             </dd>
                         </div>
                     </dl>
-                    <a
-                        href={site.phoneHref}
+                    <button
+                        type="button"
+                        onClick={() => setIsConsultOpen(true)}
                         className="mt-5 flex h-12 w-full items-center justify-center rounded-full bg-brand-600 text-[15px] font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-[0.98] hover:bg-brand-700"
                     >
                         Xác nhận đặt hàng
-                    </a>
+                    </button>
                     <p className="mt-2.5 text-center text-[10.5px] sm:text-[11px] leading-tight text-stone-500 whitespace-nowrap tracking-tight">
                         Hoàn tất đơn hàng bằng{" "}
                         <a
@@ -203,6 +207,11 @@ export default function CartPage() {
                     </p>
                 </aside>
             </div>
+
+            <ConsultModal
+                isOpen={isConsultOpen}
+                onClose={() => setIsConsultOpen(false)}
+            />
         </div>
     );
 }

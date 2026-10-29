@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import HomeCtaButton from "@/components/HomeCtaButton";
 import {
     ChevronRightIcon,
     PhoneIcon,
@@ -145,7 +146,7 @@ export default function HomePage() {
                         </div>
                         <Link
                             href="/san-pham"
-                            className="hidden text-sm font-semibold text-brand-600 hover:text-brand-700 sm:block"
+                            className="text-sm font-semibold text-brand-600 hover:text-brand-700"
                         >
                             Xem tất cả
                         </Link>
@@ -159,6 +160,15 @@ export default function HomePage() {
                             />
                         ))}
                     </div>
+
+                    <div className="mt-6 text-center">
+                        <Link
+                            href="/san-pham"
+                            className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                        >
+                            Xem thêm
+                        </Link>
+                    </div>
                 </section>
 
                 {/* CTA band */}
@@ -170,35 +180,36 @@ export default function HomePage() {
                         Gọi hoặc chat Zalo, bên mình tư vấn kích thước, màu sắc
                         và báo giá trong vài phút.
                     </p>
-                    <div className="mt-5 flex flex-wrap justify-center gap-3">
-                        <a
-                            href={site.phoneHref}
-                            className="inline-flex h-11 items-center gap-2 rounded-full bg-brand-600 px-5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 transition active:scale-95 hover:bg-brand-700"
-                        >
-                            <PhoneIcon className="h-4.5 w-4.5" />
-                            Gọi {site.phone}
-                        </a>
-                        <a
-                            href={site.zalo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex h-11 items-center gap-2 rounded-full border border-brand-200 bg-white px-5 text-sm font-bold text-brand-700 shadow-sm transition active:scale-95 hover:bg-brand-50"
-                        >
-                            <ZaloIcon className="w-5.5 h-auto text-[#0068FF]" />
-                            Chat Zalo
-                        </a>
+                    <div className="mt-5 flex justify-center">
+                        <HomeCtaButton />
                     </div>
                 </section>
 
                 {/* More products */}
                 <section className="mt-12">
-                    <h2 className="text-lg font-bold tracking-tight text-stone-900">
-                        Có thể bạn cũng thích
-                    </h2>
+                    <div className="flex items-end justify-between">
+                        <h2 className="text-lg font-bold tracking-tight text-stone-900">
+                            Có thể bạn cũng thích
+                        </h2>
+                        <Link
+                            href="/san-pham"
+                            className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                        >
+                            Xem tất cả
+                        </Link>
+                    </div>
                     <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
                         {rest.map((p) => (
                             <ProductCard key={p.slug} product={p} />
                         ))}
+                    </div>
+                    <div className="mt-6 text-center">
+                        <Link
+                            href="/san-pham"
+                            className="text-sm font-semibold text-brand-600 hover:text-brand-700"
+                        >
+                            Xem thêm
+                        </Link>
                     </div>
                 </section>
             </div>
