@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { site } from "@/lib/site";
 import { JsonLd, getLocalBusinessSchema, getWebSiteSchema } from "@/components/JsonLd";
+import { Analytics } from '@vercel/analytics/next';
 
 const beVietnam = Be_Vietnam_Pro({
     variable: "--font-be-vietnam",
@@ -142,6 +143,7 @@ export default function RootLayout({
                     <Footer />
                     <BottomNav />
                 </CartProvider>
+                <Analytics />
             </body>
         </html>
     );
