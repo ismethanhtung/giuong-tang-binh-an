@@ -58,6 +58,9 @@ export const metadata: Metadata = {
     alternates: {
         canonical: "/",
     },
+    verification: {
+        google: "_x_x6oArUNlfAp9hgBY1REYa0COPxxfT_4yqTIJsj0k",
+    },
     icons: {
         icon: [
             { url: "/favicon.svg", type: "image/svg+xml" },
@@ -123,6 +126,10 @@ export default function RootLayout({
     return (
         <html lang="vi" className={`${beVietnam.variable} h-full antialiased`}>
             <head>
+                <meta
+                    name="google-site-verification"
+                    content="_x_x6oArUNlfAp9hgBY1REYa0COPxxfT_4yqTIJsj0k"
+                />
                 <JsonLd data={localBusinessData} />
                 <JsonLd data={getWebSiteSchema()} />
             </head>
