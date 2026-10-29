@@ -67,6 +67,18 @@ export function getLocalBusinessSchema() {
                 name: "Gia Lai",
             },
             {
+                "@type": "AdministrativeArea",
+                name: "Kon Tum",
+            },
+            {
+                "@type": "AdministrativeArea",
+                name: "Đắk Lắk",
+            },
+            {
+                "@type": "AdministrativeArea",
+                name: "Tây Nguyên",
+            },
+            {
                 "@type": "Country",
                 name: "Việt Nam",
             },
