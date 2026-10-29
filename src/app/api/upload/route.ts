@@ -133,6 +133,96 @@ export async function POST(req: Request) {
     }
 }
 
+export async function PATCH(req: Request) {
+    try {
+        const body = await req.json();
+        const headerPass = req.headers.get("x-admin-password");
+        if (
+            body.adminPassword !== ADMIN_PASSWORD &&
+            headerPass !== ADMIN_PASSWORD
+        ) {
+            return NextResponse.json(
+                { success: false, error: "Mật khẩu quản trị không đúng" },
+                { status: 401 },
+            );
+        }
+
+        const { folder, orderedImages } = body;
+        if (!folder || !Array.isArray(orderedImages) || orderedImages.length === 0) {
+            return NextResponse.json(
+                { success: false, error: "Thiếu thông tin sắp xếp ảnh" },
+                { status: 400 },
+            );
+        }
+
+        const cleanFolder = folder.replace(/^\/?images\//, "").replace(/^\//, "");
+        const fullFolderPath = path.resolve(path.join(IMAGES_DIR, cleanFolder));
+
+        if (!fullFolderPath.startsWith(path.resolve(IMAGES_DIR))) {
+            return NextResponse.json(
+                { success: false, error: "Đường dẫn không hợp lệ" },
+                { status: 400 },
+            );
+        }
+
+        if (!fs.existsSync(fullFolderPath) || !fs.statSync(fullFolderPath).isDirectory()) {
+            return NextResponse.json(
+                { success: false, error: "Thư mục không tồn tại" },
+                { status: 404 },
+            );
+        }
+
+        // Đổi tên file theo thứ tự mới:
+        // Bước 1: Gắn tiền tố tạm thời '__tmp_rand_' để tránh trùng lặp tên
+        const tempMap: { tempPath: string; targetName: string }[] = [];
+        const nonce = Date.now();
+
+        orderedImages.forEach((imgUrl: string, idx: number) => {
+            const fileName = decodeURIComponent(path.basename(imgUrl));
+            const currentPath = path.join(fullFolderPath, fileName);
+
+            if (fs.existsSync(currentPath)) {
+                const ext = path.extname(fileName);
+                // Loại bỏ tiền tố thứ tự cũ nếu có (ví dụ '001_', '1793192561481_1_')
+                let cleanBase = path.basename(fileName, ext);
+                cleanBase = cleanBase.replace(/^(\d{3}_|\d+_\d+_)/, "");
+
+                // Tên đích mới: 001_cleanBase.ext, 002_cleanBase.ext...
+                const orderPrefix = String(idx + 1).padStart(3, "0");
+                const targetName = `${orderPrefix}_${cleanBase}${ext}`;
+
+                const tempName = `__tmp_${nonce}_${idx}_${fileName}`;
+                const tempPath = path.join(fullFolderPath, tempName);
+
+                fs.renameSync(currentPath, tempPath);
+                tempMap.push({ tempPath, targetName });
+            }
+        });
+
+        // Bước 2: Đổi từ tên tạm sang tên chuẩn
+        for (const item of tempMap) {
+            const finalPath = path.join(fullFolderPath, item.targetName);
+            fs.renameSync(item.tempPath, finalPath);
+        }
+
+        const updatedImages = getImagesFromFolder(cleanFolder);
+
+        return NextResponse.json({
+            success: true,
+            message: "Đã cập nhật thứ tự hiển thị ảnh thành công!",
+            images: updatedImages,
+            folders: scanImageFolders(),
+            products: getProductsServer(),
+        });
+    } catch (error) {
+        console.error("Lỗi đổi thứ tự ảnh:", error);
+        return NextResponse.json(
+            { success: false, error: (error as Error).message },
+            { status: 500 },
+        );
+    }
+}
+
 export async function DELETE(req: Request) {
     try {
         const body = await req.json();

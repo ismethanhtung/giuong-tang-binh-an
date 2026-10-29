@@ -80,6 +80,9 @@ export default function AdminProductManager({
         null,
     );
     const [isDeletingAll, setIsDeletingAll] = useState<boolean>(false);
+    const [isReordering, setIsReordering] = useState<boolean>(false);
+    const [draggedImgIndex, setDraggedImgIndex] = useState<number | null>(null);
+    const [dragOverImgIndex, setDragOverImgIndex] = useState<number | null>(null);
     const [showManualFolderSelect, setShowManualFolderSelect] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -526,6 +529,62 @@ export default function AdminProductManager({
             showToast("Không thể kết nối máy chủ để xoá ảnh", "error");
         } finally {
             setIsDeletingAll(false);
+        }
+    };
+
+    const handleReorderImages = async (
+        folder: string,
+        fromIndex: number,
+        toIndex: number,
+        currentImages: string[],
+    ) => {
+        if (fromIndex === toIndex || !folder) return;
+        const newImages = [...currentImages];
+        const [moved] = newImages.splice(fromIndex, 1);
+        newImages.splice(toIndex, 0, moved);
+
+        // Cập nhật state UI lạc quan ngay lập tức
+        setFolders((prevFolders) =>
+            prevFolders.map((f) =>
+                f.folder === folder
+                    ? { ...f, images: newImages, sampleImages: newImages.slice(0, 3) }
+                    : f,
+            ),
+        );
+        if (editingProduct && editingProduct.imageFolder === folder) {
+            setEditingProduct({
+                ...editingProduct,
+                images: newImages,
+            });
+        }
+
+        setIsReordering(true);
+        try {
+            const res = await fetch("/api/upload", {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-admin-password": "admin123",
+                },
+                body: JSON.stringify({
+                    folder,
+                    orderedImages: newImages,
+                    adminPassword: "admin123",
+                }),
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                showToast("Đã cập nhật thứ tự ảnh!");
+                if (data.folders) setFolders(data.folders);
+                if (data.products) setProducts(data.products);
+            } else {
+                showToast("Lỗi sắp xếp: " + data.error, "error");
+            }
+        } catch {
+            showToast("Không thể lưu thứ tự ảnh mới", "error");
+        } finally {
+            setIsReordering(false);
         }
     };
 
@@ -1369,20 +1428,69 @@ export default function AdminProductManager({
 
                                             return (
                                                 <div className="mt-2.5">
-                                                    <p className="mb-2 text-[11px] text-stone-500">
-                                                        Bấm biểu tượng{" "}
-                                                        <span className="font-bold text-rose-600">
-                                                            thùng rác (🗑️)
-                                                        </span>{" "}
-                                                        trên từng ảnh để xoá ảnh
-                                                        đó khỏi thư mục:
-                                                    </p>
+                                                    <div className="mb-2 flex flex-wrap items-center justify-between gap-1 text-[11px] text-stone-500">
+                                                        <span>
+                                                            Kéo thả ảnh để thay đổi thứ tự hiển thị (#{1} là ảnh bìa chính). Bấm 🗑️ để xoá:
+                                                        </span>
+                                                        {isReordering && (
+                                                            <span className="inline-flex items-center gap-1 font-semibold text-brand-600">
+                                                                <RefreshCw className="h-3 w-3 animate-spin" />
+                                                                Đang lưu thứ tự...
+                                                            </span>
+                                                        )}
+                                                    </div>
                                                     <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
                                                         {currentFolderImages.map(
-                                                            (src, i) => (
+                                                            (src, i) => {
+                                                                const isBeingDragged = draggedImgIndex === i;
+                                                                const isOver = dragOverImgIndex === i;
+
+                                                                return (
                                                                 <div
-                                                                    key={i}
-                                                                    className="group relative aspect-square overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-2xs"
+                                                                    key={src}
+                                                                    draggable
+                                                                    onDragStart={(e) => {
+                                                                        setDraggedImgIndex(i);
+                                                                        e.dataTransfer.effectAllowed = "move";
+                                                                        e.dataTransfer.setData("text/plain", String(i));
+                                                                    }}
+                                                                    onDragOver={(e) => {
+                                                                        e.preventDefault();
+                                                                        e.dataTransfer.dropEffect = "move";
+                                                                        if (dragOverImgIndex !== i) {
+                                                                            setDragOverImgIndex(i);
+                                                                        }
+                                                                    }}
+                                                                    onDragLeave={() => {
+                                                                        if (dragOverImgIndex === i) {
+                                                                            setDragOverImgIndex(null);
+                                                                        }
+                                                                    }}
+                                                                    onDrop={(e) => {
+                                                                        e.preventDefault();
+                                                                        setDragOverImgIndex(null);
+                                                                        const fromIdx = draggedImgIndex;
+                                                                        setDraggedImgIndex(null);
+                                                                        if (fromIdx !== null && fromIdx !== i && formImageFolder) {
+                                                                            handleReorderImages(
+                                                                                formImageFolder,
+                                                                                fromIdx,
+                                                                                i,
+                                                                                currentFolderImages,
+                                                                            );
+                                                                        }
+                                                                    }}
+                                                                    onDragEnd={() => {
+                                                                        setDraggedImgIndex(null);
+                                                                        setDragOverImgIndex(null);
+                                                                    }}
+                                                                    className={`group relative aspect-square overflow-hidden rounded-xl border bg-stone-100 shadow-2xs cursor-grab active:cursor-grabbing transition-all ${
+                                                                        isBeingDragged
+                                                                            ? "opacity-35 scale-95 border-brand-400"
+                                                                            : isOver
+                                                                            ? "border-brand-600 ring-2 ring-brand-400 scale-105 z-10"
+                                                                            : "border-stone-200 hover:border-brand-300"
+                                                                    }`}
                                                                 >
                                                                     <Image
                                                                         src={
@@ -1400,7 +1508,7 @@ export default function AdminProductManager({
                                                                         }
                                                                         alt={`Ảnh ${i + 1}`}
                                                                         fill
-                                                                        className="object-contain transition group-hover:scale-105"
+                                                                        className="object-contain transition group-hover:scale-105 pointer-events-none select-none"
                                                                         sizes="96px"
                                                                     />
 
@@ -1417,7 +1525,7 @@ export default function AdminProductManager({
                                                                             );
                                                                         }}
                                                                         title="Cắt căn chỉnh ảnh vuông 1:1"
-                                                                        className="absolute top-1 left-1 grid h-6 w-6 place-items-center rounded-full bg-brand-600/90 text-white shadow-md transition hover:bg-brand-700 hover:scale-110 active:scale-95"
+                                                                        className="absolute top-1 left-1 grid h-6 w-6 place-items-center rounded-full bg-brand-600/90 text-white shadow-md transition hover:bg-brand-700 hover:scale-110 active:scale-95 z-20"
                                                                     >
                                                                         <Crop className="h-3 w-3" />
                                                                     </button>
@@ -1439,7 +1547,7 @@ export default function AdminProductManager({
                                                                             src
                                                                         }
                                                                         title="Xoá ảnh này"
-                                                                        className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full bg-rose-600/90 text-white shadow-md transition hover:bg-rose-700 hover:scale-110 active:scale-95 disabled:opacity-50"
+                                                                        className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full bg-rose-600/90 text-white shadow-md transition hover:bg-rose-700 hover:scale-110 active:scale-95 disabled:opacity-50 z-20"
                                                                     >
                                                                         {deletingImageSrc ===
                                                                         src ? (
@@ -1449,11 +1557,14 @@ export default function AdminProductManager({
                                                                         )}
                                                                     </button>
 
-                                                                    <span className="absolute bottom-1 left-1 rounded bg-black/60 px-1.5 py-0.2 text-[9px] font-bold text-white backdrop-blur">
+                                                                    <span className={`absolute bottom-1 left-1 rounded px-1.5 py-0.2 text-[9px] font-bold text-white backdrop-blur z-20 ${
+                                                                        i === 0 ? "bg-brand-600" : "bg-black/60"
+                                                                    }`}>
                                                                         #{i + 1}
                                                                     </span>
                                                                 </div>
-                                                            ),
+                                                                );
+                                                            },
                                                         )}
                                                     </div>
                                                 </div>
