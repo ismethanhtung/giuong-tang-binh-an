@@ -67,202 +67,170 @@
     "imageFolder": "giuong/giuong-tang-sat-1m-1m-co-hoc"
   },
   {
-    "slug": "giuong-tang-sat-1m-1m2-khong-hoc",
-    "name": "Giường tầng sắt 1m – 1m2",
+    "id": "p-giuong-tang-sat-khong-hoc",
+    "slug": "giuong-tang-sat-khong-hoc",
+    "name": "Giường tầng sắt – Đủ kích thước",
     "category": "giuong-sat",
     "type": "bunk",
     "price": 3400000,
     "oldPrice": 3900000,
-    "badge": "Bán chạy",
+    "badge": "Đủ kích thước",
     "featured": true,
-    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m, khung hộp vững chắc.",
-    "description": "Giường tầng sắt hộp cao cấp Hòa Phát, kích thước tiêu chuẩn tầng trên 1m tầng dưới 1m2 phù hợp phòng gia đình, nhà trọ, ký túc xá. Sơn tĩnh điện chống trầy xước, không rỉ sét, chịu lực tối đa tới 250kg mỗi tầng. Hàng thực tế 100% như ảnh chụp tại xưởng.",
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, đủ kích thước 1m–1m2, 1m2–1m4, 1m4–1m6, chắc chắn không rung lắc.",
+    "description": "Dòng giường tầng sắt hộp Hoà Phát cao cấp đầy đủ các kích thước tiêu chuẩn cho gia đình, homestay, ký túc xá. Khung sắt hộp dày dặn chịu tải cao, sơn tĩnh điện mịn đẹp chống rỉ sét bong tróc.",
+    "variants": [
+      {
+        "label": "1m – 1m2",
+        "price": 3400000,
+        "oldPrice": 3900000
+      },
+      {
+        "label": "1m2 – 1m4",
+        "price": 3700000,
+        "oldPrice": 4300000
+      },
+      {
+        "label": "1m4 – 1m6",
+        "price": 4500000,
+        "oldPrice": 5200000
+      }
+    ],
     "color": "#3bb39a",
     "specs": [
       {
         "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
+        "value": "Đầy đủ: 1m–1m2 | 1m2–1m4 | 1m4–1m6 (Dài 2m)"
       },
       {
         "label": "Chất liệu",
-        "value": "Sắt hộp Hòa Phát, sơn tĩnh điện"
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
       },
       {
         "label": "Tải trọng",
-        "value": "~250kg/tầng"
+        "value": "~250kg - 350kg/tầng"
       },
       {
-        "label": "Sắt thép",
-        "value": "Sắt thép Hoà Phát"
+        "label": "Quy cách",
+        "value": "Sắt thép Hoà Phát loại 1"
       }
     ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m-1m2-khong-hoc/1792838557641_1_67de4d28-6143-44a5-aff3-dd6164f3b984.jpeg"
-    ]
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
+    "material": "Sắt hộp Hoà Phát sơn tĩnh điện",
+    "warranty": "Sắt thép Hoà Phát",
+    "inStock": true
   },
   {
-    "slug": "giuong-tang-sat-1m-1m2-co-hoc",
-    "name": "Giường tầng sắt 1m – 1m2 (thêm hộc)",
+    "id": "p-giuong-tang-sat-co-hoc",
+    "slug": "giuong-tang-sat-co-hoc",
+    "name": "Giường tầng sắt (thêm hộc) – Đủ kích thước",
     "category": "giuong-sat",
     "type": "bunk",
     "price": 4700000,
     "oldPrice": 5400000,
-    "badge": "Đa năng",
-    "featured": false,
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m2 trên 1m kèm hộc kéo tiện dụng.",
-    "description": "Giường tầng sắt tầng trên 1m tầng dưới 1m2 kết hợp hộc kéo gầm giường rộng rãi. Sắt thép Hoà Phát dày dặn dập gân chịu lực, sơn tĩnh điện mịn đẹp.",
+    "badge": "Đủ kích thước",
+    "featured": true,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện, kèm 2 hộc kéo để đồ rộng rãi dưới gầm, đủ kích thước 1m–1m2, 1m2–1m4, 1m4–1m6.",
+    "description": "Mẫu giường tầng sắt hộp Hoà Phát tích hợp 2 hộc kéo lớn dưới gầm giúp tối ưu diện tích và lưu trữ chăn màn, quần áo tiện lợi. Đầy đủ các kích thước phổ biến (1m–1m2, 1m2–1m4, 1m4–1m6).",
+    "variants": [
+      {
+        "label": "1m – 1m2",
+        "price": 4700000,
+        "oldPrice": 5400000
+      },
+      {
+        "label": "1m2 – 1m4",
+        "price": 5000000,
+        "oldPrice": 5800000
+      },
+      {
+        "label": "1m4 – 1m6",
+        "price": 5800000,
+        "oldPrice": 6600000
+      }
+    ],
     "color": "#3bb39a",
     "specs": [
       {
         "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m x Tầng dưới 1m2"
+        "value": "Đầy đủ: 1m–1m2 | 1m2–1m4 | 1m4–1m6 (Dài 2m)"
       },
       {
-        "label": "Hộc kéo",
-        "value": "Có hộc kéo tiện lợi gầm giường"
-      },
-      {
-        "label": "Chất liệu",
-        "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
-      },
-      {
-        "label": "Sắt thép",
-        "value": "Sắt thép Hoà Phát"
-      }
-    ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m-1m2-co-hoc/1792838542377_1_c8699bd0-93d9-40b8-8d3b-bf834bf209cb.jpeg"
-    ],
-    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc"
-  },
-  {
-    "slug": "giuong-tang-sat-1m2-1m4-khong-hoc",
-    "name": "Giường tầng sắt 1m2 – 1m4",
-    "category": "giuong-sat",
-    "type": "bunk",
-    "price": 3700000,
-    "oldPrice": 4300000,
-    "badge": "Mẫu mới",
-    "featured": true,
-    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-khong-hoc",
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2, chắc chắn, không rung lắc.",
-    "description": "Mẫu giường tầng sắt rộng rãi dành cho cả người lớn và trẻ em. Tầng dưới 1m4 thoải mái cho 2 người nằm, tầng trên 1m2 có lan can an toàn cao. Gia công bằng sắt thép Hòa Phát loại 1, mối hàn ngấu đẹp và sơn tĩnh điện bền màu.",
-    "color": "#38a3a5",
-    "specs": [
-      {
-        "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
-      },
-      {
-        "label": "Khung trụ",
-        "value": "Sắt hộp Hoà Phát dày dặn"
+        "label": "Hộc kéo gầm",
+        "value": "Hệ thống 2 hộc kéo rộng rãi dưới gầm giường"
       },
       {
         "label": "Chất liệu",
-        "value": "Sắt thép Hoà Phát sơn tĩnh điện"
-      },
-      {
-        "label": "Lan can",
-        "value": "Cao 35cm an toàn tuyệt đối"
-      }
-    ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m2-1m4-khong-hoc/1792838512908_1_490632332826732020_1_.jpg"
-    ]
-  },
-  {
-    "slug": "giuong-tang-sat-1m2-1m4-co-hoc",
-    "name": "Giường tầng sắt 1m2 – 1m4 (thêm hộc)",
-    "category": "giuong-sat",
-    "type": "bunk",
-    "price": 5000000,
-    "oldPrice": 5800000,
-    "badge": "Sang trọng",
-    "featured": false,
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m4 trên 1m2 kèm hộc kéo tiện lợi.",
-    "description": "Phiên bản có hộc của giường tầng 1m2 - 1m4. Hộc kéo gầm giường ray trượt êm nhẹ, chứa chăn ga gối đệm dễ dàng. Khung sắt hộp Hoà Phát sơn tĩnh điện bền đẹp.",
-    "color": "#38a3a5",
-    "specs": [
-      {
-        "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m2 x Tầng dưới 1m4"
-      },
-      {
-        "label": "Hộc tủ",
-        "value": "Hộc kéo trượt nhẹ nhàng"
-      },
-      {
-        "label": "Chất liệu",
-        "value": "Sắt hộp Hoà Phát, sơn tĩnh điện"
-      }
-    ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m2-1m4-co-hoc/1792838490860_1_cbd2726d-2295-41dc-b39a-3a424715c7b3.jpeg"
-    ],
-    "imageFolder": "giuong/giuong-tang-sat-1m2-1m4-co-hoc"
-  },
-  {
-    "slug": "giuong-tang-sat-1m4-1m6-khong-hoc",
-    "name": "Giường tầng sắt 1m4 – 1m6",
-    "category": "giuong-sat",
-    "type": "bunk",
-    "price": 4500000,
-    "oldPrice": 5200000,
-    "badge": "Cỡ đại",
-    "featured": true,
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4, chịu tải cực lớn.",
-    "description": "Giường tầng kích thước đại: tầng trên 1m4, tầng dưới 1m6 nằm được 3-4 người thoải mái. Khung cột sắt hộp Hoà Phát khổ lớn dập gân siêu chắc chắn, không phát ra tiếng kêu kẽo kẹt.",
-    "color": "#2a7065",
-    "specs": [
-      {
-        "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
-      },
-      {
-        "label": "Chất liệu",
-        "value": "Sắt hộp Hoà Phát dày dặn, sơn tĩnh điện"
+        "value": "Sắt hộp Hoà Phát sơn tĩnh điện"
       },
       {
         "label": "Tải trọng",
-        "value": "~350kg/tầng"
+        "value": "~250kg - 350kg/tầng"
       }
     ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m4-1m6-khong-hoc/1792838477477_1_490632332826732020_3_.jpg"
-    ],
-    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-khong-hoc"
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc",
+    "material": "Sắt hộp Hoà Phát sơn tĩnh điện",
+    "warranty": "Sắt thép Hoà Phát",
+    "inStock": true
   },
   {
-    "slug": "giuong-tang-sat-1m4-1m6-co-hoc",
-    "name": "Giường tầng sắt 1m4 – 1m6 (thêm hộc)",
+    "id": "p-1793264359059",
+    "slug": "giuong-tang-sat-thang-hoc",
+    "name": "Giường tầng sắt (thêm thang hộc) – Đủ kích thước",
     "category": "giuong-sat",
     "type": "bunk",
     "price": 5800000,
     "oldPrice": 6600000,
-    "badge": "Cao cấp",
-    "featured": false,
-    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện cao cấp, Dưới 1m6 trên 1m4 kèm hộc kéo tiện dụng.",
-    "description": "Mẫu giường tầng cỡ lớn 1m4 - 1m6 tích hợp hệ hộc kéo tiện ích. Thiết kế vững chắc, an toàn tuyệt đối cho người lớn và trẻ nhỏ, chịu lực tốt.",
-    "color": "#2a7065",
+    "badge": "Đủ kích thước",
+    "featured": true,
+    "shortDesc": "Sắt hộp Hoà Phát, sơn tĩnh điện, vừa có cầu thang hộc để đồ, vừa có hộc kéo gầm tiện lợi.",
+    "description": "Mẫu giường tầng sắt hộp Hoà Phát thông minh tích hợp trọn bộ 2 tiện ích: cầu thang bước dạng hộc tủ để đồ cực kỳ an toàn vững chãi cho cả người lớn và trẻ nhỏ, kết hợp cùng hệ thống 2 hộc kéo rộng rãi dưới gầm giường. Đầy đủ các kích thước phổ biến (1m – 1m2, 1m2 – 1m4, 1m4 – 1m6), khung sắt hộp sơn tĩnh điện dày dặn chịu lực cao.",
+    "variants": [
+      {
+        "label": "1m – 1m2",
+        "price": 5800000,
+        "oldPrice": 6600000
+      },
+      {
+        "label": "1m2 – 1m4",
+        "price": 6200000,
+        "oldPrice": 7100000
+      },
+      {
+        "label": "1m4 – 1m6",
+        "price": 7100000,
+        "oldPrice": 8000000
+      }
+    ],
+    "color": "#3bb39a",
     "specs": [
       {
         "label": "Kích thước",
-        "value": "Dài 2m x Tầng trên 1m4 x Tầng dưới 1m6"
+        "value": "Đầy đủ: 1m–1m2 | 1m2–1m4 | 1m4–1m6"
       },
       {
-        "label": "Hộc tủ",
-        "value": "Hộc kéo lớn tối ưu không gian"
+        "label": "Cầu thang",
+        "value": "Cầu thang hộc chứa đồ từng bậc, an toàn tuyệt đối"
+      },
+      {
+        "label": "Hộc kéo gầm",
+        "value": "Hệ thống 2 hộc kéo lớn tiện ích dưới gầm giường"
       },
       {
         "label": "Chất liệu",
-        "value": "Sắt thép Hoà Phát loại 1"
+        "value": "Sắt hộp Hoà Phát loại 1 sơn tĩnh điện"
+      },
+      {
+        "label": "Tải trọng",
+        "value": "~350kg/tầng, chắc chắn không rung lắc"
       }
     ],
-    "images": [
-      "/images/giuong/giuong-tang-sat-1m4-1m6-co-hoc/1792838462176_1_f76b2637-b608-4830-bd66-82079d0b2c47.jpeg"
-    ],
-    "imageFolder": "giuong/giuong-tang-sat-1m4-1m6-co-hoc"
+    "images": [],
+    "imageFolder": "giuong/giuong-tang-sat-thang-hoc",
+    "material": "Sắt hộp Hoà Phát sơn tĩnh điện",
+    "warranty": "Sắt thép Hoà Phát",
+    "inStock": true
   },
   {
     "slug": "giuong-don-go-soi",
