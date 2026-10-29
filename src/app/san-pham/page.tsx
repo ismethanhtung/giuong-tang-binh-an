@@ -95,9 +95,7 @@ export default async function ProductsPage({
         { name: "Trang chủ", url: "/" },
         {
             name: active ? active.name : "Sản phẩm",
-            url: activeCat
-                ? `/san-pham?danh-muc=${activeCat}`
-                : "/san-pham",
+            url: activeCat ? `/san-pham?danh-muc=${activeCat}` : "/san-pham",
         },
     ];
 
@@ -115,7 +113,7 @@ export default async function ProductsPage({
                 </span>
             </nav>
 
-            <header className="mt-3">
+            {/*<header className="mt-3">
                 <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
                     {active ? active.name : "Tất cả sản phẩm"}
                 </h1>
@@ -131,7 +129,7 @@ export default async function ProductsPage({
                     ) : null}
                     {list.length} sản phẩm
                 </p>
-            </header>
+            </header>*/}
 
             <div className="no-scrollbar -mx-4 mt-4 flex gap-2 overflow-x-auto px-4 pb-1">
                 <Link

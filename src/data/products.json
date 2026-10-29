@@ -115,7 +115,7 @@
       }
     ],
     "images": [],
-    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-khong-hoc",
+    "imageFolder": "giuong/giuong-tang-sat-khong-hoc",
     "material": "Sắt hộp Hoà Phát sơn tĩnh điện",
     "warranty": "Sắt thép Hoà Phát",
     "inStock": true
@@ -169,7 +169,7 @@
       }
     ],
     "images": [],
-    "imageFolder": "giuong/giuong-tang-sat-1m-1m2-co-hoc",
+    "imageFolder": "giuong/giuong-tang-sat-co-hoc",
     "material": "Sắt hộp Hoà Phát sơn tĩnh điện",
     "warranty": "Sắt thép Hoà Phát",
     "inStock": true
@@ -239,7 +239,7 @@
     "type": "bed",
     "price": 2400000,
     "badge": "Gỗ tự nhiên",
-    "featured": true,
+    "featured": false,
     "shortDesc": "Gỗ sồi tự nhiên màu sáng đẹp, đã tẩm sấy chống cong vênh mối mọt.",
     "description": "Giường ngủ gỗ sồi tự nhiên sở hữu màu sắc sáng trang nhã, vân gỗ tự nhiên rõ nét. Gỗ đã được qua xử lý sấy công nghệ cao chống co ngót, mối mọt, thích hợp cho mọi không gian phòng ngủ hiện đại.",
     "color": "#d4a373",
