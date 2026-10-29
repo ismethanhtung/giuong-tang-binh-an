@@ -10,8 +10,9 @@ export function getLocalBusinessSchema() {
         "@context": "https://schema.org",
         "@type": ["FurnitureStore", "HomeGoodsStore"],
         "@id": `${site.url}/#store`,
-        name: site.name,
+        name: "Giường tầng Bình An Gia Lai",
         alternateName: [
+            "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
             "Giường tầng Bình An",
             "Giường tầng Gia Lai",
             "Giường sắt Gia Lai",
@@ -231,8 +232,8 @@ export function getWebSiteSchema() {
         "@type": "WebSite",
         "@id": `${site.url}/#website`,
         url: site.url,
-        name: site.name,
-        alternateName: "Xưởng Giường Tầng Bình An Pleiku Gia Lai",
+        name: "Giường tầng Bình An Gia Lai",
+        alternateName: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
         description: site.description,
         inLanguage: "vi-VN",
         potentialAction: {

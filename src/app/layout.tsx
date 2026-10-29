@@ -18,8 +18,8 @@ const beVietnam = Be_Vietnam_Pro({
 export const metadata: Metadata = {
     metadataBase: new URL(site.url),
     title: {
-        default: `${site.name} – ${site.tagline}`,
-        template: `%s | ${site.name}`,
+        default: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
+        template: `%s | Giường tầng Bình An Gia Lai`,
     },
     description: site.description,
     keywords: [
@@ -70,10 +70,10 @@ export const metadata: Metadata = {
         apple: "/icon-192.png",
     },
     openGraph: {
-        title: `${site.name} – ${site.tagline}`,
+        title: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
         description: site.description,
         url: site.url,
-        siteName: site.name,
+        siteName: "Giường tầng Bình An Gia Lai",
         locale: "vi_VN",
         type: "website",
         images: [
@@ -81,13 +81,13 @@ export const metadata: Metadata = {
                 url: "/images/anh-nen.jpg",
                 width: 1200,
                 height: 630,
-                alt: `${site.name} - Giường tầng sắt & nội thất giá xưởng Pleiku Gia Lai`,
+                alt: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: `${site.name} – ${site.tagline}`,
+        title: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
         description: site.description,
         images: ["/images/anh-nen.jpg"],
     },

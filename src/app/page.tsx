@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
@@ -17,6 +18,30 @@ import { getProductsServer } from "@/lib/products-server";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+    title: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
+    description: site.description,
+    alternates: {
+        canonical: "/",
+    },
+    openGraph: {
+        title: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
+        description: site.description,
+        url: site.url,
+        siteName: "Giường tầng Bình An Gia Lai",
+        locale: "vi_VN",
+        type: "website",
+        images: [
+            {
+                url: "/images/anh-nen.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Giường tầng, giường sắt & nội thất: Giường tầng Bình An Gia Lai",
+            },
+        ],
+    },
+};
 
 export default function HomePage() {
     const products = getProductsServer();
