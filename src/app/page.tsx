@@ -34,16 +34,15 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-950/50 to-stone-950/10" />
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f8fafc] via-[#f8fafc]/60 to-transparent" />
 
-                <div className="relative mx-auto flex w-full max-w-6xl px-6 py-14 sm:px-8 sm:py-20 lg:px-10">
+                <div className="relative mx-auto flex w-full max-w-6xl px-5 py-14 sm:px-8 sm:py-20 lg:px-10">
                     <div className="animate-float-up max-w-xl">
                         <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md">
                             <StarIcon className="h-3.5 w-3.5 text-brand-300" />
                             Kho giường tầng giá gốc
                         </span>
-                        <h1 className="mt-4 text-3xl font-extrabold leading-[1.12] tracking-tight text-white drop-shadow-sm sm:text-4xl lg:text-[2.75rem]">
-                            Giường tầng, giường sắt
-                            <br />
-                            <span className="bg-gradient-to-r from-brand-200 to-brand-400 bg-clip-text text-transparent">
+                        <h1 className="mt-4 text-[24px] min-[375px]:text-[26px] font-extrabold leading-[1.2] tracking-tight text-white drop-shadow-sm sm:text-4xl lg:text-[2.75rem] sm:leading-[1.12]">
+                            <span className="block">Giường tầng, giường sắt</span>
+                            <span className="block bg-gradient-to-r from-brand-200 to-brand-400 bg-clip-text text-transparent">
                                 bền đẹp, giá tận xưởng
                             </span>
                         </h1>

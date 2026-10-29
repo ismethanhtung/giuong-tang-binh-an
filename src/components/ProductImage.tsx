@@ -333,7 +333,7 @@ export default function ProductImage({
                 />
 
                 {showHint && (
-                    <span className="absolute right-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
+                    <span className="absolute right-2 bottom-2 sm:bottom-auto sm:top-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur whitespace-nowrap">
                         hàng như ảnh
                     </span>
                 )}
@@ -368,7 +368,7 @@ export default function ProductImage({
                 <Illustration type={type} color={color} />
             </svg>
             {showHint && (
-                <span className="absolute right-2 top-2 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur">
+                <span className="absolute right-2 bottom-2 sm:bottom-auto sm:top-2 rounded-full bg-white/85 px-2 py-0.5 text-[10px] font-medium text-emerald-800 shadow-sm backdrop-blur whitespace-nowrap">
                     hàng như ảnh
                 </span>
             )}

@@ -53,7 +53,7 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
             />
 
             {/* Khung nội dung modal nằm ở vị trí trung tâm */}
-            <div className="relative z-10 w-full max-w-sm rounded-3xl bg-white p-5 shadow-2xl transition-all">
+            <div className="relative z-10 w-full max-w-sm rounded-3xl bg-white p-4 sm:p-5 shadow-2xl transition-all">
                 {/* Header của Modal */}
                 <div className="flex items-center justify-between pb-3 border-b border-stone-100">
                     <div>
@@ -74,18 +74,18 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                 </div>
 
                 {/* Danh sách 4 phương thức liên hệ */}
-                <div className="mt-4 grid grid-cols-2 gap-2.5">
+                <div className="mt-4 grid grid-cols-2 gap-2 sm:gap-2.5">
                     {/* Gọi điện thoại */}
                     <a
                         href={site.phoneHref}
-                        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-brand-500 hover:text-brand-600"
+                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-brand-500 hover:text-brand-600"
                     >
                         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-red-50 text-red-600">
                             <PhoneIcon className="h-4.5 w-4.5" />
                         </div>
-                        <div className="text-left">
-                            <div className="text-xs text-stone-500">Gọi ngay</div>
-                            <div className="text-xs font-bold leading-tight">
+                        <div className="text-left min-w-0">
+                            <div className="text-[11px] sm:text-xs text-stone-500">Gọi ngay</div>
+                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
                                 {site.phone}
                             </div>
                         </div>
@@ -96,14 +96,14 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0068FF] hover:text-[#0068FF]"
+                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0068FF] hover:text-[#0068FF]"
                     >
                         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-sky-50 text-[#0068FF]">
                             <ZaloIcon className="w-5 h-auto" />
                         </div>
-                        <div className="text-left">
-                            <div className="text-xs text-stone-500">Nhắn tin</div>
-                            <div className="text-xs font-bold leading-tight">
+                        <div className="text-left min-w-0">
+                            <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
+                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
                                 Zalo
                             </div>
                         </div>
@@ -114,14 +114,14 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.messenger}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0084FF] hover:text-[#0084FF]"
+                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#0084FF] hover:text-[#0084FF]"
                     >
                         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-50 text-[#0084FF]">
                             <MessengerIcon className="h-4.5 w-4.5" />
                         </div>
-                        <div className="text-left">
-                            <div className="text-xs text-stone-500">Nhắn tin</div>
-                            <div className="text-xs font-bold leading-tight">
+                        <div className="text-left min-w-0">
+                            <div className="text-[11px] sm:text-xs text-stone-500">Nhắn tin</div>
+                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
                                 Messenger
                             </div>
                         </div>
@@ -132,14 +132,14 @@ export default function ConsultModal({ isOpen, onClose }: ConsultModalProps) {
                         href={site.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#1877F2] hover:text-[#1877F2]"
+                        className="flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-2.5 sm:p-3 text-stone-800 transition active:scale-95 hover:bg-white hover:border-[#1877F2] hover:text-[#1877F2]"
                     >
                         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-indigo-50 text-[#1877F2]">
                             <FacebookIcon className="h-4.5 w-4.5" />
                         </div>
-                        <div className="text-left">
-                            <div className="text-xs text-stone-500">Ghé thăm</div>
-                            <div className="text-xs font-bold leading-tight">
+                        <div className="text-left min-w-0">
+                            <div className="text-[11px] sm:text-xs text-stone-500">Ghé thăm</div>
+                            <div className="text-[11px] min-[390px]:text-xs font-bold leading-tight whitespace-nowrap">
                                 Facebook
                             </div>
                         </div>

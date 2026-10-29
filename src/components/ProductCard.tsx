@@ -61,7 +61,7 @@ export default function ProductCard({
 
                     {/* Badge bên trái */}
                     {product.badge && (
-                        <span className="absolute left-2 top-2 rounded-full bg-brand-600/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm backdrop-blur z-10">
+                        <span className="absolute left-2 top-2 rounded-full bg-brand-600/90 px-2 py-0.5 text-[10px] font-medium text-white shadow-sm backdrop-blur z-10 whitespace-nowrap">
                             {product.badge}
                         </span>
                     )}
