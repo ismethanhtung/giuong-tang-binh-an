@@ -6,6 +6,7 @@ import { CartProvider } from "@/components/CartProvider";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { site } from "@/lib/site";
+import { JsonLd, getLocalBusinessSchema } from "@/components/JsonLd";
 
 const beVietnam = Be_Vietnam_Pro({
     variable: "--font-be-vietnam",
@@ -15,6 +16,7 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL(site.url),
     title: {
         default: `${site.name} – ${site.tagline}`,
         template: `%s | ${site.name}`,
@@ -22,14 +24,28 @@ export const metadata: Metadata = {
     description: site.description,
     keywords: [
         "giường tầng Bình An",
-        "giường sắt",
-        "giường tầng",
-        "giường gỗ",
-        "tủ gỗ",
-        "bàn ghế ăn",
-        "nội thất Gia Lai",
-        "nội thất Pleiku",
+        "giường tầng sắt",
+        "giường sắt pleiku",
+        "giường tầng gia lai",
+        "giường tầng hộp hoà phát",
+        "giường gỗ sồi",
+        "tủ quần áo gia lai",
+        "bàn ghế ăn pleiku",
+        "nội thất gia lai",
+        "nội thất pleiku",
+        "xưởng giường sắt giá rẻ",
     ],
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
+    publisher: site.name,
+    formatDetection: {
+        telephone: true,
+        address: true,
+        email: true,
+    },
+    alternates: {
+        canonical: "/",
+    },
     icons: {
         icon: [
             { url: "/favicon.svg", type: "image/svg+xml" },
@@ -41,7 +57,41 @@ export const metadata: Metadata = {
     openGraph: {
         title: `${site.name} – ${site.tagline}`,
         description: site.description,
+        url: site.url,
+        siteName: site.name,
+        locale: "vi_VN",
         type: "website",
+        images: [
+            {
+                url: "/images/anh-nen.jpg",
+                width: 1200,
+                height: 630,
+                alt: `${site.name} - Giường tầng sắt & nội thất giá xưởng Pleiku Gia Lai`,
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `${site.name} – ${site.tagline}`,
+        description: site.description,
+        images: ["/images/anh-nen.jpg"],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
+    other: {
+        "geo.region": "VN-30",
+        "geo.placename": "Pleiku",
+        "geo.position": `${site.coordinates.lat};${site.coordinates.lng}`,
+        ICBM: `${site.coordinates.lat}, ${site.coordinates.lng}`,
     },
 };
 
@@ -56,8 +106,13 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
+    const localBusinessData = getLocalBusinessSchema();
+
     return (
         <html lang="vi" className={`${beVietnam.variable} h-full antialiased`}>
+            <head>
+                <JsonLd data={localBusinessData} />
+            </head>
             <body className="flex min-h-screen flex-col bg-[#f8fafc] text-stone-800 overflow-x-clip">
                 <CartProvider>
                     <Header />

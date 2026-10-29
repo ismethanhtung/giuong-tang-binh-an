@@ -1,18 +1,66 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { categories } from "@/lib/products";
 import { getProductsServer } from "@/lib/products-server";
 import { matchSearch } from "@/lib/search";
+import { site } from "@/lib/site";
+import { JsonLd, getBreadcrumbSchema } from "@/components/JsonLd";
 
 export const dynamic = "force-dynamic";
 
 type Search = { q?: string; "danh-muc"?: string };
 
-export const metadata = {
-    title: "Sản phẩm",
-    description:
-        "Danh sách giường sắt, giường tầng, giường gỗ, tủ và bàn ghế ăn.",
-};
+export async function generateMetadata({
+    searchParams,
+}: {
+    searchParams: Promise<Search>;
+}): Promise<Metadata> {
+    const sp = await searchParams;
+    const activeCat = sp["danh-muc"];
+    const q = sp.q?.trim();
+    const active = categories.find((c) => c.id === activeCat);
+
+    let title = "Tất cả sản phẩm nội thất";
+    let description =
+        "Xem danh sách các mẫu giường tầng sắt hộp Hoà Phát, giường sắt, giường gỗ, tủ quần áo, bàn ghế giá xưởng tại Pleiku, Gia Lai. Giao lắp tận nhà.";
+
+    if (active) {
+        title = `${active.name} Giá Xưởng Bền Đẹp`;
+        description = `Khám phá các mẫu ${active.name.toLowerCase()} bền đẹp, chất lượng cao tại xưởng Giường tầng Bình An (Pleiku, Gia Lai). Đầy đủ kích thước, mẫu mã đa dạng, giá tận xưởng tốt nhất.`;
+    } else if (q) {
+        title = `Tìm kiếm: "${q}"`;
+        description = `Kết quả tìm kiếm sản phẩm cho từ khóa "${q}" tại Giường tầng Bình An.`;
+    }
+
+    const canonicalUrl = activeCat
+        ? `${site.url}/san-pham?danh-muc=${activeCat}`
+        : `${site.url}/san-pham`;
+
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        openGraph: {
+            title: `${title} | ${site.name}`,
+            description,
+            url: canonicalUrl,
+            siteName: site.name,
+            locale: "vi_VN",
+            type: "website",
+            images: [
+                {
+                    url: "/images/anh-nen.jpg",
+                    width: 1200,
+                    height: 630,
+                    alt: title,
+                },
+            ],
+        },
+    };
+}
 
 export default async function ProductsPage({
     searchParams,
@@ -43,8 +91,20 @@ export default async function ProductsPage({
         return s ? `/san-pham?${s}` : "/san-pham";
     };
 
+    const breadcrumbs = [
+        { name: "Trang chủ", url: "/" },
+        {
+            name: active ? active.name : "Sản phẩm",
+            url: activeCat
+                ? `/san-pham?danh-muc=${activeCat}`
+                : "/san-pham",
+        },
+    ];
+
     return (
         <div className="mx-auto w-full max-w-6xl px-4">
+            <JsonLd data={getBreadcrumbSchema(breadcrumbs)} />
+
             <nav className="mt-4 text-sm text-stone-400">
                 <Link href="/" className="hover:text-brand-600">
                     Trang chủ

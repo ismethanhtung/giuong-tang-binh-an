@@ -6,6 +6,12 @@ import ProductGallery from "@/components/ProductGallery";
 import ProductPurchaseSection from "@/components/ProductPurchaseSection";
 import { BadgeCheckIcon, ShieldIcon, TruckIcon } from "@/components/icons";
 import { getCategory } from "@/lib/products";
+import { site } from "@/lib/site";
+import {
+    JsonLd,
+    getProductSchema,
+    getBreadcrumbSchema,
+} from "@/components/JsonLd";
 import {
     getProductBySlugServer,
     getProductsServer,
@@ -24,9 +30,43 @@ export async function generateMetadata({
     const { slug } = await params;
     const product = getProductBySlugServer(slug);
     if (!product) return { title: "Không tìm thấy sản phẩm" };
+
+    const category = getCategory(product.category);
+    const pageUrl = `${site.url}/san-pham/${product.slug}`;
+    const pageTitle = `${product.name} – Giá Xưởng Tốt Nhất`;
+    const pageDescription =
+        product.description ||
+        `${product.name} tại Giường tầng Bình An (Pleiku, Gia Lai). ${product.shortDesc}. Bảo hành chu đáo, giao lắp tận nơi.`;
+
+    const ogImages =
+        product.images && product.images.length > 0
+            ? product.images.map((img) => ({
+                  url: img.startsWith("http") ? img : `${site.url}${img}`,
+                  alt: product.name,
+              }))
+            : [{ url: `${site.url}/images/anh-nen.jpg`, alt: product.name }];
+
     return {
-        title: product.name,
-        description: product.shortDesc,
+        title: pageTitle,
+        description: pageDescription,
+        alternates: {
+            canonical: pageUrl,
+        },
+        openGraph: {
+            title: pageTitle,
+            description: pageDescription,
+            url: pageUrl,
+            siteName: site.name,
+            locale: "vi_VN",
+            type: "article",
+            images: ogImages,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: pageTitle,
+            description: pageDescription,
+            images: [ogImages[0].url],
+        },
     };
 }
 
@@ -60,8 +100,21 @@ export default async function ProductDetailPage({
         )
         .slice(0, 4);
 
+    const productSchema = getProductSchema(product, category);
+    const breadcrumbSchema = getBreadcrumbSchema([
+        { name: "Trang chủ", url: "/" },
+        {
+            name: category?.name || "Sản phẩm",
+            url: `/san-pham?danh-muc=${product.category}`,
+        },
+        { name: product.name, url: `/san-pham/${product.slug}` },
+    ]);
+
     return (
         <div className="mx-auto w-full min-w-0 max-w-6xl px-4">
+            <JsonLd data={productSchema} />
+            <JsonLd data={breadcrumbSchema} />
+
             <nav className="mt-4 flex items-center text-sm text-stone-400 min-w-0">
                 <Link href="/" className="shrink-0 hover:text-brand-600">
                     Trang chủ

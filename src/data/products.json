@@ -505,7 +505,7 @@
   },
   {
     "slug": "giuong-huong-phan",
-    "name": "Giường Hương phản",
+    "name": "Giường Hương giạt phản",
     "category": "giuong-go",
     "type": "bed",
     "price": 4700000,
@@ -722,5 +722,69 @@
       "/images/tu/tu-soi-4-canh/1793120867376_1_a4f4dd0a-1553-4243-b88c-426f0575feba.jpeg"
     ],
     "imageFolder": "tu/tu-soi-4-canh"
+  },
+  {
+    "id": "p-1793257339157",
+    "slug": "tu-huong-xam-4-canh",
+    "name": "Tủ Hương Xám 4 cánh",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 7500000,
+    "badge": "Gỗ tự nhiên",
+    "featured": false,
+    "shortDesc": "Gỗ hương xám tự nhiên cao cấp, 4 cánh rộng rãi, vân gỗ cuộn tuyệt đẹp.",
+    "description": "Tủ quần áo 4 cánh chất liệu gỗ hương xám tự nhiên 100%. Gỗ chắc nặng đã qua tẩm sấy chống mối mọt cong vênh, chia 2 buồng treo đồ lớn và nhiều ngăn gấp đồ rộng rãi cho cả gia đình.",
+    "color": "#8c6239",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Rộng 1m8 x Cao 2m x Sâu 60cm"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ hương xám tự nhiên"
+      },
+      {
+        "label": "Cấu tạo",
+        "value": "4 cánh mở rộng rãi, hộc kéo âm"
+      }
+    ],
+    "images": [],
+    "imageFolder": "tu/tu-huong-xam-4-canh",
+    "material": "Gỗ hương xám tự nhiên",
+    "warranty": "Gỗ tự nhiên tẩm sấy",
+    "inStock": true
+  },
+  {
+    "id": "p-1793257339158",
+    "slug": "tu-soi-3-canh",
+    "name": "Tủ sồi 3 cánh",
+    "category": "tu-go",
+    "type": "wardrobe",
+    "price": 5500000,
+    "badge": "Gỗ tự nhiên",
+    "featured": false,
+    "shortDesc": "Gỗ sồi tự nhiên màu sáng sang trọng, 3 cánh tiện dụng cho gia đình.",
+    "description": "Tủ quần áo gỗ sồi tự nhiên 3 cánh thiết kế hiện đại, màu sắc gỗ sáng trang nhã, vân gỗ tự nhiên đẹp mắt. Chia khoang treo đồ và ngăn chứa thông minh, bền đẹp theo thời gian.",
+    "color": "#d4a373",
+    "specs": [
+      {
+        "label": "Kích thước",
+        "value": "Rộng 1m6 x Cao 2m x Sâu 60cm"
+      },
+      {
+        "label": "Chất liệu",
+        "value": "Gỗ sồi tự nhiên tẩm sấy"
+      },
+      {
+        "label": "Cấu tạo",
+        "value": "3 cánh mở rộng rãi, ngăn kéo tiện ích"
+      }
+    ],
+    "images": [],
+    "imageFolder": "tu/tu-soi-3-canh",
+    "material": "Gỗ sồi tự nhiên",
+    "warranty": "Gỗ tự nhiên tẩm sấy",
+    "inStock": true
   }
 ]

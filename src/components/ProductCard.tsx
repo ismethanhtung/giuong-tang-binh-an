@@ -103,7 +103,7 @@ export default function ProductCard({
                                             />
                                             <Image
                                                 src={imgSrc}
-                                                alt=""
+                                                alt={`${product.name} - ảnh thu nhỏ ${idx + 1}`}
                                                 fill
                                                 className="object-contain"
                                                 sizes="36px"

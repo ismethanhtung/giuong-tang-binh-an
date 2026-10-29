@@ -310,15 +310,17 @@ export default function ProductImage({
             <div
                 className={`relative overflow-hidden bg-stone-100 ${className}`}
             >
-                {/* Lớp nền mờ lấy trực tiếp màu sắc/ảnh gốc để lấp đầy khoảng thiếu một cách hài hoà */}
+                {/* Lớp nền mờ đa tầng: blur sâu + scale mở rộng + gradient hòa sắc tự nhiên */}
                 <Image
                     src={src}
                     alt=""
                     fill
                     aria-hidden="true"
                     sizes="60px"
-                    className="object-cover blur-xl scale-125 opacity-35 select-none pointer-events-none"
+                    className="object-cover blur-2xl scale-135 opacity-40 select-none pointer-events-none saturate-125"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-white/20 pointer-events-none" />
+                <div className="absolute inset-0 backdrop-blur-[2px] pointer-events-none" />
 
                 {/* Ảnh chính chiếm trọn vẹn 100% khung hình, không padding, không margin */}
                 <Image

@@ -55,8 +55,10 @@ export default function ProductGallery({
                     fill
                     aria-hidden="true"
                     sizes="120px"
-                    className="object-cover blur-2xl scale-125 opacity-35 select-none pointer-events-none"
+                    className="object-cover blur-2xl scale-135 opacity-40 select-none pointer-events-none saturate-125"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/10 via-transparent to-white/20 pointer-events-none" />
+                <div className="absolute inset-0 backdrop-blur-[2px] pointer-events-none" />
 
                 {/* Ảnh chính hiển thị full 100% không padding, không cắt xén */}
                 <Image
